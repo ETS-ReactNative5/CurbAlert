@@ -109,3 +109,7 @@ _Allow users to find discarded furniture and housewares on the sidewalk. You see
 - 8:42PM: Begin setting up environment using [React Native Docs](https://reactnative.dev/docs/environment-setup)
 - 10:00PM: Create README
 - 10:22PM: Finish for the day
+
+### Friday, 02/17
+
+- 8:00AM - 9:10AM Finish setting up dev environment and walk through [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) to set up "Hello World" view
