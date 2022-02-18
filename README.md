@@ -113,3 +113,5 @@ _Allow users to find discarded furniture and housewares on the sidewalk. You see
 ### Friday, 02/17
 
 - 8:00AM - 9:10AM Finish setting up dev environment and walk through [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) to set up "Hello World" view
+
+- 10:22AM - 11:32AM Continue working through [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) to set up state and delete functionality

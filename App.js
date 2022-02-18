@@ -1,10 +1,38 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import Header from './components/Header';
+// import {uuid} from 'uuidv4'; // uuid not working :(
+import ListItem from './components/ListItem';
 
 const App = () => {
+  const [items, setItems] = useState([
+    {id: 1, text: 'sofa', distance: 1.5},
+    {id: 2, text: 'books', distance: 0.2},
+    {id: 3, text: 'lamp', distance: 0.5},
+    {id: 4, text: 'mirror', distance: 0.9},
+  ]);
+
+  const deleteItem = id => {
+    setItems(prevItems => {
+      return prevItems.filter(item => item.id !== id);
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
+      <Header />
+      <FlatList
+        data={items}
+        renderItem={({item}) => (
+          <ListItem item={item} deleteItem={deleteItem} />
+        )}
+      />
+      {/* Shows a potential spash page: need up update image directory */}
+      {/* <Text style={styles.text}>Curb Alert</Text>
+      <Image
+        source={{uri: '/Users/christopherneal/Desktop/CurbAlert/logo.JPG'}}
+        style={styles.img}
+      /> */}
     </View>
   );
 };
@@ -12,17 +40,23 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 60,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   text: {
     color: 'darkslateblue',
-    fontSize: 30,
+    fontSize: 40,
+  },
+  img: {
+    width: 200,
+    height: 200,
   },
 });
 
 export default App;
 
+// This is default boilerplate, probably can delete
 // /**
 //  * Sample React Native App
 //  * https://github.com/facebook/react-native
