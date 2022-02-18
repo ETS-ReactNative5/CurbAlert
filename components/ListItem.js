@@ -12,7 +12,7 @@ const ListItem = props => {
         </Text>
         {/* this won't work until I import vector icons correctly */}
         <Icon
-          name="taken"
+          name="remove"
           size={20}
           color="firebrick"
           onPress={() => deleteItem(item.id)}

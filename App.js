@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import Header from './components/Header';
-// import {uuid} from 'uuidv4'; // uuid not working :(
+import {uuid} from 'uuidv4'; // uuid not working :(
 import ListItem from './components/ListItem';
 
 const App = () => {
   const [items, setItems] = useState([
+    // {id: uuid(), text: 'sofa', distance: 1.5},
     {id: 1, text: 'sofa', distance: 1.5},
     {id: 2, text: 'books', distance: 0.2},
     {id: 3, text: 'lamp', distance: 0.5},
