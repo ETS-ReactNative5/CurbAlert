@@ -116,14 +116,6 @@ _Allow users to find discarded furniture and housewares on the sidewalk. You see
 
 - 10:22AM - 11:32AM Continue working through [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) to set up state and delete functionality. Got to 40:18 on video.
 
--11:32AM - 12:43PM BUGFIX: troubleshoot importing UUIDV4 and ReactNativeVectorIcons
+- 11:32AM - 12:43PM BUGFIX: troubleshoot importing UUIDV4 and ReactNativeVectorIcons
 
-
-BUGFIX PROCESS:
-It may be a problem with CocoaPods. In your terminal, cd into `ProjectName/ios` and run `pod install`.  
-
-If you get an error that includes `incompatible library version` you may need to update your version of Ruby. In your main project directory, check the ruby version in the `.ruby-version` file. The current stable build is 3.0.3.
-
-Try updating ruby: run `brew install ruby-install --HEAD`.  
-Then run `gem install cocoapods` to update cocoapods.  
-Then run `pod install` to install/update the ruby gems.
+- 12:43PM - 1:41PM ReactNativeVectorIcons and UUIDV4 still not working. Still troubleshooting.
