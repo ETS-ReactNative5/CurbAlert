@@ -116,6 +116,12 @@ _Allow users to find discarded furniture and housewares on the sidewalk. You see
 
 - 10:22AM - 11:32AM Continue working through [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) to set up state and delete functionality. Got to 40:18 on video.
 
-- 11:32AM - 12:43PM BUGFIX: troubleshoot importing UUIDV4 and ReactNativeVectorIcons
+- 11:32AM - 12:43PM Troubleshooting importing UUIDV4 and ReactNativeVectorIcons. Tried: update Ruby version to 3.0.3, reinstalling CocoaPods, running `pod install` from `CurbAlert/ios` Still not working but making progress.
 
-- 12:43PM - 1:41PM ReactNativeVectorIcons and UUIDV4 still not working. Still troubleshooting.
+- 12:43PM - 1:41PM ReactNativeVectorIcons and UUIDV4 still not working. Still troubleshooting. Tried rebuilding project using Expo Cli Quickstart to no avail. Now researching linking libraries in [React Documentation](https://reactnative.dev/docs/linking-libraries-ios)
+
+- 1:41PM - 3:14PM Still not working and I'm out of ideas. Setting up Andriod dev environment (following the [React Documentation's guide](https://reactnative.dev/docs/environment-setup)) to see if packages will work there.
+
+_Note: installation taking a while, reading through the rest of the React Documentation while I wait._
+
+Build still fails on Android. Going to reset project to before I linked the libraries.
