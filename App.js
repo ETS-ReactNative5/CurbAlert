@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import Header from './components/Header';
-import {uuid} from 'uuidv4'; // uuid not working :(
+import {v4 as uuid} from 'uuid';
 import ListItem from './components/ListItem';
 
 const App = () => {
   const [items, setItems] = useState([
-    // {id: uuid(), text: 'sofa', distance: 1.5},
-    {id: 1, text: 'sofa', distance: 1.5},
-    {id: 2, text: 'books', distance: 0.2},
-    {id: 3, text: 'lamp', distance: 0.5},
-    {id: 4, text: 'mirror', distance: 0.9},
+    {id: uuid(), text: 'sofa', distance: 1.5},
+    {id: uuid(), text: 'books', distance: 0.2},
+    {id: uuid(), text: 'lamp', distance: 0.5},
+    {id: uuid(), text: 'mirror', distance: 0.9},
   ]);
 
   const deleteItem = id => {
