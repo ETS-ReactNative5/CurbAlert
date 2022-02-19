@@ -125,3 +125,6 @@ _Allow users to find discarded furniture and housewares on the sidewalk. You see
 _Note: installation taking a while, reading through the rest of the React Documentation while I wait._
 
 Build still fails on Android. Going to reset project to before I linked the libraries.
+
+- 4:32PM - Adding Capstone Proposal and creating GitHub Repo
+- 4:41PM - ### Researching the problem:
