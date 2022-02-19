@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/dist/FontAwesome'; // this won't likely work...?
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const ListItem = props => {
   const {item, deleteItem} = props;
@@ -10,7 +10,6 @@ const ListItem = props => {
         <Text style={styles.listItemText}>
           {item.text} - {item.distance} miles away
         </Text>
-        {/* this won't work until I import vector icons correctly */}
         <Icon
           name="remove"
           size={20}

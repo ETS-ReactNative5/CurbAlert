@@ -85,6 +85,9 @@ Build still fails on Android. Going to reset project to before I linked the libr
   - [React Native Vector Icons Docs](https://github.com/oblador/react-native-vector-icons/blob/master/README.md#installation) and [Vimniky Luo's post on Medium](https://medium.com/@vimniky/how-to-use-vector-icons-in-your-react-native-project-8212ac6a8f06) - Trying to manually link the modules
   - GOT IT! [This StackOverflow Article](https://stackoverflow.com/questions/2718246/xcode-warning-multiple-build-commands-for-output-file) told me to look in the "Copy Bundle Resources" Build Phase in XCode. I deleted the `.ttf` files and it magically works now!
 
-  - **5:56PM - ##:##PM** UUID still not working. Researching:
-    - Attempting to install [React Native Get Random Values](https://github.com/LinusU/react-native-get-random-values#readme)
-    - Works now! I updated the import. I don't think I needed RRNGRV though.
+- **5:56PM - 6:42PM** UUID still not working. Researching:
+
+  - Attempting to install [React Native Get Random Values](https://github.com/LinusU/react-native-get-random-values#readme)
+  - Works now! I think the import needed updating too.
+
+- **6:42PM - 7:19PM** Finish [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) and implement some features.

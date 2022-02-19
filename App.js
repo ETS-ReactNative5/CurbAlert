@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
-import Header from './components/Header';
+import 'react-native-get-random-values';
 import {v4 as uuid} from 'uuid';
+import Header from './components/Header';
 import ListItem from './components/ListItem';
+import AddItem from './components/AddItem';
 
 const App = () => {
   const [items, setItems] = useState([
@@ -18,9 +20,16 @@ const App = () => {
     });
   };
 
+  const addItem = text => {
+    setItems(prevItems => {
+      return [{id: uuid(), text}, ...prevItems];
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header />
+      <AddItem addItem={addItem} />
       <FlatList
         data={items}
         renderItem={({item}) => (
