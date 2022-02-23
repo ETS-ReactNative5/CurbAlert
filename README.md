@@ -1,4 +1,6 @@
-# _Curb Alert_
+# **_Curb Alert_**
+
+## **Work In Progress: 2/15/22 through 3/10/22**
 
 ### _Capstone Project for Epicodus Bootcamp_
 
@@ -19,9 +21,79 @@
 _This project was created as an independent Capstone project for Epicodus bootcamp. It shows proficiency in React Native._
 _Curb Alert: Connecting Trash with Folks to whom it's Treasure. A user can upload an image of discarded furniture for others to see. A user can find discarded furniture near their location._
 
-## Project Layout Diagram
+## Project Component Diagram
 
-![project-diagram](./project-diagram.png)
+![Project Component Diagram](./project-diagram.drawio.png)
+
+Components:
+
+- Header
+
+  - logo
+  - settings hamburger button
+  - camera button
+
+- Settings
+
+  - email
+  - password
+  - update email/password
+  - default location
+  - notification settings?
+  - signout
+
+- NewItemForm (appears after taking a picture?)
+
+  - picture (should be automatic)
+  - location (should be automatic)
+  - title
+  - detail
+
+- ItemDetail
+  - image
+  - map
+  - title
+  - description
+  - timestamp
+  - is_taken (only appears if true, plus timestamp)
+  - take button (unless can_take is false)
+  - is_damaged (only appears if true)
+  - damaged button
+  - thumbs_up button
+  - thumbs_up count (if count > 0)
+  - update button
+  - flag as innapropriate
+
+- ItemMap
+  - image
+  - location
+
+## Database Schema
+
+users:
+
+- email (required)
+- password (required)
+- is_admin, boolean (default false)
+- default_location, zipcode (for push notifications)
+- current_location, coordinates? (ideally from GPS, or entered zipcode, required)
+- is_banned, boolean (default false, for users with malicious content)
+
+items:
+
+- posting user_id (allow multiple if )
+- image, image file (required)
+- location, coordinates? (pull from image or current location?, required)
+- title, string
+- description, string
+- timestamp (listing should dissapear 1 week after being posted unless taken before)
+- display, boolean (would this be the best way to determine whether to display an item?)
+- is_taken, boolean
+- is_damaged, boolean
+- thumbs_up, integer (for users to confirm item is still there and in good condition)
+- taken_time, timestamp (listing should dissapear 2 hours after being taken)
+- can_take, boolean (default true, false for fruit trees or tiny libraries, extends listing lifetime?)
+- flagged, boolean (default false, flag as innapropriate, plus immediatly remove for review)
 
 ## Setup/Installation Requirements
 
@@ -42,7 +114,7 @@ _Curb Alert: Connecting Trash with Folks to whom it's Treasure. A user can uploa
 
 ## Known Bugs
 
-_None as of 2/15/22 22:00_
+_None as of 2/19/22 10:14AM_
 
 ### License
 
@@ -73,17 +145,17 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **1:41PM - 3:14PM** Still not working and I'm out of ideas. Setting up Andriod dev environment (following the [React Documentation's guide](https://reactnative.dev/docs/environment-setup)) to see if packages will work there.
 
-_Note: installation taking a while, reading through the rest of the React Documentation while I wait._
+  - _Note: installation taking a while, reading through the rest of the React Documentation while I wait._
 
-Build still fails on Android. Going to reset project to before I linked the libraries.
+  - Build still fails on Android. Going to try something different.
 
 - **4:32PM - 4:41PM** Adding Capstone Proposal and creating GitHub Repo
 - **4:41PM - 5:56PM** Researching the problem:
 
   - [React Native Docs](https://reactnative.dev/docs/environment-setup)
-  - [CocoaPods Docs](https://guides.cocoapods.org/using/a-gemfile.html) - Tried Bundle Install - didn't help
-  - [React Native Vector Icons Docs](https://github.com/oblador/react-native-vector-icons/blob/master/README.md#installation) and [Vimniky Luo's post on Medium](https://medium.com/@vimniky/how-to-use-vector-icons-in-your-react-native-project-8212ac6a8f06) - Trying to manually link the modules
-  - GOT IT! [This StackOverflow Article](https://stackoverflow.com/questions/2718246/xcode-warning-multiple-build-commands-for-output-file) told me to look in the "Copy Bundle Resources" Build Phase in XCode. I deleted the `.ttf` files and it magically works now!
+  - [CocoaPods Docs](https://guides.cocoapods.org/using/a-gemfile.html) - Tried Bundle Install - not sure whether it helped.
+  - [React Native Vector Icons Docs](https://github.com/oblador/react-native-vector-icons/blob/master/README.md#installation) and [Vimniky Luo's post on Medium](https://medium.com/@vimniky/how-to-use-vector-icons-in-your-react-native-project-8212ac6a8f06) - Tried manually linking the modules but they are already linked.
+  - GOT IT! [This StackOverflow Article](https://stackoverflow.com/questions/2718246/xcode-warning-multiple-build-commands-for-output-file) told me to look in the "Copy Bundle Resources" Build Phase in XCode. I deleted the `.ttf` files and it _magically_ works now!
 
 - **5:56PM - 6:42PM** UUID still not working. Researching:
 
@@ -91,3 +163,7 @@ Build still fails on Android. Going to reset project to before I linked the libr
   - Works now! I think the import needed updating too.
 
 - **6:42PM - 7:19PM** Finish [Traversy Media React Native Crash Course Video](https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s) and implement some features.
+
+### Tuesday, 02/22
+
+- **9:32PM - 11:54PM** Planning database structure, component diagram, and app UI layout.
