@@ -7,10 +7,12 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
+import PropTypes from 'prop-types'
 
-const AddItem = ({addItem}) => {
+const AddItem = ({addItem, calculateDistance}) => {
   const [text, setText] = useState('');
   const [description, setDescription] = useState('');
+  const [distance, setDistance] = useState('');
   const onChange = textValue => setText(textValue);
   const onChangeDescription = textValue => setDescription(textValue);
   return (
@@ -29,7 +31,7 @@ const AddItem = ({addItem}) => {
       />
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => addItem(text, description)}>
+        onPress={() => addItem(text, description, calculateDistance())}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item
@@ -37,6 +39,11 @@ const AddItem = ({addItem}) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+AddItem.propTypes = {
+  addItem: PropTypes.func,
+  calculateDistance: PropTypes.func,
 };
 
 export default AddItem;

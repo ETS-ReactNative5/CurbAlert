@@ -181,9 +181,12 @@ Copyright (c) _2022_ _Christopher Neal_
 
 ### Friday, 02/25
 
-- ** 7:59AM - 8:57AM** Troubleshoot program not building on Android - not sure what's happening here.
-- ** 8:57AM - 9:33AM** Organize components, WIP: add description field to AddItem form.
+- **7:59AM - 8:57AM** Troubleshoot program not building on Android - not sure what's happening here.
+- **8:57AM - 9:33AM** Organize components, WIP: add description field to AddItem form.
   - Research React Native forms [YouTube: React-Native tutorial # Handle Input](https://www.youtube.com/watch?v=pF8ae5j9Q3g&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=18)
-- ** 10:34AM - #:##AM** Continue research:
+- **10:34AM - 11:45AM** Continue research:
   - [YouTube: React-Native tutorial # submit simple form](https://www.youtube.com/watch?v=FZDOxrQNMjs&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=19)
   - Add description to state
+- **11:45AM - 11:50AM** Research calculating distance using coordinates
+  - Never mind! I'll use an API when I incorporate the map
+- **11:50AM - 12:06PM** Add dummy calculateDistance function, add distance to item state
