@@ -172,3 +172,4 @@ Copyright (c) _2022_ _Christopher Neal_
 ### Thursday, 02/24
 
 - **5:39PM - 5:59PM** Finish component diagram
+- **5:59PM - 6:19PM** Adding Header icons and styling using flexbox, reference: [React styling docs](https://reactnative.dev/docs/flexbox)
