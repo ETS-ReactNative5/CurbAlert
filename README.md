@@ -196,6 +196,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **12:21PM - 1:03PM** WIP: display item full details
 - **2:01PM - 2:58PM** Trying to set up item details using hooks for state, but I'm just not getting it, so reviewing with [YouTube: Traversy Media React JS Crash Course](https://www.youtube.com/watch?v=w7ejDZ8SWv8)
   - I'm on the right track, just trying to get the details to display.
+- **2:58PM - 3:33PM** Get ItemDetail to display. Move delete functionality to ItemDetail
 
 NOTES:
 selectedItem = object?

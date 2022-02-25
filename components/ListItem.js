@@ -3,23 +3,21 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
 
-const ListItem = ({item, deleteItem, pressItem, id, handleSelectingItem}) => {
-  // const handleItemPress = () => {
-  //   pressItem(id);
-  // };
+const ListItem = ({item, deleteItem, handleSelectingItem}) => {
   return (
-    <TouchableOpacity style={styles.listItem}
-    onPress={() => handleSelectingItem(item.id)}>
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() => handleSelectingItem(item.id)}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>
           {item.text} - {item.description}: {item.distance} miles away
         </Text>
-        <Icon
+        {/* <Icon
           name="remove"
           size={20}
           color="firebrick"
           onPress={() => deleteItem(item.id)}
-        />
+        /> */}
       </View>
     </TouchableOpacity>
   );

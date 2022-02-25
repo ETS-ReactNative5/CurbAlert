@@ -19,19 +19,10 @@ const ItemControl = () => {
   ]);
 
   const [selectedItem, setSelectedItem] = useState({text: 'test'});
-
   const handleSelectingItem = id => {
     const changeSelectedItem = items.filter(item => item.id === id)[0];
-    console.log(changeSelectedItem);
-    setSelectedItem({changeSelectedItem});
+    setSelectedItem(changeSelectedItem);
   };
-
-  // NOT SURE HOW TO SET THIS UP TO SAVE ID IN CURRENT STATE??
-  // const handleItemPress = (id) => {
-  //   setState({
-  //     currentItemInDetail: id,
-  //   });
-  // };
 
   // handleChangingSelectedTicket = (id) => {
   //   // const selectedTicket = this.props.mainTicketList[id];
@@ -67,16 +58,11 @@ const ItemControl = () => {
   return (
     <View style={styles.list}>
       <AddItem addItem={addItem} calculateDistance={calculateDistance} />
-      <Text>{selectedItem.text}</Text>
+      <ItemDetail item={selectedItem} deleteItem={deleteItem} />
       <FlatList
         data={items}
         renderItem={({item}) => (
-          <ListItem
-            item={item}
-            deleteItem={deleteItem}
-            handleSelectingItem={handleSelectingItem}
-            // itemPress={handleItemPress}
-          />
+          <ListItem item={item} handleSelectingItem={handleSelectingItem} />
         )}
       />
     </View>
