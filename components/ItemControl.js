@@ -33,7 +33,7 @@ const ItemControl = () => {
   };
 
   return (
-    <View>
+      <View style={styles.list}>
       <AddItem addItem={addItem} calculateDistance={calculateDistance} />
       <FlatList
         data={items}
@@ -47,4 +47,8 @@ const ItemControl = () => {
 
 export default ItemControl;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+  },
+});
