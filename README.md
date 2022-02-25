@@ -174,4 +174,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **5:39PM - 5:59PM** Finish component diagram
 - **5:59PM - 6:19PM** Adding Header icons and styling using flexbox, reference: [React styling docs](https://reactnative.dev/docs/flexbox)
 - **6:19PM - 6:41PM** Add component files with boilerplate code
-- **9:44PM - #:##PM** Organize project structure, 
+- **9:44PM - 9:58PM** Organize project structure
+- **9:58PM - 10:36 PM** Research React Navigation:
+  - [YouTube: Navigation in React Native](https://www.youtube.com/watch?v=9K7JCQbOHVA)
+  - [ReactNavigation.org documentation](https://reactnavigation.org/docs/getting-started/)
