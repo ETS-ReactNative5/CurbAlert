@@ -178,3 +178,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **9:58PM - 10:36 PM** Research React Navigation:
   - [YouTube: Navigation in React Native](https://www.youtube.com/watch?v=9K7JCQbOHVA)
   - [ReactNavigation.org documentation](https://reactnavigation.org/docs/getting-started/)
+
+### Friday, 02/25
+
+- ** 7:59AM - 8:57AM** Troubleshoot program not building on Android - not sure what's happening here.
