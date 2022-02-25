@@ -188,5 +188,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - [YouTube: React-Native tutorial # submit simple form](https://www.youtube.com/watch?v=FZDOxrQNMjs&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=19)
   - Add description to state
 - **11:45AM - 11:50AM** Research calculating distance using coordinates
+  - [LogRocket Tutorial](https://blog.logrocket.com/react-native-geolocation-a-complete-tutorial/)
   - Never mind! I'll use an API when I incorporate the map
 - **11:50AM - 12:06PM** Add dummy calculateDistance function, add distance to item state
+- **12:06PM - 12:21PM** Research and implement Flex Boxes for main view
+  - [Stack OverFlow](https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native)
+- **12:21PM - 1:03PM** WIP: display item full details

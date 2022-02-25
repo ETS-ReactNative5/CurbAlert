@@ -3,11 +3,13 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
 
-const ListItem = props => {
-  const {item, deleteItem} = props;
+const ListItem = ({item, deleteItem, pressItem, id}) => {
+  const handleItemPress = () => {
+    pressItem(id);
+  };
   return (
-    <TouchableOpacity style={styles.listItem}>
-      <View style={styles.listItemView}>
+        <TouchableOpacity style={styles.listItem}>
+    <View style={styles.listItemView}>
         <Text style={styles.listItemText}>
           {item.text} - {item.description}: {item.distance} miles away
         </Text>
