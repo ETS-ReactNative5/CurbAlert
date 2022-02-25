@@ -8,24 +8,28 @@ import {
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
 
-// image import, title, detail, location
-
 const AddItem = ({addItem}) => {
   const [text, setText] = useState('');
+  const [description, setDescription] = useState('');
   const onChange = textValue => setText(textValue);
+  const onChangeDescription = textValue => setDescription(textValue);
   return (
     <View>
       <TextInput
         placeholder="Item Title"
         style={styles.input}
         onChangeText={onChange}
+        maxLength={40}
       />
       <TextInput
         placeholder="Description"
         style={styles.input}
-        onChangeText={onChange}
+        onChangeText={onChangeDescription}
+        maxLength={140}
       />
-      <TouchableOpacity style={styles.btn} onPress={() => addItem(text)}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => addItem(text, description)}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item

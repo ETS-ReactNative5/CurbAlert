@@ -9,7 +9,7 @@ const ListItem = props => {
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>
-          {item.text} - {item.distance} miles away
+          {item.text} - {item.description}: {item.distance} miles away
         </Text>
         <Icon
           name="remove"

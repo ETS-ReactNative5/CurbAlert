@@ -184,3 +184,6 @@ Copyright (c) _2022_ _Christopher Neal_
 - ** 7:59AM - 8:57AM** Troubleshoot program not building on Android - not sure what's happening here.
 - ** 8:57AM - 9:33AM** Organize components, WIP: add description field to AddItem form.
   - Research React Native forms [YouTube: React-Native tutorial # Handle Input](https://www.youtube.com/watch?v=pF8ae5j9Q3g&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=18)
+- ** 10:34AM - #:##AM** Continue research:
+  - [YouTube: React-Native tutorial # submit simple form](https://www.youtube.com/watch?v=FZDOxrQNMjs&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=19)
+  - Add description to state

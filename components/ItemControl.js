@@ -6,11 +6,14 @@ import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 
 const ItemControl = () => {
+  const [location, setLocation] = useState([
+    
+  ])
   const [items, setItems] = useState([
-    {id: uuid(), text: 'sofa', distance: 1.5},
-    {id: uuid(), text: 'books', distance: 0.2},
-    {id: uuid(), text: 'lamp', distance: 0.5},
-    {id: uuid(), text: 'mirror', distance: 0.9},
+    {id: uuid(), text: 'sofa', distance: 1.5, description: 'good shape'},
+    {id: uuid(), text: 'books', distance: 0.2, description: "i can't read"},
+    {id: uuid(), text: 'lamp', distance: 0.5, description: 'missing bulb'},
+    {id: uuid(), text: 'mirror', distance: 0.9, description: 'am a vampire, cant see myself in it!'},
   ]);
 
   const deleteItem = id => {
@@ -19,9 +22,9 @@ const ItemControl = () => {
     });
   };
 
-  const addItem = text => {
+  const addItem = (text, description) => {
     setItems(prevItems => {
-      return [{id: uuid(), text}, ...prevItems];
+      return [{id: uuid(), text, description}, ...prevItems];
     });
   };
 
