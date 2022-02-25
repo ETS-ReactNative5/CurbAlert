@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import 'react-native-get-random-values';
 import Header from './Header';
 import ItemControl from './ItemControl';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 const App = () => {
   return (

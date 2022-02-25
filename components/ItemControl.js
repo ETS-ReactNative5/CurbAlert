@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
 import {v4 as uuid} from 'uuid';
+import ItemDetail from './ItemDetail';
 
 const ItemControl = () => {
   const [items, setItems] = useState([

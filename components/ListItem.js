@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import PropTypes from 'prop-types';
 
 const ListItem = props => {
   const {item, deleteItem} = props;
@@ -19,6 +20,11 @@ const ListItem = props => {
       </View>
     </TouchableOpacity>
   );
+};
+
+ListItem.propTypes = {
+  item: PropTypes.object,
+  deleteItem: PropTypes.func,
 };
 
 export default ListItem;
