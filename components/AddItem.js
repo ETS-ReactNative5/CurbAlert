@@ -8,13 +8,20 @@ import {
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
 
-const AddItem = ({title, addItem}) => {
+// image import, title, detail, location
+
+const AddItem = ({addItem}) => {
   const [text, setText] = useState('');
   const onChange = textValue => setText(textValue);
   return (
     <View>
       <TextInput
-        placeholder="New Item"
+        placeholder="Item Title"
+        style={styles.input}
+        onChangeText={onChange}
+      />
+      <TextInput
+        placeholder="Description"
         style={styles.input}
         onChangeText={onChange}
       />
