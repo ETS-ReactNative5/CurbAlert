@@ -29,7 +29,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <AddItem addItem={addItem} />
+      {/* <AddItem addItem={addItem} /> */}
       <FlatList
         data={items}
         renderItem={({item}) => (
