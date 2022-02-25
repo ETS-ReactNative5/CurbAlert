@@ -194,3 +194,9 @@ Copyright (c) _2022_ _Christopher Neal_
 - **12:06PM - 12:21PM** Research and implement Flex Boxes for main view
   - [Stack OverFlow](https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native)
 - **12:21PM - 1:03PM** WIP: display item full details
+- **2:01PM - 2:58PM** Trying to set up item details using hooks for state, but I'm just not getting it, so reviewing with [YouTube: Traversy Media React JS Crash Course](https://www.youtube.com/watch?v=w7ejDZ8SWv8)
+  - I'm on the right track, just trying to get the details to display.
+
+NOTES:
+selectedItem = object?
+handleSelectingItem(id) = sets selectedItem - pass this into list and then into details - put into onpress function(id)
