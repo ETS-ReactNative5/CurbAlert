@@ -29,9 +29,9 @@ Components:
 
 - Header
 
-  - logo
-  - settings hamburger button
-  - camera button
+  - logo (link to ItemsMap)
+  - Settings link button (ideally opens camera, then uses image in form)
+  - NewItem link button
 
 - Settings
 
@@ -50,6 +50,7 @@ Components:
   - detail
 
 - ItemDetail
+
   - image
   - map
   - title
@@ -84,8 +85,8 @@ items:
 - posting user_id (allow multiple if )
 - image, image file (required)
 - location, coordinates? (pull from image or current location?, required)
-- title, string
-- description, string
+- title, string (limit 50 chars)
+- description, string (limit 140 chars)
 - timestamp (listing should dissapear 1 week after being posted unless taken before)
 - display, boolean (would this be the best way to determine whether to display an item?)
 - is_taken, boolean
@@ -167,3 +168,7 @@ Copyright (c) _2022_ _Christopher Neal_
 ### Tuesday, 02/22
 
 - **9:32PM - 11:54PM** Planning database structure, component diagram, and app UI layout.
+
+### Thursday, 02/24
+
+- **5:39PM - 5:59PM** Finish component diagram
