@@ -207,7 +207,13 @@ Copyright (c) _2022_ _Christopher Neal_
 - **2:58PM - 3:33PM** Get ItemDetail to display. Move delete functionality to ItemDetail
 - **3:33PM - 5:04PM** Got ImageDetail to display all details! Plus did a little styling.
   - Research displaying text with [React Native Docs - Text](https://reactnative.dev/docs/text)
-- **6:49PM -7:25PM** Research map APIs
+- **6:49PM - 7:23PM** Research map APIs:
+  - [YouTube: React Native Maps Mini Course](https://www.youtube.com/watch?v=qlELLikT3FU)
+- **7:59PM - 9:05PM** Research using phone location:
+  - [AboutReact.com - Geolocation](https://aboutreact.com/react-native-geolocation/)
+  - [YouTube: Get started with Background Geolocation in React Native](https://www.youtube.com/watch?v=heuEY5NY6cw)
+  - Attempted using `react-native-community/geolocation` but I'm going to try another method
+  -
 
 ---
 
