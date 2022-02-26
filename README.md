@@ -207,6 +207,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **2:58PM - 3:33PM** Get ItemDetail to display. Move delete functionality to ItemDetail
 - **3:33PM - 5:04PM** Got ImageDetail to display all details! Plus did a little styling.
   - Research displaying text with [React Native Docs - Text](https://reactnative.dev/docs/text)
+- **6:49PM -7:25PM** Research map APIs
 
 ---
 
