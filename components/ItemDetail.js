@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
@@ -8,13 +8,45 @@ const ItemDetail = ({item, deleteItem}) => {
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
         <Text style={styles.listItemText}>
-          {item.text} - {item.description}: {item.distance} miles away
+          <Text style={styles.title}>{item.text}</Text>
         </Text>
+        <Text style={styles.listItemText}>{item.distance} miles away</Text>
+      </View>
+      <View style={styles.description}>
+        <Text>{item.timestamp}</Text>
+        <Text>{item.description}</Text>
+        {/* <Text>{item.is_taken}</Text>
+        <Text>{item.is_damaged}</Text> */}
+        <Text>This item has recieved {item.thumbs_up} thumbs ups.</Text>
+
+      </View>
+      <View>
+        <Image source={{uri: item.image_path}} />
+      </View>
+      <View style={styles.listItemView}>
         <Icon
-          name="remove"
-          size={20}
-          color="firebrick"
+          name="thumbs-up"
+          size={40}
+          color="green"
+          // onPress={() => deleteItem(item.id)}
+        />
+        <Icon
+          name="thumbs-down"
+          size={40}
+          color="orange"
+          // onPress={() => deleteItem(item.id)}
+        />
+        <Icon
+          name="check"
+          size={40}
+          color="blue"
           onPress={() => deleteItem(item.id)}
+        />
+        <Icon
+          name="flag"
+          size={40}
+          color="firebrick"
+          // onPress={() => deleteItem(item.id)}
         />
       </View>
     </TouchableOpacity>
@@ -42,5 +74,16 @@ const styles = StyleSheet.create({
   },
   listItemText: {
     fontSize: 18,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  distance: {
+    fontStyle: 'italic',
+  },
+  description: {
+    paddingTop: 20,
+    paddingBottom: 20,
   },
 });

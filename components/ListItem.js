@@ -9,7 +9,7 @@ const ListItem = ({item, deleteItem, handleSelectingItem}) => {
       style={styles.listItem}
       onPress={() => handleSelectingItem(item.id)}>
       <View style={styles.listItemView}>
-        <Text style={styles.listItemText}>
+        <Text numberOfLines={1} style={styles.listItemText}>
           {item.text} - {item.description}: {item.distance} miles away
         </Text>
         {/* <Icon
