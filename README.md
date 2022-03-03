@@ -213,3 +213,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - [AboutReact.com - Geolocation](https://aboutreact.com/react-native-geolocation/)
   - [YouTube: Get started with Background Geolocation in React Native](https://www.youtube.com/watch?v=heuEY5NY6cw)
   - Attempted using `react-native-community/geolocation` but I'm going to try another method
+
+### Wednesday, 03/02
+
+- **7:58PM - 10:45PM**
+  - Refactor ItemControl as a class component (WIP)
+  - Implement React Native Geolocation using [this LogRocket tutorial](https://blog.logrocket.com/react-native-geolocation-a-complete-tutorial/)

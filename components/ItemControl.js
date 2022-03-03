@@ -116,12 +116,17 @@
 //   },
 // });
 
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Button} from 'react-native';
 import React from 'react';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
 import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
+import RNLocation from 'react-native-location';
+
+RNLocation.configure({
+  distanceFilter: 10,
+});
 
 class ItemControl extends React.Component {
   constructor(props) {
@@ -189,8 +194,58 @@ class ItemControl extends React.Component {
         flag: false,
         image_path: 'https://picsum.photos/200',
       },
+      lat: null,
+      lon: null,
+      spaceTime: null,
     };
   }
+
+  permissionHandle = async () => {
+    let permission = await RNLocation.checkPermission({
+      ios: 'whenInUse', // or 'always'
+      android: {
+        detail: 'coarse', // or 'fine'
+      },
+    });
+    let location;
+
+    if (!permission) {
+      permission = await RNLocation.requestPermission({
+        ios: 'whenInUse',
+        android: {
+          detail: 'coarse',
+          rationale: {
+            title: 'We need to access your location',
+            message: 'We use your location to show where you are on the map',
+            buttonPositive: 'OK',
+            buttonNegative: 'Cancel',
+          },
+        },
+      });
+      console.log(permission);
+      location = await RNLocation.getLatestLocation({timeout: 100});
+      console.log(
+        location,
+        location.longitude,
+        location.latitude,
+        location.timestamp,
+      );
+    } else {
+      console.log('Here 7');
+      location = await RNLocation.getLatestLocation({timeout: 100});
+      this.setState({
+        lat: location.latitude,
+        lon: location.longitude,
+        spaceTime: location.timestamp,
+      });
+      console.log(
+        location,
+        location.longitude,
+        location.latitude,
+        location.timestamp,
+      );
+    }
+  };
 
   handleSelectingItem = id => {
     const newItem = this.state.items.filter(item => item.id === id)[0];
@@ -216,6 +271,12 @@ class ItemControl extends React.Component {
   render() {
     return (
       <View style={styles.list}>
+        <View
+          style={{marginTop: 10, padding: 10, borderRadius: 10, width: '40%'}}>
+          <Button title="Get Location" onPress={this.permissionHandle} />
+        </View>
+        <Text>Latitude: {this.state.lat}</Text>
+        <Text>Longitude: {this.state.lon}</Text>
         <AddItem
           addItem={this.addItem}
           calculateDistance={this.calculateDistance}
