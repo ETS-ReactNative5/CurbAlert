@@ -219,3 +219,12 @@ Copyright (c) _2022_ _Christopher Neal_
 - **7:58PM - 10:45PM**
   - Refactor ItemControl as a class component (WIP)
   - Implement React Native Geolocation using [this LogRocket tutorial](https://blog.logrocket.com/react-native-geolocation-a-complete-tutorial/)
+- **10:45PM - 11:00PM** Researching Camera Access
+  - (GitHub Documentation: React Native Image Picker)[https://github.com/react-native-image-picker/react-native-image-picker]
+  - (YouTube: Pradip Debnath - React Native Image Picker Tutorial) [https://www.youtube.com/watch?v=3_ldEVWlL18]
+
+### Thursday, 03/03
+- **1:14PM - 1:29PM** Pick up where I left off on researching camera access, same resources.
+- **2:29PM - 2:59PM** Switching gears to research React Navigation before implementing maps
+  - (React Navigation Documentation)[https://reactnavigation.org/docs/getting-started/]
+  - (YouTube: Pradip Debnath - Getting Started with React Navigation v5 in React Native | Stack Navigator Tutorial)[https://www.youtube.com/watch?v=a9jSyZXYGn8&list=PLQWFhX-gwJbmmqcP-9zMXBaxQbGKfIJY2&index=1]

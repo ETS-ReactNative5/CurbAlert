@@ -123,6 +123,7 @@ import AddItem from './AddItem';
 import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 import RNLocation from 'react-native-location';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 RNLocation.configure({
   distanceFilter: 10,
