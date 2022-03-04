@@ -1,20 +1,23 @@
+import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const AddItem = ({addItem, calculateDistance}) => {
+const AddItem = ({addItem, calculateDistance, navigation}) => {
   const [text, setText] = useState('');
   const [description, setDescription] = useState('');
   const [distance, setDistance] = useState('');
   const onChange = textValue => setText(textValue);
   const onChangeDescription = textValue => setDescription(textValue);
+
   return (
     <View>
       <TextInput

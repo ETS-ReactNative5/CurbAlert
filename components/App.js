@@ -1,58 +1,16 @@
-// SORT OF WORKING CODE
-
-// import React, {useState} from 'react';
-// import {NavigationContainer} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
-// import {View, Text, StyleSheet, Image} from 'react-native';
-// import 'react-native-get-random-values';
-// import Header from './Header';
-// import ItemControl from './ItemControl';
-// import SignIn from './SignIn';
-// import SignUp from './SignUp';
-
-// const Stack = createNativeStackNavigator();
-
-// function HomeScreen() {
-//   return (
-//     <View style={styles.container}>
-//       <Header />
-//       <ItemControl />
-//     </View>
-//   );
-// }
-
-// const App = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen name="Home" component={HomeScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     paddingTop: 60,
-//   },
-//   text: {
-//     color: 'darkslateblue',
-//     fontSize: 40,
-//   },
-//   img: {
-//     width: 200,
-//     height: 200,
-//   },
-// });
-
-// export default App;
-
 // ******** WITH STUFF FROM ITEM CONTROL ******
-import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import React, {useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  FlatList,
+  Button,
+  SafeAreaView,
+} from 'react-native';
 import 'react-native-get-random-values';
 import Header from './Header';
 import ListItem from './ListItem';
@@ -74,31 +32,50 @@ const App = () => {
   //   );
   // }
 
-  function ItemForm() {
+  function ItemForm({navigation}) {
     return (
       <View style={styles.list}>
         <AddItem addItem={addItem} calculateDistance={calculateDistance} />
+        <Button
+          title="Submit"
+          onPress={() => navigation.navigate('ItemList')}
+        />
       </View>
     );
   }
 
-  // function ItemDetail() {
-  //   return (
-  //     <View style={styles.list}>
-  //       <ItemDetail item={selectedItem} deleteItem={deleteItem} />
-  //     </View>
-  //   );
-  // }
+  function ItemDetailFunc({navigation}) {
+    return (
+      <View style={styles.list}>
+        <ItemDetail item={selectedItem} deleteItem={deleteItem} />
+      </View>
+    );
+  }
 
-  function ItemList() {
-    <View style={styles.list}>
-      <FlatList
-        data={items}
-        renderItem={({item}) => (
-          <ListItem item={item} handleSelectingItem={handleSelectingItem} />
-        )}
-      />
-    </View>;
+  function ItemList({navigation}) {
+    return (
+      <View style={styles.list}>
+        <View>
+          {/* This is commented out temporarily to make the button work */}
+          <FlatList
+            data={items}
+            renderItem={({item}) => (
+              <ListItem item={item} handleSelectingItem={handleSelectingItem} />
+            )}
+          />
+        </View>
+        <View>
+          <Button
+            title="Add an item"
+            onPress={() => navigation.navigate('AddItem')}
+          />
+          <Button
+            title="SEE DETAIL"
+            onPress={() => navigation.navigate('ItemDetail')}
+          />
+        </View>
+      </View>
+    );
   }
 
   const [items, setItems] = useState([
@@ -156,6 +133,10 @@ const App = () => {
   const handleSelectingItem = id => {
     const changeSelectedItem = items.filter(item => item.id === id)[0];
     setSelectedItem(changeSelectedItem);
+    // STILL NOT SURE HOW TO MAKE THIS WORK. THIS IS THE FORMAT FOR PASSING PROPS
+    // I think i should be passing just the item ID instead of the whole item
+    // should store the whole item in a global store instead
+    // navigation.navigate('ItemDetail', {item: changeSelectedItem});
   };
 
   const calculateDistance = () => {
@@ -169,18 +150,36 @@ const App = () => {
   };
 
   const addItem = (text, description, distance) => {
+    // const {navigation} = NavigationContainer;
     setItems(prevItems => {
       return [{id: uuid(), text, description, distance}, ...prevItems];
     });
+    // I was trying to add navigation to the button here
+    // navigation.goBack();
   };
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Header" component={Header} />
-        <Stack.Screen name="Add an item!" component={ItemForm} />
-        <Stack.Screen name="Items" component={ItemList} />
-        <Stack.Screen name="Item Detail" component={ItemDetail} />
+      <Stack.Navigator initialRouteName="ItemList">
+        {/* <Stack.Screen name="Header" component={Header} /> */}
+        <Stack.Screen
+          name="AddItem"
+          component={ItemForm}
+          options={{title: 'Add an item!'}}
+        />
+        {/* PASSING IN PROPS THIS WAY NOT WORKING
+        {props => <ItemForm {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}
+        <Stack.Screen
+          name="ItemList"
+          component={ItemList}
+          options={{title: 'Items'}}
+        />
+        <Stack.Screen
+          name="ItemDetail"
+          component={ItemDetailFunc}
+          // Pass in the item name as a param to display that as a title
+          // options={({route}) => ({title: route.params.name})}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -205,3 +204,53 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+// SORT OF WORKING CODE
+
+// import React, {useState} from 'react';
+// import {NavigationContainer} from '@react-navigation/native';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {View, Text, StyleSheet, Image} from 'react-native';
+// import 'react-native-get-random-values';
+// import Header from './Header';
+// import ItemControl from './ItemControl';
+// import SignIn from './SignIn';
+// import SignUp from './SignUp';
+
+// const Stack = createNativeStackNavigator();
+
+// function HomeScreen() {
+//   return (
+//     <View style={styles.container}>
+//       <Header />
+//       <ItemControl />
+//     </View>
+//   );
+// }
+
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen name="Home" component={HomeScreen} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     paddingTop: 60,
+//   },
+//   text: {
+//     color: 'darkslateblue',
+//     fontSize: 40,
+//   },
+//   img: {
+//     width: 200,
+//     height: 200,
+//   },
+// });
+
+// export default App;
