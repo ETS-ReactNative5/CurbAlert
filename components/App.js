@@ -10,6 +10,7 @@ import {
   FlatList,
   Button,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import 'react-native-get-random-values';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
@@ -20,7 +21,7 @@ import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-// import logo from './../logo';
+// import Logo from './../logo.JPG';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,47 @@ const App = () => {
   //     </View>
   //   );
   // }
+
+  function HomeScreen({navigation}) {
+    return (
+      <SafeAreaView
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#E4F1F1',
+        }}>
+        <View>
+          <Text style={{fontWeight: 'bold', fontSize: 30, color: '#001F29'}}>
+            Curb Alert
+          </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ItemList')}
+          style={{
+            backgroundColor: '#014351',
+            width: '90%',
+            padding: 20,
+            color: '#E4F1F1',
+            borderRadius: 5,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <Image
+            // Lots of trouble with images. The local image route breaks it. the URI just doesnt load...???
+            // source={require('./../logo.JPG')}
+            source={{
+              uri: 'https://reactnative.dev/img/tiny_logo.png',
+            }}
+          />
+          <Text style={{fontWeight: 'bold', fontSize: 18, color: '#E4F1F1'}}>
+            Get Started
+          </Text>
+          <Icon name="arrow-right" size={22} color="#E4F1F1" />
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
 
   function ItemForm({navigation}) {
     return (
@@ -63,7 +105,6 @@ const App = () => {
     return (
       <View style={styles.list}>
         <View>
-          {/* This is commented out temporarily to make the button work */}
           <FlatList
             data={items}
             renderItem={({item}) => (
@@ -168,7 +209,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="ItemList"
+        initialRouteName="HomeScreen"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#014351',
@@ -179,6 +220,11 @@ const App = () => {
           },
         }}>
         {/* <Stack.Screen name="Header" component={Header} /> */}
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="AddItem"
           component={ItemForm}

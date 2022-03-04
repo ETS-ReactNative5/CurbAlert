@@ -227,8 +227,8 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **1:14PM - 1:29PM** Pick up where I left off on researching camera access, same resources.
 - **2:29PM - 2:59PM** Switching gears to research React Navigation before implementing maps
-  - (React Navigation Documentation)[https://reactnavigation.org/docs/getting-started/]
-  - (YouTube: Pradip Debnath - Getting Started with React Navigation v5 in React Native | Stack Navigator Tutorial)[https://www.youtube.com/watch?v=a9jSyZXYGn8&list=PLQWFhX-gwJbmmqcP-9zMXBaxQbGKfIJY2&index=1]
+  - [React Navigation Documentation](https://reactnavigation.org/docs/getting-started/)
+  - [YouTube: Pradip Debnath - Getting Started with React Navigation v5 in React Native | Stack Navigator Tutorial](https://www.youtube.com/watch?v=a9jSyZXYGn8&list=PLQWFhX-gwJbmmqcP-9zMXBaxQbGKfIJY2&index=1)
 - **3:00PM - 3:40PM** WIP: Implement React Navigation:
 
   - Move ItemControl component to App.js to faciliate using Navigator
@@ -243,5 +243,9 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **8:35PM - 10:26PM** Continue reading React Native Navigation Docs and implementing concepts.
 
-- **8:28AM - 8:37AM** Setting React Navigation headers
+- **8:28AM - 9:37AM** Setting React Navigation headers
   - [React Native Navigation Docs - Header Buttons](https://reactnavigation.org/docs/header-buttons)
+
+**10:39AM - 12:28PM** Creating Home Screen
+
+- [YouTube: Pradip Debnath - Getting Started with React Navigation 6 | Stack Navigator Tutorial](https://www.youtube.com/watch?v=FWwKjxSgLl8&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=1)
