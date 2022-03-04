@@ -49,16 +49,20 @@ const App = () => {
           alignItems: 'center',
           backgroundColor: '#E4F1F1',
         }}>
-        <View>
+        <View style={{marginTop: 20}}>
           <Text style={{fontWeight: 'bold', fontSize: 30, color: '#001F29'}}>
             Curb Alert
           </Text>
         </View>
-        <Image
-          source={require('./../assets/logo.jpeg')}
-          style={{width: '100%'}}
-        />
-        {/* <Logo width={300} /> */}
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Image
+            source={require('./../assets/logo.jpeg')}
+            // width doesn't seem to be working here
+            width={300}
+          />
+          {/* This way doesnt work...? */}
+          {/* <Logo width={300} /> */}
+        </View>
         <TouchableOpacity
           onPress={() => navigation.navigate('ItemList')}
           style={{
@@ -69,6 +73,7 @@ const App = () => {
             borderRadius: 5,
             flexDirection: 'row',
             justifyContent: 'space-between',
+            marginBottom: 50,
           }}>
           <Text style={{fontWeight: 'bold', fontSize: 18, color: '#E4F1F1'}}>
             Get Started
