@@ -21,15 +21,15 @@ import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-// import Logo from './../logo.JPG';
+import Logo from './../assets/logo.jpeg';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   function LogoTitle() {
-    return <Icon name="exclamation-circle" size={40} color="#E4F1F1" />;
+    // return <Icon name="exclamation-circle" size={40} color="#E4F1F1" />;
     // Need to get the logo import to work for this:
-    // return <Image style={{width: 50, height: 50}} source={logo} />;
+    return <Image style={{width: 50, height: 50}} source={Logo} />;
   }
 
   // function Header() {
@@ -54,6 +54,11 @@ const App = () => {
             Curb Alert
           </Text>
         </View>
+        <Image
+          source={require('./../assets/logo.jpeg')}
+          style={{width: '100%'}}
+        />
+        {/* <Logo width={300} /> */}
         <TouchableOpacity
           onPress={() => navigation.navigate('ItemList')}
           style={{
@@ -65,13 +70,6 @@ const App = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Image
-            // Lots of trouble with images. The local image route breaks it. the URI just doesnt load...???
-            // source={require('./../logo.JPG')}
-            source={{
-              uri: 'https://reactnative.dev/img/tiny_logo.png',
-            }}
-          />
           <Text style={{fontWeight: 'bold', fontSize: 18, color: '#E4F1F1'}}>
             Get Started
           </Text>

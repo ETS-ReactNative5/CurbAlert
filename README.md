@@ -249,3 +249,7 @@ Copyright (c) _2022_ _Christopher Neal_
 **10:39AM - 12:28PM** Creating Home Screen
 
 - [YouTube: Pradip Debnath - Getting Started with React Navigation 6 | Stack Navigator Tutorial](https://www.youtube.com/watch?v=FWwKjxSgLl8&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=1)
+
+**1:21PM - PM** Continue working thorugh YouTube Tutorial:
+
+- [YouTube: Pradip Debnath - Gaming App UI in React Native with React Navigation 6](https://www.youtube.com/watch?v=I5doVFcG94U&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=2&t=266s)
