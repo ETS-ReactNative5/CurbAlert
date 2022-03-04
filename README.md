@@ -224,7 +224,11 @@ Copyright (c) _2022_ _Christopher Neal_
   - (YouTube: Pradip Debnath - React Native Image Picker Tutorial) [https://www.youtube.com/watch?v=3_ldEVWlL18]
 
 ### Thursday, 03/03
+
 - **1:14PM - 1:29PM** Pick up where I left off on researching camera access, same resources.
 - **2:29PM - 2:59PM** Switching gears to research React Navigation before implementing maps
   - (React Navigation Documentation)[https://reactnavigation.org/docs/getting-started/]
   - (YouTube: Pradip Debnath - Getting Started with React Navigation v5 in React Native | Stack Navigator Tutorial)[https://www.youtube.com/watch?v=a9jSyZXYGn8&list=PLQWFhX-gwJbmmqcP-9zMXBaxQbGKfIJY2&index=1]
+- **3:00PM - 3:40PM** WIP: Implement React Navigation:
+  - Move ItemControl component to App.js to faciliate using Navigator
+  - Successfully render some components as screens, others still need refactoring
