@@ -12,6 +12,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import 'react-native-get-random-values';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from './Header';
 import ListItem from './ListItem';
 import AddItem from './AddItem';
@@ -19,11 +20,17 @@ import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+// import logo from './../logo';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  // I DON'T THINK I NEED THESE FUNCTIONS ANY MORE... BUT MAYBE I DO TO PASS IN PROPS?
+  function LogoTitle() {
+    return <Icon name="exclamation-circle" size={40} color="#E4F1F1" />;
+    // Need to get the logo import to work for this:
+    // return <Image style={{width: 50, height: 50}} source={logo} />;
+  }
+
   // function Header() {
   //   return (
   //     <View style={styles.container}>
@@ -160,12 +167,41 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ItemList">
+      <Stack.Navigator
+        initialRouteName="ItemList"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#014351',
+          },
+          headerTintColor: '#E4F1F1',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
         {/* <Stack.Screen name="Header" component={Header} /> */}
         <Stack.Screen
           name="AddItem"
           component={ItemForm}
-          options={{title: 'Add an item!'}}
+          options={{
+            headerTitle: props => <LogoTitle {...props} />,
+            headerRight: () => (
+              <Icon
+                name="bars"
+                size={20}
+                onPress={() => alert('This is a button!')}
+                title="Info"
+                color="#E4F1F1"
+              />
+            ),
+            // title: 'Add an item!',
+            // headerStyle: {
+            //   backgroundColor: '#f4511e',
+            // },
+            // headerTintColor: '#fff',
+            // headerTitleStyle: {
+            //   fontWeight: 'bold',
+            // },
+          }}
         />
         {/* PASSING IN PROPS THIS WAY NOT WORKING
         {props => <ItemForm {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}

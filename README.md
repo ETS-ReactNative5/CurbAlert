@@ -235,9 +235,13 @@ Copyright (c) _2022_ _Christopher Neal_
   - Successfully render some components as screens, others still need refactoring
 
 - **5:07PM - 7:11PM** WIP: Implement React Navigation:
+
   - Experimenting with passing props
   - Add nav buttons with
     - [YouTube: LogRocket - Learning React Native Navigation](https://www.youtube.com/watch?v=3hLQURJM7ws&t=641s)
     - [React Native Navigation Docs - Moving Between Screens](https://reactnavigation.org/docs/navigating)
 
 - **8:35PM - 10:26PM** Continue reading React Native Navigation Docs and implementing concepts.
+
+- **8:28AM - 8:37AM** Setting React Navigation headers
+  - [React Native Navigation Docs - Header Buttons](https://reactnavigation.org/docs/header-buttons)
