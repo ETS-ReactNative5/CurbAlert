@@ -13,7 +13,7 @@ export const items = [
     is_damaged: false,
     thumbs_up: 0,
     flag: false,
-    image_path: 'https://picsum.photos/200',
+    image_path: require('../assets/IMG_1188.jpeg'),
   },
   {
     id: uuid(),
@@ -25,7 +25,7 @@ export const items = [
     is_damaged: false,
     thumbs_up: 0,
     flag: false,
-    image_path: 'https://picsum.photos/200',
+    image_path: require('../assets/IMG_0534.jpeg'),
   },
   {
     id: uuid(),
@@ -37,7 +37,7 @@ export const items = [
     is_damaged: false,
     thumbs_up: 0,
     flag: false,
-    image_path: 'https://picsum.photos/200',
+    image_path: require('../assets/IMG_9670.jpeg'),
   },
   {
     id: uuid(),
@@ -49,6 +49,6 @@ export const items = [
     is_damaged: false,
     thumbs_up: 0,
     flag: false,
-    image_path: 'https://picsum.photos/200',
+    image_path: require('../assets/IMG_9892.jpeg'),
   },
 ];
