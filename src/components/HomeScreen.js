@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import 'react-native-get-random-values';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Logo from './../assets/logo.jpeg';
+import Logo from './../assets/logo350.png';
 
 function HomeScreen({navigation}) {
   return (
@@ -29,7 +29,7 @@ function HomeScreen({navigation}) {
         <Image
           source={Logo}
           // width doesn't seem to be working here
-          width={500}
+          width={300}
         />
       </View>
       <TouchableOpacity

@@ -12,12 +12,19 @@ const Item = ({item, deleteItem, handleSelectingItem}) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        borderBottom: 'solid black 1px',
         marginBottom: 5,
         marginTop: 10,
         marginLeft: 5,
+        // backgroundColor: '#9dc6dd',
       }}
       onPress={() => handleSelectingItem(id)}>
-      <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          flex: 1,
+        }}>
         <Image
           source={image_path}
           style={{width: 65, height: 65, borderRadius: 5, marginRight: 8}}

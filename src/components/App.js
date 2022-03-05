@@ -20,18 +20,18 @@ import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import Logo from './../assets/logo.jpeg';
+import Logo from './../assets/logo-notext.png';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  function LogoTitle() {
-    return <Image style={{width: 50, height: 50}} source={Logo} />;
-  }
+  // function LogoTitle() {
+  //   return <Image style={{width: 80, height: 40}} source={Logo} />;
+  // }
 
   function ItemForm({navigation}) {
     return (
-      <View style={styles.list}>
+      <View>
         <AddItem addItem={addItem} calculateDistance={calculateDistance} />
         <Button
           title="Submit"
@@ -43,7 +43,7 @@ const App = () => {
 
   function ItemDetailFunc({navigation}) {
     return (
-      <View style={styles.list}>
+      <View>
         <ItemDetail item={selectedItem} deleteItem={deleteItem} />
       </View>
     );
@@ -101,7 +101,7 @@ const App = () => {
           name="AddItem"
           component={ItemForm}
           options={{
-            headerTitle: props => <LogoTitle {...props} />,
+            // headerTitle: props => <LogoTitle {...props} />,
             headerRight: () => (
               <Icon
                 name="bars"
@@ -138,24 +138,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 60,
-  },
-  text: {
-    color: 'darkslateblue',
-    fontSize: 40,
-  },
-  img: {
-    width: 200,
-    height: 200,
-  },
-  list: {
-    flex: 1,
-    marginBottom: 100,
-  },
-});
 
 export default App;
