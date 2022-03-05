@@ -244,12 +244,23 @@ Copyright (c) _2022_ _Christopher Neal_
 - **8:35PM - 10:26PM** Continue reading React Native Navigation Docs and implementing concepts.
 
 - **8:28AM - 9:37AM** Setting React Navigation headers
+
   - [React Native Navigation Docs - Header Buttons](https://reactnavigation.org/docs/header-buttons)
 
-**10:39AM - 12:28PM** Creating Home Screen
+- **10:39AM - 12:28PM** Creating Home Screen
 
-- [YouTube: Pradip Debnath - Getting Started with React Navigation 6 | Stack Navigator Tutorial](https://www.youtube.com/watch?v=FWwKjxSgLl8&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=1)
+  - [YouTube: Pradip Debnath - Getting Started with React Navigation 6 | Stack Navigator Tutorial](https://www.youtube.com/watch?v=FWwKjxSgLl8&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=1)
 
-**1:21PM - PM** Continue working thorugh YouTube Tutorial:
+- **1:21PM - 2:45PM** Continue working thorugh YouTube Tutorial:
 
-- [YouTube: Pradip Debnath - Gaming App UI in React Native with React Navigation 6](https://www.youtube.com/watch?v=I5doVFcG94U&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=2&t=266s)
+  - [YouTube: Pradip Debnath - Gaming App UI in React Native with React Navigation 6](https://www.youtube.com/watch?v=I5doVFcG94U&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=2&t=266s)
+
+- **4:13PM - 5:16PM** Continue working thorugh same YouTube Tutorial.
+
+  - Organize files:
+    - Add components to `src` directory
+    - Add `assets` directory for images
+    - Move `HomeScreen()` component to `HomeScreen.js`
+    - Move `ItemList()` component to `ItemList.js`
+    - Rename `ListItem` to `Item`
+    - WIP: Add dummy list data to `src/model/data.js` and store in state
