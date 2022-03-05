@@ -243,6 +243,8 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **8:35PM - 10:26PM** Continue reading React Native Navigation Docs and implementing concepts.
 
+### Friday, 03/04
+
 - **8:28AM - 9:37AM** Setting React Navigation headers
 
   - [React Native Navigation Docs - Header Buttons](https://reactnavigation.org/docs/header-buttons)
@@ -272,3 +274,8 @@ Copyright (c) _2022_ _Christopher Neal_
   - add Dimensions.js
 
 - **6:17PM - 6:50PM** Research improving navigation
+- **Several Hours This Evening** Research and install React Native Maps
+
+### Saturday 03/05
+
+- **12:30PM - PM** Troubleshooting React Native Maps
