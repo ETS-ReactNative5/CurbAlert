@@ -1,23 +1,44 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+// import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
+import {windowWidth} from '../utils/Dimensions';
 
 const Item = ({item, deleteItem, handleSelectingItem}) => {
+  const {text, description, distance, image_path, thumbs_up, id} = item;
   return (
     <TouchableOpacity
-      style={styles.listItem}
-      onPress={() => handleSelectingItem(item.id)}>
-      <View style={styles.listItemView}>
-        <Text numberOfLines={1} style={styles.listItemText}>
-          {item.text} - {item.description}: {item.distance} miles away
-        </Text>
-        {/* <Icon
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 5,
+        marginTop: 10,
+        marginLeft: 5,
+      }}
+      onPress={() => handleSelectingItem(id)}>
+      <View style={{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+        <Image
+          source={image_path}
+          style={{width: 65, height: 65, borderRadius: 5, marginRight: 8}}
+        />
+        <View style={{width: windowWidth - 180}}>
+          <Text style={{color: '#001f29', fontSize: 18, fontWeight: 'bold'}}>
+            {text}
+          </Text>
+          <Text numberOfLines={1} style={{color: '#001f29', fontSize: 16}}>
+            {description}
+          </Text>
+          {/* <Icon
           name="remove"
           size={20}
           color="firebrick"
-          onPress={() => deleteItem(item.id)}
+          onPress={() => deleteItem(id)}
         /> */}
+        </View>
+      </View>
+      <View>
+        <Text style={{marginRight: 5}}>{distance} miles away</Text>
       </View>
     </TouchableOpacity>
   );
@@ -32,12 +53,7 @@ Item.propTypes = {
 export default Item;
 
 const styles = StyleSheet.create({
-  listItem: {
-    padding: 15,
-    backgroundColor: '#f8f8f8',
-    borderBottomWidth: 1,
-    borderColor: '#eee',
-  },
+  listItem: {},
   listItemView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
