@@ -8,7 +8,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import Item from './Item';
-import items from './../model/data';
+import {items} from './../model/data';
+import {ListItem} from 'react-native-elements/dist/list/ListItem';
 
 function ItemList({navigation}) {
   return (
@@ -17,17 +18,22 @@ function ItemList({navigation}) {
         <FlatList
           data={items}
           renderItem={({item}) => (
-            <Item item={item} handleSelectingItem={handleSelectingItem} />
+            <Item
+              item={item}
+              // need to figure out passing props or configure redux
+              // or move back to App for the time being...?
+              // handleSelectingItem={handleSelectingItem}
+            />
           )}
         />
       </View>
       <View>
         <Button
-          title="Add an item"
+          title="Add an Item"
           onPress={() => navigation.navigate('AddItem')}
         />
         <Button
-          title="SEE DETAIL"
+          title="See Item Detail"
           onPress={() => navigation.navigate('ItemDetail')}
         />
       </View>
