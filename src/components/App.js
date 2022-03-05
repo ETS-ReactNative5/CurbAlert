@@ -84,9 +84,9 @@ const App = () => {
         initialRouteName="HomeScreen"
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#014351',
+            backgroundColor: '#254952',
           },
-          headerTintColor: '#E4F1F1',
+          headerTintColor: '#d2e6ef',
           headerTitleStyle: {
             fontWeight: 'bold',
           },
@@ -108,7 +108,7 @@ const App = () => {
                 size={20}
                 onPress={() => alert('This is a button!')}
                 title="Info"
-                color="#E4F1F1"
+                color="#d2e6ef"
               />
             ),
             // title: 'Add an item!',

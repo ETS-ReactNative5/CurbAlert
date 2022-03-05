@@ -23,10 +23,10 @@ const Item = ({item, deleteItem, handleSelectingItem}) => {
           style={{width: 65, height: 65, borderRadius: 5, marginRight: 8}}
         />
         <View style={{width: windowWidth - 180}}>
-          <Text style={{color: '#001f29', fontSize: 18, fontWeight: 'bold'}}>
+          <Text style={{color: '#254952', fontSize: 18, fontWeight: 'bold'}}>
             {text}
           </Text>
-          <Text numberOfLines={1} style={{color: '#001f29', fontSize: 16}}>
+          <Text numberOfLines={1} style={{color: '#254952', fontSize: 16}}>
             {description}
           </Text>
           {/* <Icon

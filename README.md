@@ -264,3 +264,11 @@ Copyright (c) _2022_ _Christopher Neal_
     - Move `ItemList()` component to `ItemList.js`
     - Rename `ListItem` to `Item`
     - WIP: Add dummy list data to `src/model/data.js` and store in state
+
+- **5:16PM - 6:17PM** Get ItemList.js working and add styling
+
+  - rename IMG files
+  - change image_path in data.js
+  - add Dimensions.js
+
+- **6:17PM - 6:50PM** Research improving navigation

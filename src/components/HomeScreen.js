@@ -18,10 +18,10 @@ function HomeScreen({navigation}) {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#E4F1F1',
+        backgroundColor: '#d2e6ef',
       }}>
       <View style={{marginTop: 20}}>
-        <Text style={{fontWeight: 'bold', fontSize: 30, color: '#001F29'}}>
+        <Text style={{fontWeight: 'bold', fontSize: 30, color: '#254952'}}>
           Curb Alert
         </Text>
       </View>
@@ -38,16 +38,16 @@ function HomeScreen({navigation}) {
           backgroundColor: '#014351',
           width: '90%',
           padding: 20,
-          color: '#E4F1F1',
+          color: '#d2e6ef',
           borderRadius: 5,
           flexDirection: 'row',
           justifyContent: 'space-between',
           marginBottom: 50,
         }}>
-        <Text style={{fontWeight: 'bold', fontSize: 18, color: '#E4F1F1'}}>
+        <Text style={{fontWeight: 'bold', fontSize: 18, color: '#d2e6ef'}}>
           Get Started
         </Text>
-        <Icon name="arrow-right" size={22} color="#E4F1F1" />
+        <Icon name="arrow-right" size={22} color="#d2e6ef" />
       </TouchableOpacity>
     </SafeAreaView>
   );
