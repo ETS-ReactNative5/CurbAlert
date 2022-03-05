@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
+import {windowWidth, windowHeight} from '../utils/Dimensions';
 
 const ItemDetail = ({item, deleteItem}) => {
   return (
@@ -18,10 +19,16 @@ const ItemDetail = ({item, deleteItem}) => {
         {/* <Text>{item.is_taken}</Text>
         <Text>{item.is_damaged}</Text> */}
         <Text>This item has recieved {item.thumbs_up} thumbs ups.</Text>
-
       </View>
       <View>
-        <Image source={{uri: item.image_path}} />
+        <Image
+          source={item.image_path}
+          style={{
+            width: windowWidth - 20,
+            height: windowHeight - 300,
+            alignItems: 'center',
+          }}
+        />
       </View>
       <View style={styles.listItemView}>
         <Icon
