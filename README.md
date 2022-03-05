@@ -274,8 +274,10 @@ Copyright (c) _2022_ _Christopher Neal_
   - add Dimensions.js
 
 - **6:17PM - 6:50PM** Research improving navigation
-- **Several Hours This Evening** Research and install React Native Maps
+- **Several Hours This Evening**
+  - Research and install React Native Maps
+  - Add logo, styling, and adjust color pallate
 
 ### Saturday 03/05
 
-- **12:30PM - PM** Troubleshooting React Native Maps
+- **12:30PM - 2:15PM** Troubleshooting React Native Maps
