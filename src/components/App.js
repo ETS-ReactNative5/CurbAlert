@@ -21,6 +21,7 @@ import ItemDetail from './ItemDetail';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Logo from './../assets/logo-notext.png';
+import Map from './Map';
 
 const Stack = createNativeStackNavigator();
 
@@ -81,7 +82,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="HomeScreen"
+        initialRouteName="Map"
         screenOptions={{
           headerStyle: {
             backgroundColor: '#254952',
@@ -91,10 +92,14 @@ const App = () => {
             fontWeight: 'bold',
           },
         }}>
-        {/* <Stack.Screen name="Header" component={Header} /> */}
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Map"
+          component={Map}
           options={{headerShown: false}}
         />
         <Stack.Screen
