@@ -292,5 +292,8 @@ Copyright (c) _2022_ _Christopher Neal_
 
 ### Sunday 03/06
 
-- **9:54AM - AM** Continue researching and setting up Firestore:
-  - [Firestore Documentation](https://firebase.google.com/docs/firestore)
+- **9:54AM - 11:02AM**
+  - Continue researching and setting up Firestore: [Firestore Documentation](https://firebase.google.com/docs/firestore)
+  - Create new API key since former key was exposed: [Google Cloud Docs](https://cloud.google.com/docs/authentication/api-keys?visit_id=637821881490377539-2283733015&rd=1)
+  - Configure .env file
+  - Troubleshooting using .env file
