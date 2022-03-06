@@ -283,3 +283,4 @@ Copyright (c) _2022_ _Christopher Neal_
 - **12:30PM - 2:15PM** Troubleshooting React Native Maps
 - **3:35PM - 4:30PM** Troubleshooting React Native Maps
 - **6:50PM - 8:15PM** WIP: Incorporate React Native Location data into React Native Maps
+- **8:50PM - 10:13PM** Add marker and description to map
