@@ -284,3 +284,8 @@ Copyright (c) _2022_ _Christopher Neal_
 - **3:35PM - 4:30PM** Troubleshooting React Native Maps
 - **6:50PM - 8:15PM** WIP: Incorporate React Native Location data into React Native Maps
 - **8:50PM - 10:13PM** Add marker and description to map
+- **10:13PM - 10:37PM** Begin researching adding items to map:
+  - [YouTube: Pradip Dibnath - #2 Sliding Items on MapView with Animation React Native Maps Tutorial](https://www.youtube.com/watch?v=2vILzRmEqGI)
+- **10:37PM - 11:24PM** Research and begin setting up Firestore:
+  - [YouTube: Born To Code - React Native, Firebase v9, authentication and firestore](https://www.youtube.com/watch?v=20TSEoJkg5k)
+  - [LearnHowToProgram - Setting up a Firebase Project](https://www.learnhowtoprogram.com/react/react-with-nosql/setting-up-a-firebase-project)
