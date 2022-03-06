@@ -7,6 +7,10 @@ export const items = [
     id: uuid(),
     text: 'sofa',
     distance: 1.5,
+    coordinate: {
+      latitude: 45.501666,
+      longitude: -122.677439,
+    },
     description: 'in good shape! come get it before it rains',
     timestamp: 'Feb 25, 2022, 11:59:11 PM',
     is_taken: false,
@@ -19,6 +23,10 @@ export const items = [
     id: uuid(),
     text: 'books',
     distance: 0.2,
+    coordinate: {
+      latitude: 45.542990,
+      longitude: -122.640494,
+    },
     description: 'just some old books my kids outgrew',
     timestamp: 'Feb 25, 2022, 11:59:11 PM',
     is_taken: false,
@@ -31,6 +39,10 @@ export const items = [
     id: uuid(),
     text: 'lamp',
     distance: 0.5,
+    coordinate: {
+      latitude: 45.586690,
+      longitude: -122.640904,
+    },
     description: 'missing bulb but it works',
     timestamp: 'Feb 25, 2022, 11:59:11 PM',
     is_taken: false,
@@ -43,6 +55,10 @@ export const items = [
     id: uuid(),
     text: 'long and tall mirror',
     distance: 0.9,
+    coordinate: {
+      latitude: 45.501114,
+      longitude: -122.681506,
+    },
     description: 'i am a vampire, cant see myself in it! OK?!',
     timestamp: 'Feb 25, 2022, 11:59:11 PM',
     is_taken: false,
