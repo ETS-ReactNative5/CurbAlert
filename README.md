@@ -289,3 +289,8 @@ Copyright (c) _2022_ _Christopher Neal_
 - **10:37PM - 11:24PM** Research and begin setting up Firestore:
   - [YouTube: Born To Code - React Native, Firebase v9, authentication and firestore](https://www.youtube.com/watch?v=20TSEoJkg5k)
   - [LearnHowToProgram - Setting up a Firebase Project](https://www.learnhowtoprogram.com/react/react-with-nosql/setting-up-a-firebase-project)
+
+### Sunday 03/06
+
+- **9:54AM - AM** Continue researching and setting up Firestore:
+  - [Firestore Documentation](https://firebase.google.com/docs/firestore)
