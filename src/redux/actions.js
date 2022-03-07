@@ -11,7 +11,19 @@ export const DELETE_ITEM = 'DELETE_ITEM';
 export const addItem = item => dispatch => {
   dispatch({
     type: ADD_ITEM,
-    item,
+    payload: {
+      title: item.title,
+      description: item.description,
+      is_taken: false,
+      is_damaged: false,
+      thumbs_up: 0,
+      flagged: false,
+      image_path: item.image_path,
+      id: item.id,
+      coordinate: item.coordinate,
+      timestamp: item.timestamp,
+      distance: 0,
+    },
   });
 };
 
@@ -32,7 +44,19 @@ export const setDescription = description => dispatch => {
 export const setSelectedItem = item => dispatch => {
   dispatch({
     type: SET_SELECTED_ITEM,
-    item,
+    payload: {
+      title: item.title,
+      description: item.description,
+      is_taken: false,
+      is_damaged: false,
+      thumbs_up: 0,
+      flagged: false,
+      image_path: item.image_path,
+      id: item.id,
+      coordinate: item.coordinate,
+      timestamp: item.timestamp,
+      distance: 0,
+    },
   });
 };
 

@@ -18,20 +18,20 @@ const ItemControl = () => {
       is_taken: false,
       is_damaged: false,
       thumbs_up: 0,
-      flag: false,
-      image_path: "https://picsum.photos/200",
+      flagged: false,
+      image_path: 'https://picsum.photos/200',
     },
     {
       id: uuid(),
       text: 'books',
       distance: 0.2,
-      description: "just some old books my kids outgrew",
+      description: 'just some old books my kids outgrew',
       timestamp: 'Feb 25, 2022, 11:59:11 PM',
       is_taken: false,
       is_damaged: false,
       thumbs_up: 0,
-      flag: false,
-      image_path: "https://picsum.photos/200",
+      flagged: false,
+      image_path: 'https://picsum.photos/200',
     },
     {
       id: uuid(),
@@ -42,8 +42,8 @@ const ItemControl = () => {
       is_taken: false,
       is_damaged: false,
       thumbs_up: 0,
-      flag: false,
-      image_path: "https://picsum.photos/200",
+      flagged: false,
+      image_path: 'https://picsum.photos/200',
     },
     {
       id: uuid(),
@@ -54,8 +54,8 @@ const ItemControl = () => {
       is_taken: false,
       is_damaged: false,
       thumbs_up: 0,
-      flag: false,
-      image_path: "https://picsum.photos/200",
+      flagged: false,
+      image_path: 'https://picsum.photos/200',
     },
   ]);
 
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 // WRITTEN AS CLASS
 
 // import {StyleSheet, Text, View, FlatList, Button} from 'react-native';
@@ -148,7 +147,7 @@ const styles = StyleSheet.create({
 //           is_taken: false,
 //           is_damaged: false,
 //           thumbs_up: 0,
-//           flag: false,
+//           flagged: false,
 //           image_path: 'https://picsum.photos/200',
 //         },
 //         {
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
 //           is_taken: false,
 //           is_damaged: false,
 //           thumbs_up: 0,
-//           flag: false,
+//           flagged: false,
 //           image_path: 'https://picsum.photos/200',
 //         },
 //         {
@@ -172,7 +171,7 @@ const styles = StyleSheet.create({
 //           is_taken: false,
 //           is_damaged: false,
 //           thumbs_up: 0,
-//           flag: false,
+//           flagged: false,
 //           image_path: 'https://picsum.photos/200',
 //         },
 //         {
@@ -184,7 +183,7 @@ const styles = StyleSheet.create({
 //           is_taken: false,
 //           is_damaged: false,
 //           thumbs_up: 0,
-//           flag: false,
+//           flagged: false,
 //           image_path: 'https://picsum.photos/200',
 //         },
 //       ],
@@ -197,7 +196,7 @@ const styles = StyleSheet.create({
 //         is_taken: false,
 //         is_damaged: false,
 //         thumbs_up: 0,
-//         flag: false,
+//         flagged: false,
 //         image_path: 'https://picsum.photos/200',
 //       },
 //       lat: null,

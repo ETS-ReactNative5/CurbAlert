@@ -16,7 +16,7 @@ export const items = [
     is_taken: false,
     is_damaged: false,
     thumbs_up: 0,
-    flag: false,
+    flagged: false,
     image_path: require('../assets/IMG_1188.jpeg'),
   },
   {
@@ -24,7 +24,7 @@ export const items = [
     text: 'books',
     distance: 0.2,
     coordinate: {
-      latitude: 45.542990,
+      latitude: 45.54299,
       longitude: -122.640494,
     },
     description: 'just some old books my kids outgrew',
@@ -32,7 +32,7 @@ export const items = [
     is_taken: false,
     is_damaged: false,
     thumbs_up: 0,
-    flag: false,
+    flagged: false,
     image_path: require('../assets/IMG_0534.jpeg'),
   },
   {
@@ -40,7 +40,7 @@ export const items = [
     text: 'lamp',
     distance: 0.5,
     coordinate: {
-      latitude: 45.586690,
+      latitude: 45.58669,
       longitude: -122.640904,
     },
     description: 'missing bulb but it works',
@@ -48,7 +48,7 @@ export const items = [
     is_taken: false,
     is_damaged: false,
     thumbs_up: 0,
-    flag: false,
+    flagged: false,
     image_path: require('../assets/IMG_9670.jpeg'),
   },
   {
@@ -64,7 +64,7 @@ export const items = [
     is_taken: false,
     is_damaged: false,
     thumbs_up: 0,
-    flag: false,
+    flagged: false,
     image_path: require('../assets/IMG_9892.jpeg'),
   },
 ];

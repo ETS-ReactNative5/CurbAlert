@@ -298,4 +298,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - Configure .env file
   - Troubleshooting using .env file
 - **3:39PM - 7:28PM** Begin implementing Redux... I'm totally lost
-- **8:05PM - PM** Take another shot at implementing Redux.
+- **8:05PM - 12:24AM** Take another shot at implementing Redux. Almost there...?
+
+  - https://www.youtube.com/watch?v=9jULHSe41ls
+  - https://www.youtube.com/watch?v=BtJoy4G3N8U
+  - https://www.youtube.com/watch?v=eET0YtDBWWg&t=10s
+  - https://www.youtube.com/watch?v=LYi1gwPWDto&list=PLsprmdocuVe9SvIQveOWqMvxHdkXjcRO_

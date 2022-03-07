@@ -11,21 +11,25 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {useSelector, useDispatch} from 'react-redux';
-import {addItem, setTitle, setDescription} from './../redux/actions';
+import {addItem} from './../redux/actions';
 
 const AddItem = ({calculateDistance, navigation}) => {
-  const {title, description} = useSelector(state => state.itemReducer);
+  const state = useSelector(s => s.itemReducer);
+  console.log(state);
+  const {title, description} = state;
   const dispatch = useDispatch();
-  // const [title, setTitle] = useState('');
-  // const [description, setDescription] = useState('');
+  const [titleInput, setTitle] = useState('');
+  const [descriptionInput, setDescription] = useState('');
   // const [distance, setDistance] = useState('');
 
-  const onChangeTitle = titleValue => dispatch(setTitle(titleValue));
-  const onChangeDescription = descriptionValue =>
-    dispatch(setDescription(descriptionValue));
-  // const onChange = titleValue => setTitle(titleValue);
+  // const onChangeTitle = titleValue => dispatch(setTitle(titleValue));
   // const onChangeDescription = descriptionValue =>
-  //   setDescription(descriptionValue);
+  //   dispatch(setDescription(descriptionValue));
+
+  const onPressAddItem = item => dispatch(addItem(item));
+  const onChangeTitle = titleValue => setTitle(titleValue);
+  const onChangeDescription = descriptionValue =>
+    setDescription(descriptionValue);
 
   return (
     <View>
@@ -43,12 +47,29 @@ const AddItem = ({calculateDistance, navigation}) => {
       />
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => addItem(title, description, calculateDistance())}>
+        onPress={() =>
+          onPressAddItem({
+            title: titleInput,
+            description: descriptionInput,
+            distance: 1.2,
+            image_path: require('../assets/IMG_9670.jpeg'),
+            id: Math.floor(Math.random() * 1000),
+            coordinate: {
+              latitude: 45.501666,
+              longitude: -122.677439,
+            },
+            timestamp: '2300',
+          })
+        }>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item
         </Text>
       </TouchableOpacity>
+      <View>
+        <Text>New Title: {title}</Text>
+        <Text>Description: {description}</Text>
+      </View>
     </View>
   );
 };

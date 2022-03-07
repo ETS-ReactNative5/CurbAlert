@@ -28,8 +28,8 @@ import {Store} from './../redux/store';
 
 const Stack = createNativeStackNavigator();
 
-// const App = () => {
-function App() {
+const App = () => {
+  // function App() {
   // function LogoTitle() {
   //   return <Image style={{width: 80, height: 40}} source={Logo} />;
   // }
@@ -148,6 +148,6 @@ function App() {
       </NavigationContainer>
     </Provider>
   );
-}
+};
 
 export default App;
