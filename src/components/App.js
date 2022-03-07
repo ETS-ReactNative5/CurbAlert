@@ -11,6 +11,8 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import reducer from '../redux/reducers'; // need?
+import {Provider} from 'react-redux';
 import 'react-native-get-random-values';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import HomeScreen from './HomeScreen';
@@ -22,10 +24,12 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Logo from './../assets/logo-notext.png';
 import Map from './Map';
+import {Store} from './redux/store';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+// const App = () => {
+function App() {
   // function LogoTitle() {
   //   return <Image style={{width: 80, height: 40}} source={Logo} />;
   // }
@@ -33,7 +37,10 @@ const App = () => {
   function ItemForm({navigation}) {
     return (
       <View>
-        <AddItem addItem={addItem} calculateDistance={calculateDistance} />
+        <AddItem
+          // addItem={addItem}
+          calculateDistance={calculateDistance}
+        />
         <Button
           title="Submit"
           onPress={() => navigation.navigate('ItemList')}
@@ -51,7 +58,7 @@ const App = () => {
   }
 
   const [selectedItem, setSelectedItem] = useState({});
-  const handleSelectingItem = id => {
+  const handleSelectingItem = () => {
     const changeSelectedItem = items.filter(item => item.id === id)[0];
     setSelectedItem(changeSelectedItem);
     // STILL NOT SURE HOW TO MAKE THIS WORK. THIS IS THE FORMAT FOR PASSING PROPS
@@ -64,84 +71,87 @@ const App = () => {
     return (Math.random() * 3).toFixed(1);
   };
 
-  const deleteItem = id => {
-    setItems(prevItems => {
-      return prevItems.filter(item => item.id !== id);
-    });
-  };
+  // const deleteItem = id => {
+  //   setItems(prevItems => {
+  //     return prevItems.filter(item => item.id !== id);
+  //   });
+  // };
 
-  const addItem = (text, description, distance) => {
-    // const {navigation} = NavigationContainer;
-    setItems(prevItems => {
-      return [{id: uuid(), text, description, distance}, ...prevItems];
-    });
-    // I was trying to add navigation to the button here
-    // navigation.goBack();
-  };
+  // const addItem = (text, description, distance) => {
+  //   setItems(prevItems => {
+  //     return [{id: uuid(), text, description, distance}, ...prevItems];
+  //   });
+  // };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Map"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#254952',
-          },
-          headerTintColor: '#d2e6ef',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}>
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Map"
-          component={Map}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="AddItem"
-          component={ItemForm}
-          options={{
-            // headerTitle: props => <LogoTitle {...props} />,
-            headerRight: () => (
-              <Icon
-                name="bars"
-                size={20}
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="#d2e6ef"
-              />
-            ),
-            // title: 'Add an item!',
-            // headerStyle: {
-            //   backgroundColor: '#f4511e',
-            // },
-            // headerTintColor: '#fff',
-            // headerTitleStyle: {
-            //   fontWeight: 'bold',
-            // },
-          }}
-        />
-        {/* PASSING IN PROPS THIS WAY NOT WORKING
+    <Provider store={Store}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Map"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#254952',
+            },
+            headerTintColor: '#d2e6ef',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
+          <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Map"
+            component={Map}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddItem"
+            component={ItemForm}
+            options={{
+              // headerTitle: props => <LogoTitle {...props} />,
+              headerRight: () => (
+                <Icon
+                  name="bars"
+                  size={20}
+                  onPress={() => alert('This is a button!')}
+                  title="Info"
+                  color="#d2e6ef"
+                />
+              ),
+              // title: 'Add an item!',
+              // headerStyle: {
+              //   backgroundColor: '#f4511e',
+              // },
+              // headerTintColor: '#fff',
+              // headerTitleStyle: {
+              //   fontWeight: 'bold',
+              // },
+            }}
+          />
+          {/* PASSING IN PROPS THIS WAY NOT WORKING
         {props => <ItemForm {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}
-        <Stack.Screen
-          name="ItemList"
-          component={ItemList}
-          options={{title: 'Items'}}
-        />
-        <Stack.Screen
-          name="ItemDetail"
-          component={ItemDetailFunc}
-          // Pass in the item name as a param to display that as a title
-          // options={({route}) => ({title: route.params.name})}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+          <Stack.Screen
+            name="ItemList"
+            component={ItemList}
+            options={{title: 'Items'}}
+          />
+          <Stack.Screen
+            name="ItemDetail"
+            component={ItemDetailFunc}
+            // Pass in the item name as a param to display that as a title
+            // options={({route}) => ({title: route.params.name})}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
+}
+
+const mapStateToProps = state => {
+  return {};
 };
 
-export default App;
+export default connect(mapStateToProps)(App);

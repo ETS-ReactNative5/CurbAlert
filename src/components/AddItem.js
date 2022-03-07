@@ -10,20 +10,29 @@ import {
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {useSelector, useDispatch} from 'react-redux';
+import {addItem, setTitle, setDescription} from './../redux/actions';
 
-const AddItem = ({addItem, calculateDistance, navigation}) => {
-  const [text, setText] = useState('');
-  const [description, setDescription] = useState('');
-  const [distance, setDistance] = useState('');
-  const onChange = textValue => setText(textValue);
-  const onChangeDescription = textValue => setDescription(textValue);
+const AddItem = ({calculateDistance, navigation}) => {
+  const {title, description} = useSelector(state => state.itemReducer);
+  const dispatch = useDispatch();
+  // const [title, setTitle] = useState('');
+  // const [description, setDescription] = useState('');
+  // const [distance, setDistance] = useState('');
+
+  const onChangeTitle = titleValue => dispatch(setTitle(titleValue));
+  const onChangeDescription = descriptionValue =>
+    dispatch(setDescription(descriptionValue));
+  // const onChange = titleValue => setTitle(titleValue);
+  // const onChangeDescription = descriptionValue =>
+  //   setDescription(descriptionValue);
 
   return (
     <View>
       <TextInput
         placeholder="Item Title"
         style={styles.input}
-        onChangeText={onChange}
+        onChangeText={onChangeTitle}
         maxLength={40}
       />
       <TextInput
@@ -34,7 +43,7 @@ const AddItem = ({addItem, calculateDistance, navigation}) => {
       />
       <TouchableOpacity
         style={styles.btn}
-        onPress={() => addItem(text, description, calculateDistance())}>
+        onPress={() => addItem(title, description, calculateDistance())}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item

@@ -297,3 +297,4 @@ Copyright (c) _2022_ _Christopher Neal_
   - Create new API key since former key was exposed: [Google Cloud Docs](https://cloud.google.com/docs/authentication/api-keys?visit_id=637821881490377539-2283733015&rd=1)
   - Configure .env file
   - Troubleshooting using .env file
+- **3:39PM - 7:28PM** Begin implementing Redux... I'm totally lost and might have to start this project over
