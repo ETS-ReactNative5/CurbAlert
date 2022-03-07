@@ -1,5 +1,7 @@
 export const ADD_ITEM = 'ADD_ITEM';
 export const SET_SELECTED_ITEM = 'SET_SELECTED_ITEM';
+export const SET_TITLE = 'SET_TITLE';
+export const SET_DESCRIPTION = 'SET_DESCRIPTION';
 export const FLAG_ITEM = 'FLAG_ITEM';
 export const THUMB_UP_ITEM = 'THUMB_UP_ITEM';
 export const TAKE_ITEM = 'TAKE_ITEM';
@@ -10,6 +12,20 @@ export const addItem = item => dispatch => {
   dispatch({
     type: ADD_ITEM,
     item,
+  });
+};
+
+export const setTitle = title => dispatch => {
+  dispatch({
+    type: SET_TITLE,
+    payload: title,
+  });
+};
+
+export const setDescription = description => dispatch => {
+  dispatch({
+    type: SET_DESCRIPTION,
+    payload: description,
   });
 };
 
@@ -28,10 +44,11 @@ export const thumbUpItem = () => ({
   type: THUMB_UP_ITEM,
 });
 
-export const takeItem = (item.is_taken) => dispatch => {
-  type: TAKE_ITEM,
-  item.is_taken,
-
+export const takeItem = item => dispatch => {
+  dispatch({
+    type: TAKE_ITEM,
+    item,
+  });
 };
 
 export const damageItem = () => ({

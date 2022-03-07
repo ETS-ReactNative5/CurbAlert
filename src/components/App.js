@@ -24,7 +24,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Logo from './../assets/logo-notext.png';
 import Map from './Map';
-import {Store} from './redux/store';
+import {Store} from './../redux/store';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,7 +87,7 @@ function App() {
     <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Map"
+          initialRouteName="HomeScreen"
           screenOptions={{
             headerStyle: {
               backgroundColor: '#254952',
@@ -150,8 +150,4 @@ function App() {
   );
 }
 
-const mapStateToProps = state => {
-  return {};
-};
-
-export default connect(mapStateToProps)(App);
+export default App;
