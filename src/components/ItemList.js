@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -19,14 +19,18 @@ import {windowWidth} from '../utils/Dimensions';
 function ItemList({navigation}) {
   // This is set up to take the hard coded data and update it with the data from
   // firestore, but it doesn't do that yet.
-  let itemList = items;
+  // let itemList = items;
+  const [itemList, setItemList] = useState({});
   const GetData = async () => {
     const itemsCollection = collection(db, 'items');
     const itemSnapshot = await getDocs(itemsCollection);
     const newItemList = itemSnapshot.docs.map(doc => doc.data());
-    console.log(itemList);
-    itemList = newItemList;
+    setItemList(newItemList);
   };
+
+  useEffect(() => {
+    GetData();
+  });
 
   return (
     <SafeAreaView style={{flex: 1, marginBottom: 100}}>
