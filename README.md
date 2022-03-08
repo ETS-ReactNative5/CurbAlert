@@ -311,4 +311,8 @@ Copyright (c) _2022_ _Christopher Neal_
 
 ### Tuesday 03/08
 
-- **8:10AM - AM** Implement Firestore
+- **8:10AM - 11:13AM** Implement Firestore, implement Firestore in AddItem
+  - Resources: [YouTube: Born to Code - Building a React Native app - #6 Understanding react native states](https://www.youtube.com/watch?v=AvgrS-cCcXQ&list=PLYSxLlUA2IkEUZjlxfk-ecd6kD9vJjs2b&index=7)
+  - [YouTube: Born to Code - React Native, Firebase v9, authentication and firestore](https://www.youtube.com/watch?v=20TSEoJkg5k)
+
+- **11:13AM - 12:04PM** WIP implement Firestore and passing params with React Navigation in ItemDetail and Item

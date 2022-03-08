@@ -4,7 +4,9 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
 
-const ItemDetail = ({item, deleteItem}) => {
+const ItemDetail = ({route, navigation}) => {
+  const {title, description, distance, image_path, thumbs_up, id} =
+    route.params.item;
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
@@ -47,7 +49,7 @@ const ItemDetail = ({item, deleteItem}) => {
           name="check"
           size={40}
           color="blue"
-          onPress={() => deleteItem(item.id)}
+          // onPress={() => deleteItem(item.id)}
         />
         <Icon
           name="flag"

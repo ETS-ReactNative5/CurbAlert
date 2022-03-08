@@ -4,8 +4,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
 
-const Item = ({item, deleteItem, handleSelectingItem}) => {
-  const {text, description, distance, image_path, thumbs_up, id} = item;
+const Item = ({route, navigation}) => {
+  item = {
+    id: 1,
+    title: 'Sofa',
+    distance: 1.5,
+    coordinate: {
+      latitude: 45.5219778825814,
+      longitude: -122.67533488152338,
+    },
+    description: 'In good shape! Come get it before it rains',
+    timestamp: 'Feb 25, 2022, 11:59:11 PM',
+    is_taken: false,
+    is_damaged: false,
+    thumbs_up: 0,
+    flagged: false,
+    image_path: require('../assets/IMG_1188.jpeg'),
+  };
+  const {title, description, distance, image_path, thumbs_up, id} = item;
   return (
     <TouchableOpacity
       style={{
@@ -17,8 +33,7 @@ const Item = ({item, deleteItem, handleSelectingItem}) => {
         marginTop: 10,
         marginLeft: 5,
         // backgroundColor: '#9dc6dd',
-      }}
-      onPress={() => handleSelectingItem(id)}>
+      }}>
       <View
         style={{
           flexDirection: 'row',
@@ -31,7 +46,7 @@ const Item = ({item, deleteItem, handleSelectingItem}) => {
         />
         <View style={{width: windowWidth - 180}}>
           <Text style={{color: '#254952', fontSize: 18, fontWeight: 'bold'}}>
-            {text}
+            {title}
           </Text>
           <Text numberOfLines={1} style={{color: '#254952', fontSize: 16}}>
             {description}
@@ -49,12 +64,6 @@ const Item = ({item, deleteItem, handleSelectingItem}) => {
       </View>
     </TouchableOpacity>
   );
-};
-
-Item.propTypes = {
-  item: PropTypes.object,
-  deleteItem: PropTypes.func,
-  handleSelectingItem: PropTypes.func,
 };
 
 export default Item;
