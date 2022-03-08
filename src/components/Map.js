@@ -19,8 +19,8 @@ RNLocation.configure({
 function Map() {
   const [mapState, setMapState] = React.useState(items);
   const [currentLocation, setCurrentLocation] = useState({
-    latitude: 45.519958,
-    longitude: -122.677899,
+    latitude: 46.519958,
+    longitude: -123.677899,
   });
 
   const getLocation = async () => {
@@ -31,9 +31,6 @@ function Map() {
       },
     });
 
-    console.log(permission);
-
-    let location;
     if (!permission) {
       permission = await RNLocation.requestPermission({
         ios: 'whenInUse',
@@ -47,19 +44,12 @@ function Map() {
           },
         },
       });
-      console.log(permission);
-      location = await RNLocation.getLatestLocation({timeout: 100});
-      console.log(location);
-      setCurrentLocation(location);
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
     } else {
-      location = await RNLocation.getLatestLocation({timeout: 100});
-      console.log(location);
-      // setCurrentLocation(location);
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
     }
   };
 
-  // HERE TRYING TO CALL GETLOCATION TO UPDATE MAP COORDINATES
-  // gives `Possible Unhandled Promise Rejection` error
   useEffect(() => {
     getLocation();
   });
