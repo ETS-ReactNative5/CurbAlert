@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {v4 as uuid} from 'uuid';
+import RNLocation from 'react-native-location';
 
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
@@ -28,6 +29,42 @@ const AddItem = ({navigation}) => {
   //   dispatch(setDescription(descriptionValue));
   // const onPressAddItem = item => dispatch(addItem(item));
 
+  const [currentLocation, setCurrentLocation] = useState({
+    latitude: 46.519958,
+    longitude: -123.677899,
+  });
+
+  const getLocation = async () => {
+    let permission = await RNLocation.checkPermission({
+      ios: 'whenInUse', // or 'always'
+      android: {
+        detail: 'fine', // or 'coarse'
+      },
+    });
+
+    if (!permission) {
+      permission = await RNLocation.requestPermission({
+        ios: 'whenInUse',
+        android: {
+          detail: 'fine',
+          rationale: {
+            title: 'We need to access your location',
+            message: 'We use your location to show where you are on the map',
+            buttonPositive: 'OK',
+            buttonNegative: 'Cancel',
+          },
+        },
+      });
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      const date = new Date();
+      console.log('location updated: ' + date);
+    } else {
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      const date = new Date();
+      console.log('location updated: ' + date);
+    }
+  };
+
   const [titleInput, setTitle] = useState('');
   const [descriptionInput, setDescription] = useState('');
   const [distance, setDistance] = useState('');
@@ -37,12 +74,13 @@ const AddItem = ({navigation}) => {
 
   // const SetData = async () => {
   const onPressAddItem = async () => {
+    await getLocation();
     await setDoc(doc(db, 'items', uuid()), {
       title: titleInput,
       distance: distance,
       coordinate: {
-        latitude: 45.52389457375122,
-        longitude: -122.68112663355545,
+        latitude: currentLocation.latitude,
+        longitude: currentLocation.longitude,
       },
       description: descriptionInput,
       timestamp: Timestamp.fromDate(new Date()),
