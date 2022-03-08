@@ -322,3 +322,5 @@ Copyright (c) _2022_ _Christopher Neal_
 - **1:37PM - 2:28PM** BUGFIX:
   - ItemList updates from Firestore with useEffect hook
   - Map updates to current location with useEffect hook
+
+- **2:28PM - 2:53PM** Turn off useEffect for now because it's making too many calls.

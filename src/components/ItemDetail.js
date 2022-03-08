@@ -26,7 +26,7 @@ const ItemDetail = ({route, navigation}) => {
           source={item.image_path}
           style={{
             width: windowWidth - 20,
-            height: windowHeight - 300,
+            height: windowHeight - 320,
             alignItems: 'center',
           }}
         />

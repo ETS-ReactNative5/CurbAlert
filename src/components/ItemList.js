@@ -26,11 +26,13 @@ function ItemList({navigation}) {
     const itemSnapshot = await getDocs(itemsCollection);
     const newItemList = itemSnapshot.docs.map(doc => doc.data());
     setItemList(newItemList);
+    const date = new Date();
+    console.log(date);
   };
 
   useEffect(() => {
-    GetData();
-  });
+    // GetData();
+  }, [itemList]);
 
   return (
     <SafeAreaView style={{flex: 1, marginBottom: 100}}>

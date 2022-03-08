@@ -17,10 +17,9 @@ RNLocation.configure({
 });
 
 function Map() {
-  const [mapState, setMapState] = React.useState(items);
   const [currentLocation, setCurrentLocation] = useState({
-    latitude: 46.519958,
-    longitude: -123.677899,
+    latitude: 45.519958,
+    longitude: -122.677899,
   });
 
   const getLocation = async () => {
@@ -44,15 +43,19 @@ function Map() {
           },
         },
       });
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      const date = new Date();
+      console.log(date);
     } else {
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      const date = new Date();
+      console.log(date);
     }
   };
 
   useEffect(() => {
-    getLocation();
-  });
+    // getLocation();
+  }, [currentLocation]);
 
   return (
     <View>
