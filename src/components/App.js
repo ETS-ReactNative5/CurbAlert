@@ -26,24 +26,27 @@ import SignUp from './SignUp';
 import Logo from './../assets/logo-notext.png';
 import Map from './Map';
 import {Store} from './../redux/store';
+import {db} from './../firebase/firebase-config';
+import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  function AddItemFunc({navigation}) {
-    return (
-      <View>
-        <AddItem
-          // addItem={addItem}
-          calculateDistance={calculateDistance}
-        />
-        <Button
-          title="Submit"
-          onPress={() => navigation.navigate('ItemList')}
-        />
-      </View>
-    );
-  }
+  // function AddItemFunc({navigation}) {
+  //   return (
+  //     // <View>
+  //     //   <AddItem
+  //     //     // addItem={addItem}
+  //     //     calculateDistance={calculateDistance}
+  //     //   />
+  //     //   <Button
+  //     //     title="Submit"
+  //     //     onPress={() => navigation.navigate('ItemList')}
+  //     //   />
+  //     //   <Button title="Set data" onPress={SetData} />
+  //     // </View>
+  //   );
+  // }
 
   function ItemDetailFunc({navigation}) {
     return (
@@ -67,10 +70,6 @@ const App = () => {
     setSelectedItem(changeSelectedItem);
   };
 
-  const calculateDistance = () => {
-    return (Math.random() * 3).toFixed(1);
-  };
-
   // const deleteItem = id => {
   //   setItems(prevItems => {
   //     return prevItems.filter(item => item.id !== id);
@@ -87,7 +86,7 @@ const App = () => {
     <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Map"
+          initialRouteName="HomeScreen"
           screenOptions={{
             headerStyle: {
               backgroundColor: '#254952',
@@ -105,11 +104,11 @@ const App = () => {
           <Stack.Screen
             name="Map"
             component={Map}
-            options={{headerShown: false}}
+            // options={{headerShown: false}}
           />
           <Stack.Screen
             name="AddItem"
-            component={AddItemFunc}
+            component={AddItem}
             options={{
               // headerTitle: props => <LogoTitle {...props} />,
               headerRight: () => (

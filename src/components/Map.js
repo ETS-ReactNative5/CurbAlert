@@ -109,13 +109,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   name: {
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 5,
-    width: 100,
+    width: 135,
+    fontWeight: 'bold',
   },
   image: {
-    width: 90,
-    height: 90,
+    width: 132,
+    height: 110,
     alignSelf: 'center',
     marginBottom: 5,
   },

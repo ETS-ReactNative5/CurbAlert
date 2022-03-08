@@ -10,27 +10,53 @@ import {
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {useSelector, useDispatch} from 'react-redux';
-import {addItem} from './../redux/actions';
+// import {useSelector, useDispatch} from 'react-redux';
+// import {addItem} from './../redux/actions';
+import {db} from './../firebase/firebase-config';
+import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
+import {v4 as uuid} from 'uuid';
 
-const AddItem = ({calculateDistance, navigation}) => {
-  const state = useSelector(s => s.itemReducer);
-  console.log(state);
-  const {title, description} = state;
-  const dispatch = useDispatch();
-  const [titleInput, setTitle] = useState('');
-  const [descriptionInput, setDescription] = useState('');
-  // const [distance, setDistance] = useState('');
+const AddItem = ({navigation}) => {
+  // const state = useSelector(s => s.itemReducer);
+  // console.log(state);
+  // const {title, description} = state;
+  // const dispatch = useDispatch();
 
   // const onChangeTitle = titleValue => dispatch(setTitle(titleValue));
   // const onChangeDescription = descriptionValue =>
   //   dispatch(setDescription(descriptionValue));
+  // const onPressAddItem = item => dispatch(addItem(item));
 
-  const onPressAddItem = item => dispatch(addItem(item));
+  const [titleInput, setTitle] = useState('');
+  const [descriptionInput, setDescription] = useState('');
+  const [distance, setDistance] = useState('');
   const onChangeTitle = titleValue => setTitle(titleValue);
   const onChangeDescription = descriptionValue =>
     setDescription(descriptionValue);
 
+  const calculateDistance = () => {
+    return (Math.random() * 3).toFixed(1);
+  };
+
+  // const SetData = async () => {
+  const onPressAddItem = async () => {
+    await setDoc(doc(db, 'items', uuid()), {
+      title: titleInput,
+      distance: distance,
+      coordinate: {
+        latitude: 45.52389457375122,
+        longitude: -122.68112663355545,
+      },
+      description: descriptionInput,
+      timestamp: Timestamp.fromDate(new Date()),
+      is_taken: false,
+      is_damaged: false,
+      thumbs_up: 0,
+      flagged: false,
+      image_path: "require('../assets/IMG_0534.jpeg')",
+    });
+    navigation.navigate('ItemList');
+  };
   return (
     <View>
       <TextInput
@@ -47,31 +73,12 @@ const AddItem = ({calculateDistance, navigation}) => {
         maxLength={140}
         autoCapitalize="sentences"
       />
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() =>
-          onPressAddItem({
-            title: titleInput,
-            description: descriptionInput,
-            distance: 1.2,
-            image_path: require('../assets/IMG_9670.jpeg'),
-            id: Math.floor(Math.random() * 1000),
-            coordinate: {
-              latitude: 45.501666,
-              longitude: -122.677439,
-            },
-            timestamp: '2300',
-          })
-        }>
+      <TouchableOpacity style={styles.btn} onPress={() => onPressAddItem()}>
         <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item
         </Text>
       </TouchableOpacity>
-      <View>
-        <Text>New Title: {title}</Text>
-        <Text>Description: {description}</Text>
-      </View>
     </View>
   );
 };

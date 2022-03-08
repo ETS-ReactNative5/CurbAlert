@@ -10,8 +10,16 @@ import {
 import Item from './Item';
 import {items} from './../model/data';
 import {ListItem} from 'react-native-elements/dist/list/ListItem';
+import {db} from './../firebase/firebase-config';
+import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 
 function ItemList({navigation}) {
+  const GetData = async () => {
+    const itemsCollection = collection(db, 'items');
+    const itemSnapshot = await getDocs(itemsCollection);
+    const itemList = itemSnapshot.docs.map(doc => doc.data());
+    console.log(itemList);
+  };
   return (
     <SafeAreaView style={{flex: 1, marginBottom: 100}}>
       <View>
@@ -36,6 +44,8 @@ function ItemList({navigation}) {
           title="See Item Detail"
           onPress={() => navigation.navigate('ItemDetail')}
         />
+        <Button title="See Map" onPress={() => navigation.navigate('Map')} />
+        <Button title="Get data" onPress={GetData} />
       </View>
     </SafeAreaView>
   );

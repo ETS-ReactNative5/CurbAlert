@@ -306,7 +306,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - https://www.youtube.com/watch?v=LYi1gwPWDto&list=PLsprmdocuVe9SvIQveOWqMvxHdkXjcRO_
 
 ### Monday 03/07
-- **7:30PM - 10:00PM** 
 
+- **7:30PM - 10:00PM** Add data to Map
 
+### Tuesday 03/08
 
+- **8:10AM - AM** Implement Firestore
