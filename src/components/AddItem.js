@@ -17,6 +17,7 @@ import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {v4 as uuid} from 'uuid';
 
 const AddItem = ({navigation}) => {
+  // REDUX STUFF I'M NOT USING
   // const state = useSelector(s => s.itemReducer);
   // console.log(state);
   // const {title, description} = state;
@@ -33,10 +34,6 @@ const AddItem = ({navigation}) => {
   const onChangeTitle = titleValue => setTitle(titleValue);
   const onChangeDescription = descriptionValue =>
     setDescription(descriptionValue);
-
-  const calculateDistance = () => {
-    return (Math.random() * 3).toFixed(1);
-  };
 
   // const SetData = async () => {
   const onPressAddItem = async () => {

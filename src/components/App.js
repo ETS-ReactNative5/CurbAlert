@@ -33,69 +33,70 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <Provider store={Store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="HomeScreen"
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#254952',
-            },
-            headerTintColor: '#d2e6ef',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-          }}>
-          <Stack.Screen
-            name="HomeScreen"
-            component={HomeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Map"
-            component={Map}
-            options={{
+    // <Provider store={Store}>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="HomeScreen"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#254952',
+          },
+          headerTintColor: '#d2e6ef',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Map"
+          component={Map}
+          options={
+            {
               // headerShown: false
-              headerTitle: props => <LogoTitle {...props} />,
-            }}
-          />
-          <Stack.Screen
-            name="AddItem"
-            component={AddItem}
-            options={{
-              headerRight: () => (
-                <Icon
-                  name="bars"
-                  size={20}
-                  onPress={() => alert('This is a button!')}
-                  title="Info"
-                  color="#d2e6ef"
-                />
-              ),
-              // title: 'Add an item!',
-              // headerStyle: {
-              //   backgroundColor: '#f4511e',
-              // },
-              // headerTintColor: '#fff',
-              // headerTitleStyle: {
-              //   fontWeight: 'bold',
-              // },
-            }}
-          />
-          <Stack.Screen
-            name="ItemList"
-            component={ItemList}
-            options={{title: 'Items'}}
-          />
-          <Stack.Screen
-            name="ItemDetail"
-            component={ItemDetail}
-            // Pass in the item name as a param to display that as a title
-            // options={({route}) => ({title: route.params.name})}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </Provider>
+            }
+          }
+        />
+        <Stack.Screen
+          name="AddItem"
+          component={AddItem}
+          options={{
+            headerRight: () => (
+              <Icon
+                name="bars"
+                size={20}
+                onPress={() => alert('This is a button!')}
+                title="Info"
+                color="#d2e6ef"
+              />
+            ),
+            // title: 'Add an item!',
+            // headerStyle: {
+            //   backgroundColor: '#f4511e',
+            // },
+            // headerTintColor: '#fff',
+            // headerTitleStyle: {
+            //   fontWeight: 'bold',
+            // },
+          }}
+        />
+        <Stack.Screen
+          name="ItemList"
+          component={ItemList}
+          options={{title: 'Items'}}
+        />
+        <Stack.Screen
+          name="ItemDetail"
+          component={ItemDetail}
+          // Pass in the item name as a param to display that as a title
+          // options={({route}) => ({title: route.params.name})}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+    // </Provider>
   );
 };
 

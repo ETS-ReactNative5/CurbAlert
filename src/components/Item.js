@@ -4,38 +4,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
 
-const Item = ({route, navigation}) => {
-  const item = {
-    id: 1,
-    title: 'Sofa',
-    distance: 1.5,
-    coordinate: {
-      latitude: 45.5219778825814,
-      longitude: -122.67533488152338,
-    },
-    description: 'In good shape! Come get it before it rains',
-    timestamp: 'Feb 25, 2022, 11:59:11 PM',
-    is_taken: false,
-    is_damaged: false,
-    thumbs_up: 0,
-    flagged: false,
-    image_path: require('../assets/IMG_1188.jpeg'),
-  };
-  // const {item} = route.params;
-  const {greeting} = route.params;
-  console.log(greeting);
+const Item = ({item, navigation}) => {
   const {title, description, distance, image_path, thumbs_up, id} = item;
   return (
     <TouchableOpacity
+      // onPress={navigation.navigate('Map')}
       style={{
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         borderBottom: 'solid black 1px',
-        marginBottom: 5,
-        marginTop: 10,
-        marginLeft: 5,
-        // backgroundColor: '#9dc6dd',
+        paddingBottom: 7,
+        paddingTop: 7,
+        margin: 1,
+        paddingLeft: 5,
+        backgroundColor: '#9dc6dd',
       }}>
       <View
         style={{
