@@ -58,11 +58,11 @@ const App = () => {
       <View>
         <HomeScreen />
       </View>
-    )
+    );
   }
 
   const [selectedItem, setSelectedItem] = useState({});
-  const handleSelectingItem = (id) => {
+  const handleSelectingItem = id => {
     const changeSelectedItem = items.filter(item => item.id === id)[0];
     setSelectedItem(changeSelectedItem);
   };
@@ -87,7 +87,7 @@ const App = () => {
     <Provider store={Store}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="HomeScreen"
+          initialRouteName="Map"
           screenOptions={{
             headerStyle: {
               backgroundColor: '#254952',

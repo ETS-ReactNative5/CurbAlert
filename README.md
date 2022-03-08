@@ -304,3 +304,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - https://www.youtube.com/watch?v=BtJoy4G3N8U
   - https://www.youtube.com/watch?v=eET0YtDBWWg&t=10s
   - https://www.youtube.com/watch?v=LYi1gwPWDto&list=PLsprmdocuVe9SvIQveOWqMvxHdkXjcRO_
+
+### Monday 03/07
+- **7:30PM - 10:00PM** 
+
+
+

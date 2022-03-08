@@ -38,12 +38,14 @@ const AddItem = ({calculateDistance, navigation}) => {
         style={styles.input}
         onChangeText={onChangeTitle}
         maxLength={40}
+        autoCapitalize="words"
       />
       <TextInput
         placeholder="Description"
         style={styles.input}
         onChangeText={onChangeDescription}
         maxLength={140}
+        autoCapitalize="sentences"
       />
       <TouchableOpacity
         style={styles.btn}

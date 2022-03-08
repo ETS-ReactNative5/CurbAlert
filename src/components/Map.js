@@ -10,12 +10,14 @@ import {
 } from 'react-native';
 import RNLocation from 'react-native-location';
 import {mapStyle} from './../utils/mapStyle';
+import {items} from './../model/data';
 
 RNLocation.configure({
   distanceFilter: 0,
 });
 
 function Map() {
+  const [mapState, setMapState] = React.useState(items);
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 45.519958,
     longitude: -122.677899,
@@ -63,37 +65,40 @@ function Map() {
   });
 
   return (
-    <MapView
-      provider={PROVIDER_GOOGLE}
-      style={styles.map}
-      customMapStyle={mapStyle}
-      region={{
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
-      }}>
-      <Marker
-        coordinate={{
+    <View>
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        customMapStyle={mapStyle}
+        region={{
           latitude: currentLocation.latitude,
           longitude: currentLocation.longitude,
-        }}
-        image={require('./../assets/map_marker.png')}
-        title={'Test Title'}
-        description={'Test Description'}>
-        <Callout>
-          <View>
-            <View>
-              <Text style={styles.name}>My Favorite Restaurant</Text>
-              <Image
-                style={styles.image}
-                source={require('./../assets/IMG_1769.jpeg')}
-              />
-            </View>
-          </View>
-        </Callout>
-      </Marker>
-    </MapView>
+          latitudeDelta: 0.015,
+          longitudeDelta: 0.0121,
+        }}>
+        <View>
+          {items.map(item => {
+            return (
+              <Marker
+                key={item.id}
+                coordinate={item.coordinate}
+                image={require('./../assets/map_marker.png')}
+                title={item.title}
+                description={item.description}>
+                <Callout>
+                  <View>
+                    <View>
+                      <Text style={styles.name}>{item.title}</Text>
+                      <Image style={styles.image} source={item.image_path} />
+                    </View>
+                  </View>
+                </Callout>
+              </Marker>
+            );
+          })}
+        </View>
+      </MapView>
+    </View>
   );
 }
 
