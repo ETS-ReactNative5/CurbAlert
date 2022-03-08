@@ -25,9 +25,11 @@ function ItemList({navigation}) {
     itemList = newItemList;
   };
 
-  function onItemPress(item) {
-    navigation.navigate('ItemDetail', {item});
-  }
+  const onItemPress = item => {
+    navigation.navigate('ItemDetail', {
+      greeting: 'hello',
+    });
+  };
 
   return (
     <SafeAreaView style={{flex: 1, marginBottom: 100}}>

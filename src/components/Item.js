@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
 
 const Item = ({route, navigation}) => {
-  item = {
+  const item = {
     id: 1,
     title: 'Sofa',
     distance: 1.5,
@@ -21,6 +21,9 @@ const Item = ({route, navigation}) => {
     flagged: false,
     image_path: require('../assets/IMG_1188.jpeg'),
   };
+  // const {item} = route.params;
+  const {greeting} = route.params;
+  console.log(greeting);
   const {title, description, distance, image_path, thumbs_up, id} = item;
   return (
     <TouchableOpacity

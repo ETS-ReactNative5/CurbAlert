@@ -316,3 +316,5 @@ Copyright (c) _2022_ _Christopher Neal_
   - [YouTube: Born to Code - React Native, Firebase v9, authentication and firestore](https://www.youtube.com/watch?v=20TSEoJkg5k)
 
 - **11:13AM - 12:04PM** WIP implement Firestore and passing params with React Navigation in ItemDetail and Item
+
+- **12:36PM - PM** Troubleshoot issue with ItemList passing params
