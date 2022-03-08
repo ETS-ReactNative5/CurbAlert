@@ -20,6 +20,7 @@ import ItemList from './ItemList';
 import AddItem from './AddItem';
 import {v4 as uuid} from 'uuid';
 import ItemDetail from './ItemDetail';
+import {items} from './../model/data';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Logo from './../assets/logo-notext.png';
@@ -29,12 +30,7 @@ import {Store} from './../redux/store';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  // function App() {
-  // function LogoTitle() {
-  //   return <Image style={{width: 80, height: 40}} source={Logo} />;
-  // }
-
-  function ItemForm({navigation}) {
+  function AddItemFunc({navigation}) {
     return (
       <View>
         <AddItem
@@ -57,14 +53,18 @@ const App = () => {
     );
   }
 
+  function HomeScreenFunc({navigation}) {
+    return (
+      <View>
+        <HomeScreen />
+      </View>
+    )
+  }
+
   const [selectedItem, setSelectedItem] = useState({});
-  const handleSelectingItem = () => {
+  const handleSelectingItem = (id) => {
     const changeSelectedItem = items.filter(item => item.id === id)[0];
     setSelectedItem(changeSelectedItem);
-    // STILL NOT SURE HOW TO MAKE THIS WORK. THIS IS THE FORMAT FOR PASSING PROPS
-    // I think i should be passing just the item ID instead of the whole item
-    // should store the whole item in a global store instead
-    // navigation.navigate('ItemDetail', {item: changeSelectedItem});
   };
 
   const calculateDistance = () => {
@@ -109,7 +109,7 @@ const App = () => {
           />
           <Stack.Screen
             name="AddItem"
-            component={ItemForm}
+            component={AddItemFunc}
             options={{
               // headerTitle: props => <LogoTitle {...props} />,
               headerRight: () => (
@@ -132,7 +132,7 @@ const App = () => {
             }}
           />
           {/* PASSING IN PROPS THIS WAY NOT WORKING
-        {props => <ItemForm {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}
+        {props => <AddItemFunc {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}
           <Stack.Screen
             name="ItemList"
             component={ItemList}
