@@ -20,22 +20,15 @@ function HomeScreen({navigation}) {
         alignItems: 'center',
         backgroundColor: '#d2e6ef',
       }}>
-      <View style={{marginTop: 20}}>
+      {/* <View style={{marginTop: 20}}>
         <Text style={{fontWeight: 'bold', fontSize: 30, color: '#254952'}}>
           Curb Alert
         </Text>
-      </View>
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Image
-          source={Logo}
-          // width doesn't seem to be working here
-          width={300}
-        />
-      </View>
+      </View> */}
       <TouchableOpacity
         onPress={() => navigation.navigate('ItemList')}
         style={{
-          backgroundColor: '#014351',
+          // backgroundColor: '#014351',
           width: '90%',
           padding: 20,
           color: '#d2e6ef',
@@ -44,10 +37,17 @@ function HomeScreen({navigation}) {
           justifyContent: 'space-between',
           marginBottom: 50,
         }}>
-        <Text style={{fontWeight: 'bold', fontSize: 18, color: '#d2e6ef'}}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Image
+            source={Logo}
+            // width doesn't seem to be working here
+            width={300}
+          />
+        </View>
+        {/* <Text style={{fontWeight: 'bold', fontSize: 18, color: '#d2e6ef'}}>
           Get Started
         </Text>
-        <Icon name="arrow-right" size={22} color="#d2e6ef" />
+        <Icon name="arrow-right" size={22} color="#d2e6ef" /> */}
       </TouchableOpacity>
     </SafeAreaView>
   );

@@ -10,13 +10,14 @@ import {
 } from 'react-native';
 import RNLocation from 'react-native-location';
 import {mapStyle} from './../utils/mapStyle';
-import {items} from './../model/data';
+// import {items} from './../model/data';
 
 RNLocation.configure({
-  distanceFilter: 0,
+  distanceFilter: 10,
 });
 
-function Map() {
+function Map({navigation, route}) {
+  const {itemList} = route.params;
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 45.519958,
     longitude: -122.677899,
@@ -43,13 +44,13 @@ function Map() {
           },
         },
       });
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
       const date = new Date();
-      console.log(date);
+      console.log('location updated: ' + date);
     } else {
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 5000}));
       const date = new Date();
-      console.log(date);
+      console.log('location updated: ' + date);
     }
   };
 
@@ -70,7 +71,7 @@ function Map() {
           longitudeDelta: 0.0121,
         }}>
         <View>
-          {items.map(item => {
+          {itemList.map(item => {
             return (
               <Marker
                 key={item.id}

@@ -29,9 +29,13 @@ const AddItem = ({navigation}) => {
   //   dispatch(setDescription(descriptionValue));
   // const onPressAddItem = item => dispatch(addItem(item));
 
+  RNLocation.configure({
+    distanceFilter: 0,
+  });
+
   const [currentLocation, setCurrentLocation] = useState({
-    latitude: 46.519958,
-    longitude: -123.677899,
+    latitude: 45.519958,
+    longitude: -122.677899,
   });
 
   const getLocation = async () => {

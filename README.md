@@ -325,3 +325,4 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **2:28PM - 2:53PM** Turn off useEffect for now because it's making too many calls.
 - **2:53PM - 3:17PM** Add getLocation function to AddItem
+- **3:17PM - 3:35PM** Pull map items from Firestore

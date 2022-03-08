@@ -102,7 +102,10 @@ function ItemList({navigation}) {
           title="Add an Item"
           onPress={() => navigation.navigate('AddItem')}
         />
-        <Button title="See Map" onPress={() => navigation.navigate('Map')} />
+        <Button
+          title="See Map"
+          onPress={() => navigation.navigate('Map', {itemList})}
+        />
         <Button title="Get data" onPress={GetData} />
       </View>
     </SafeAreaView>
