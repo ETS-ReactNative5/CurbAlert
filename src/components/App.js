@@ -23,7 +23,7 @@ import ItemDetail from './ItemDetail';
 import {items} from './../model/data';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import Logo from './../assets/logo-notext.png';
+import LogoTitle from './../assets/logo-notext.png';
 import Map from './Map';
 import {Store} from './../redux/store';
 import {db} from './../firebase/firebase-config';
@@ -32,56 +32,6 @@ import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  // function AddItemFunc({navigation}) {
-  //   return (
-  //     // <View>
-  //     //   <AddItem
-  //     //     // addItem={addItem}
-  //     //     calculateDistance={calculateDistance}
-  //     //   />
-  //     //   <Button
-  //     //     title="Submit"
-  //     //     onPress={() => navigation.navigate('ItemList')}
-  //     //   />
-  //     //   <Button title="Set data" onPress={SetData} />
-  //     // </View>
-  //   );
-  // }
-
-  function ItemDetailFunc({navigation}) {
-    return (
-      <View>
-        <ItemDetail item={selectedItem} deleteItem={deleteItem} />
-      </View>
-    );
-  }
-
-  function HomeScreenFunc({navigation}) {
-    return (
-      <View>
-        <HomeScreen />
-      </View>
-    );
-  }
-
-  const [selectedItem, setSelectedItem] = useState({});
-  const handleSelectingItem = id => {
-    const changeSelectedItem = items.filter(item => item.id === id)[0];
-    setSelectedItem(changeSelectedItem);
-  };
-
-  // const deleteItem = id => {
-  //   setItems(prevItems => {
-  //     return prevItems.filter(item => item.id !== id);
-  //   });
-  // };
-
-  // const addItem = (text, description, distance) => {
-  //   setItems(prevItems => {
-  //     return [{id: uuid(), text, description, distance}, ...prevItems];
-  //   });
-  // };
-
   return (
     <Provider store={Store}>
       <NavigationContainer>
@@ -104,13 +54,15 @@ const App = () => {
           <Stack.Screen
             name="Map"
             component={Map}
-            // options={{headerShown: false}}
+            options={{
+              // headerShown: false
+              headerTitle: props => <LogoTitle {...props} />,
+            }}
           />
           <Stack.Screen
             name="AddItem"
             component={AddItem}
             options={{
-              // headerTitle: props => <LogoTitle {...props} />,
               headerRight: () => (
                 <Icon
                   name="bars"
@@ -130,8 +82,6 @@ const App = () => {
               // },
             }}
           />
-          {/* PASSING IN PROPS THIS WAY NOT WORKING
-        {props => <AddItemFunc {...props} calculateDistance={calculateDistance} addItem={addItem} />} */}
           <Stack.Screen
             name="ItemList"
             component={ItemList}
@@ -139,7 +89,7 @@ const App = () => {
           />
           <Stack.Screen
             name="ItemDetail"
-            component={ItemDetailFunc}
+            component={ItemDetail}
             // Pass in the item name as a param to display that as a title
             // options={({route}) => ({title: route.params.name})}
           />
