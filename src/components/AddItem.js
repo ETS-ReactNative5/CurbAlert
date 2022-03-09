@@ -16,6 +16,7 @@ import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {v4 as uuid} from 'uuid';
 import RNLocation from 'react-native-location';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
@@ -37,6 +38,33 @@ const AddItem = ({navigation}) => {
     latitude: 45.519958,
     longitude: -122.677899,
   });
+  const [imageSource, setImageSource] = useState(null);
+  const [titleInput, setTitle] = useState('');
+  const [descriptionInput, setDescription] = useState('');
+  const [distance, setDistance] = useState('');
+  const onChangeTitle = titleValue => setTitle(titleValue);
+  const onChangeDescription = descriptionValue =>
+    setDescription(descriptionValue);
+
+  function takePicture() {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  }
+
+  function openGallery() {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+    });
+  }
 
   const getLocation = async () => {
     let permission = await RNLocation.checkPermission({
@@ -69,14 +97,6 @@ const AddItem = ({navigation}) => {
     }
   };
 
-  const [titleInput, setTitle] = useState('');
-  const [descriptionInput, setDescription] = useState('');
-  const [distance, setDistance] = useState('');
-  const onChangeTitle = titleValue => setTitle(titleValue);
-  const onChangeDescription = descriptionValue =>
-    setDescription(descriptionValue);
-
-  // const SetData = async () => {
   const onPressAddItem = async () => {
     await getLocation();
     await setDoc(doc(db, 'items', uuid()), {
@@ -117,6 +137,16 @@ const AddItem = ({navigation}) => {
           <Icon name="plus" size={20} />
           Add Item
         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={takePicture}
+        style={{margin: 20, borderRadius: 5}}>
+        <Text style={{padding: 10, fontSize: 18}}>Take a picture </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={openGallery}
+        style={{margin: 20, borderRadius: 5}}>
+        <Text style={{padding: 10, fontSize: 18}}>Pick an image</Text>
       </TouchableOpacity>
     </View>
   );
