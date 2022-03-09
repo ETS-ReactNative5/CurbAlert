@@ -19,13 +19,21 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {getLocation} from '../utils/getLocation';
 
 function ItemList({navigation, route}) {
-  // find better way to display message
-  let message = '';
-  if (route.params) {
-    message = route.params.message;
-  }
+  console.log(route.params);
+  const messageDisplay = () => {
+    if (route.params !== undefined) {
+      // setShowMessage(true);
+      // if (route.params.message && showMessage) {
+      // setTimeout(function () {
+      // setShowMessage(false);
+      // }, 5000);
+      return <Text>{route.params.message}</Text>;
+      // }
+    }
+  };
 
   const [itemList, setItemList] = useState({});
+  // const [showMessage, setShowMessage] = useState(false);
   const [update, setUpdate] = useState(false);
 
   // FROM https://geodatasource.com/developers/javascript
@@ -78,105 +86,65 @@ function ItemList({navigation, route}) {
     };
   }, [update]);
 
+  const itemDisplayBlock = item => {
+    if (item.flagged > 0) {
+      if (route.params) {
+        return <View style={styles.item}>{messageDisplay()}</View>;
+      }
+    // } else if () {
+    } else {
+      return (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ItemDetail', {item})}
+          style={styles.item}>
+          <View style={styles.itemDisplay}>
+            <Image
+              // source={item.image_path}
+              source={require('./../assets/placeholder_image.png')}
+              style={styles.img}
+            />
+            <View style={styles.itemWords}>
+              <Text style={styles.titleText}>{item.title}</Text>
+              <Text numberOfLines={1} style={styles.description}>
+                {item.description}
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.distance}>
+              {item.distance < 1001
+                ? `${item.distance} feet away`
+                : `${(item.distance / 5280).toFixed(1)} miles away`}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      );
+    }
+  };
+
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: 3,
-        backgroundColor: '#d2e6ef',
-      }}>
-      {/* <View>
-        <Text>{message}</Text>
-      </View> */}
+    <View style={styles.pageDisplay}>
       <View style={{height: windowHeight - 200}}>
         <FlatList
           data={itemList}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('ItemDetail', {item})}
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                borderBottom: 'solid black 1px',
-                paddingBottom: 7,
-                paddingTop: 7,
-                margin: 1,
-                paddingLeft: 5,
-                backgroundColor: '#9dc6dd',
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  flex: 1,
-                }}>
-                <Image
-                  // source={item.image_path}
-                  source={require('./../assets/placeholder_image.png')}
-                  style={{
-                    width: 65,
-                    height: 65,
-                    borderRadius: 5,
-                    marginRight: 8,
-                  }}
-                />
-                <View style={{width: windowWidth - 180}}>
-                  <Text
-                    style={{
-                      color: '#254952',
-                      fontSize: 18,
-                      fontWeight: 'bold',
-                    }}>
-                    {item.title}
-                  </Text>
-                  <Text
-                    numberOfLines={1}
-                    style={{color: '#254952', fontSize: 16}}>
-                    {item.description}
-                  </Text>
-                </View>
-              </View>
-              <View>
-                <Text style={{marginRight: 5}}>
-                  {item.distance < 1001
-                    ? `${item.distance} feet away`
-                    : `${(item.distance / 5280).toFixed(1)} miles away`}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          )}
+          renderItem={({item}) => <>{itemDisplayBlock(item)}</>}
         />
       </View>
       <TouchableOpacity>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: 40,
-            marginLeft: 50,
-            marginRight: 50,
-            backroundColor: '#529aff',
-          }}>
+        <View style={styles.btnText}>
           <Icon
+            style={styles.icon}
             name="map"
-            size={40}
-            color="#254952"
             onPress={() => navigation.navigate('Map', {itemList})}
           />
           <Icon
+            style={styles.icon}
             name="plus"
-            size={40}
-            color="#254952"
             onPress={() => navigation.navigate('AddItem')}
           />
           <Icon
+            style={styles.icon}
             name="refresh"
-            size={40}
-            color="#254952"
             onPress={() => setUpdate(prevState => !prevState)}
           />
         </View>
@@ -186,3 +154,53 @@ function ItemList({navigation, route}) {
 }
 
 export default ItemList;
+
+const styles = StyleSheet.create({
+  pageDisplay: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: 3,
+    backgroundColor: '#d2e6ef',
+  },
+  itemDisplay: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  item: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: 'solid black 1px',
+    paddingBottom: 7,
+    paddingTop: 7,
+    margin: 1,
+    paddingLeft: 5,
+    backgroundColor: '#9dc6dd',
+  },
+  distance: {marginRight: 5},
+  description: {color: '#254952', fontSize: 16},
+  itemWords: {width: windowWidth - 180},
+  img: {
+    width: 65,
+    height: 65,
+    borderRadius: 5,
+    marginRight: 8,
+  },
+  titleText: {
+    color: '#254952',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  btnText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 40,
+    marginLeft: 50,
+    marginRight: 50,
+    backroundColor: '#529aff',
+  },
+  icon: {color: '#254952', fontSize: 40, textAlign: 'center'},
+});

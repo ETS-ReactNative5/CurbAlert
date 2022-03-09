@@ -356,3 +356,4 @@ Copyright (c) _2022_ _Christopher Neal_
 - **9:94AM - 10:00AM** Adjust icon placement styling
 - **10:00AM - 10:19AM** Add update button to map
 - **10:19AM - 11:37AM** WIP: Add functionality to ItemDetail flag button
+- **11:57AM - 1:16PM** Flagged items now hidden from ItemList, replaced with message.
