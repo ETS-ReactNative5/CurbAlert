@@ -14,29 +14,51 @@ import {items} from './../model/data';
 import {ListItem} from 'react-native-elements/dist/list/ListItem';
 import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
-import {windowWidth} from '../utils/Dimensions';
+import {windowWidth, windowHeight} from '../utils/Dimensions';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 function ItemList({navigation}) {
   // This is set up to take the hard coded data and update it with the data from
   // firestore, but it doesn't do that yet.
   // let itemList = items;
   const [itemList, setItemList] = useState({});
+  const [update, setUpdate] = useState(false);
+
   const GetData = async () => {
     const itemsCollection = collection(db, 'items');
     const itemSnapshot = await getDocs(itemsCollection);
-    const newItemList = itemSnapshot.docs.map(doc => doc.data());
+    const newItemList = itemSnapshot.docs.map(d => d.data());
     setItemList(newItemList);
     const date = new Date();
     console.log(date);
   };
 
   useEffect(() => {
-    // GetData();
-  }, [itemList]);
+    let didCancel = false;
+    const getData = async () => {
+      if (!didCancel) {
+        const itemsCollection = collection(db, 'items');
+        const itemSnapshot = await getDocs(itemsCollection);
+        const newItemList = itemSnapshot.docs.map(d => d.data());
+        setItemList(newItemList);
+        const date = new Date();
+        console.log(date);
+      }
+    };
+    getData();
+    return () => {
+      didCancel = true;
+    };
+  }, [update]);
 
   return (
-    <SafeAreaView style={{flex: 1, marginBottom: 100}}>
-      <View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
+      <View style={{height: windowHeight - 180}}>
         <FlatList
           data={itemList}
           renderItem={({item}) => (
@@ -60,7 +82,8 @@ function ItemList({navigation}) {
                   flex: 1,
                 }}>
                 <Image
-                  source={item.image_path}
+                  // source={item.image_path}
+                  source={require('./../assets/placeholder_image.png')}
                   style={{
                     width: 65,
                     height: 65,
@@ -97,18 +120,36 @@ function ItemList({navigation}) {
           )}
         />
       </View>
-      <View>
-        <Button
-          title="Add an Item"
-          onPress={() => navigation.navigate('AddItem')}
-        />
-        <Button
-          title="See Map"
-          onPress={() => navigation.navigate('Map', {itemList})}
-        />
-        <Button title="Get data" onPress={GetData} />
-      </View>
-    </SafeAreaView>
+      <TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: 30,
+            backroundColor: '#529aff',
+          }}>
+          <Icon
+            name="map"
+            size={40}
+            color="#254952"
+            onPress={() => navigation.navigate('Map', {itemList})}
+          />
+          <Icon
+            name="plus"
+            size={40}
+            color="#254952"
+            onPress={() => navigation.navigate('AddItem')}
+          />
+          <Icon
+            name="refresh"
+            size={40}
+            color="#254952"
+            onPress={() => setUpdate(prevState => !prevState)}
+          />
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
 

@@ -19,8 +19,8 @@ RNLocation.configure({
 function Map({navigation, route}) {
   const {itemList} = route.params;
   const [currentLocation, setCurrentLocation] = useState({
-    latitude: 45.519958,
-    longitude: -122.677899,
+    latitude: 46.519958,
+    longitude: -123.677899,
   });
 
   const getLocation = async () => {
@@ -54,9 +54,20 @@ function Map({navigation, route}) {
     }
   };
 
+  // I'm sure this is a little hacky.
+  // and it seems to exponentially make more calls.
+  // setInterval(getLocation, 10000);
+
+  // This should make the call once
   useEffect(() => {
-    // getLocation();
-  }, [currentLocation]);
+    let didCancel = false;
+    if (!didCancel) {
+      getLocation();
+    }
+    return () => {
+      didCancel = true;
+    };
+  }, []);
 
   return (
     <View>
