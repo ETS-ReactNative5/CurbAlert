@@ -111,7 +111,9 @@ const AddItem = ({navigation}) => {
 
   const onPressAddItem = async () => {
     const location = await getLocation(); // I think location is updating in time now
-    await setDoc(doc(db, 'items', uuid()), {
+    const id = uuid();
+    await setDoc(doc(db, 'items', id), {
+      id: id,
       title: titleInput,
       distance: distance,
       coordinate: {
