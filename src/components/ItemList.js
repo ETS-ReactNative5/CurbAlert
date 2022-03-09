@@ -19,15 +19,16 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {getLocation} from '../utils/getLocation';
 
 function ItemList({navigation, route}) {
-  console.log(route.params);
+  const {params} = route;
   const messageDisplay = () => {
-    if (route.params !== undefined) {
-      // setShowMessage(true);
-      // if (route.params.message && showMessage) {
-      // setTimeout(function () {
-      // setShowMessage(false);
-      // }, 5000);
-      return <Text>{route.params.message}</Text>;
+    if (params) {
+      if (params.flagMessage)
+        // setShowMessage(true);
+        // if (params.flagMessage && showMessage) {
+        // setTimeout(function () {
+        // setShowMessage(false);
+        // }, 5000);
+        return <Text>{params.flagMessage}</Text>;
       // }
     }
   };
@@ -88,10 +89,10 @@ function ItemList({navigation, route}) {
 
   const itemDisplayBlock = item => {
     if (item.flagged > 0) {
-      if (route.params) {
+      if (params) {
         return <View style={styles.item}>{messageDisplay()}</View>;
       }
-    // } else if () {
+      // } else if () {
     } else {
       return (
         <TouchableOpacity
