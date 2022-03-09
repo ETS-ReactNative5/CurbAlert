@@ -35,10 +35,10 @@ const AddItem = ({navigation}) => {
     distanceFilter: 0,
   });
 
-  const [currentLocation, setCurrentLocation] = useState({
-    latitude: 45.519958,
-    longitude: -122.677899,
-  });
+  // const [currentLocation, setCurrentLocation] = useState({
+  //   latitude: 46.519958,
+  //   longitude: -123.677899,
+  // });
   const [imageState, setImage] = useState(
     "require('./../assets/placeholder_image.png')",
   );
@@ -52,7 +52,7 @@ const AddItem = ({navigation}) => {
 
   useEffect(() => {
     console.log(imageState);
-  });
+  }, [imageState]);
 
   function takePicture() {
     ImagePicker.openCamera({
@@ -95,24 +95,26 @@ const AddItem = ({navigation}) => {
           },
         },
       });
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
       const date = new Date();
       console.log('location updated: ' + date);
+      return await RNLocation.getLatestLocation({timeout: 100000});
     } else {
-      setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+      // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
       const date = new Date();
       console.log('location updated: ' + date);
+      return await RNLocation.getLatestLocation({timeout: 100000});
     }
   };
 
   const onPressAddItem = async () => {
-    await getLocation();
+    const location = await getLocation(); // location is not updating in time. Need to make sure this runs first
     await setDoc(doc(db, 'items', uuid()), {
       title: titleInput,
       distance: distance,
       coordinate: {
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
+        latitude: location.latitude,
+        longitude: location.longitude,
       },
       description: descriptionInput,
       timestamp: Timestamp.fromDate(new Date()),
