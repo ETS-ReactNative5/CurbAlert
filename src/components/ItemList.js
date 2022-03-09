@@ -16,18 +16,51 @@ import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import {getLocation} from '../utils/getLocation';
 
 function ItemList({navigation}) {
   const [itemList, setItemList] = useState({});
   const [update, setUpdate] = useState(false);
 
+  // FROM https://geodatasource.com/developers/javascript
+  function getDistance(lat1, lon1, lat2, lon2) {
+    if (lat1 === lat2 && lon1 === lon2) {
+      return 0;
+    } else {
+      var radlat1 = (Math.PI * lat1) / 180;
+      var radlat2 = (Math.PI * lat2) / 180;
+      var theta = lon1 - lon2;
+      var radtheta = (Math.PI * theta) / 180;
+      var dist =
+        Math.sin(radlat1) * Math.sin(radlat2) +
+        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+        dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = (dist * 180) / Math.PI;
+      const distInFeet = dist * 60 * 1.1515 * 1.609344 * 3280.84;
+      return Math.floor(distInFeet);
+    }
+  }
+
   useEffect(() => {
     let didCancel = false;
     const getData = async () => {
+      const location = await getLocation();
       if (!didCancel) {
         const itemsCollection = collection(db, 'items');
         const itemSnapshot = await getDocs(itemsCollection);
         const newItemList = itemSnapshot.docs.map(d => d.data());
+        newItemList.map(item => {
+          item.distance = getDistance(
+            location.latitude,
+            location.longitude,
+            item.coordinate.latitude,
+            item.coordinate.longitude,
+          );
+        });
+        console.log(newItemList);
         setItemList(newItemList);
         const date = new Date();
         console.log(date);
@@ -96,7 +129,11 @@ function ItemList({navigation}) {
                 </View>
               </View>
               <View>
-                <Text style={{marginRight: 5}}>{item.distance} miles away</Text>
+                <Text style={{marginRight: 5}}>
+                  {item.distance < 1001
+                    ? `${item.distance} feet away`
+                    : `${(item.distance / 5280).toFixed(1)} miles away`}
+                </Text>
               </View>
             </TouchableOpacity>
           )}

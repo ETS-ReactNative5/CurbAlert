@@ -347,3 +347,9 @@ Copyright (c) _2022_ _Christopher Neal_
   - Improve styling on ItemList
   - Tinker with getting images to load
 - **7:43AM - 8:24AM** Fix timestamp display, write function to display as words
+- **8:24AM - 9:23AM**
+  - Move getLocation to utility folder
+  - Research getDistance function
+    - [GeoDataSource](https://geodatasource.com/developers/javascript)
+  - Tidy code, delete old comments
+- **9:23AM - 9:48AM** Implement getDistance function in ItemDetail
