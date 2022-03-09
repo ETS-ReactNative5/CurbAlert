@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import 'react-native-get-random-values';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Logo from './../assets/logo350.png';
+import Logo from './../assets/logo.png';
 
 function HomeScreen({navigation}) {
   return (
@@ -20,15 +20,9 @@ function HomeScreen({navigation}) {
         alignItems: 'center',
         backgroundColor: '#d2e6ef',
       }}>
-      {/* <View style={{marginTop: 20}}>
-        <Text style={{fontWeight: 'bold', fontSize: 30, color: '#254952'}}>
-          Curb Alert
-        </Text>
-      </View> */}
       <TouchableOpacity
         onPress={() => navigation.navigate('ItemList')}
         style={{
-          // backgroundColor: '#014351',
           width: '90%',
           padding: 20,
           color: '#d2e6ef',
@@ -41,13 +35,10 @@ function HomeScreen({navigation}) {
           <Image
             source={Logo}
             // width doesn't seem to be working here
-            width={300}
+            // width={300}
+            style={{width: 350, height: 350}}
           />
         </View>
-        {/* <Text style={{fontWeight: 'bold', fontSize: 18, color: '#d2e6ef'}}>
-          Get Started
-        </Text>
-        <Icon name="arrow-right" size={22} color="#d2e6ef" /> */}
       </TouchableOpacity>
     </SafeAreaView>
   );

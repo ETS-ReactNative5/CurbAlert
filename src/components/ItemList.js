@@ -18,20 +18,8 @@ import {windowWidth, windowHeight} from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 function ItemList({navigation}) {
-  // This is set up to take the hard coded data and update it with the data from
-  // firestore, but it doesn't do that yet.
-  // let itemList = items;
   const [itemList, setItemList] = useState({});
   const [update, setUpdate] = useState(false);
-
-  const GetData = async () => {
-    const itemsCollection = collection(db, 'items');
-    const itemSnapshot = await getDocs(itemsCollection);
-    const newItemList = itemSnapshot.docs.map(d => d.data());
-    setItemList(newItemList);
-    const date = new Date();
-    console.log(date);
-  };
 
   useEffect(() => {
     let didCancel = false;
@@ -105,12 +93,6 @@ function ItemList({navigation}) {
                     style={{color: '#254952', fontSize: 16}}>
                     {item.description}
                   </Text>
-                  {/* <Icon
-              name="remove"
-              size={20}
-              color="firebrick"
-              onPress={() => deleteItem(id)}
-            /> */}
                 </View>
               </View>
               <View>

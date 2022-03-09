@@ -1,6 +1,5 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-// import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
 
@@ -37,12 +36,6 @@ const Item = ({item, navigation}) => {
           <Text numberOfLines={1} style={{color: '#254952', fontSize: 16}}>
             {description}
           </Text>
-          {/* <Icon
-          name="remove"
-          size={20}
-          color="firebrick"
-          onPress={() => deleteItem(id)}
-        /> */}
         </View>
       </View>
       <View>

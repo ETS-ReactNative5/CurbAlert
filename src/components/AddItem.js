@@ -110,7 +110,7 @@ const AddItem = ({navigation}) => {
   // };
 
   const onPressAddItem = async () => {
-    const location = await getLocation(); // location is not updating in time. Need to make sure this runs first
+    const location = await getLocation(); // I think location is updating in time now
     await setDoc(doc(db, 'items', uuid()), {
       title: titleInput,
       distance: distance,
