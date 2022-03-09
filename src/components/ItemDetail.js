@@ -42,6 +42,7 @@ const ItemDetail = ({route, navigation}) => {
         });
         navigation.navigate('ItemList', {
           flagMessage: 'Thank you. The item has been flagged for removal',
+          updated: true,
         });
         break;
       case 'thumb':
@@ -51,13 +52,19 @@ const ItemDetail = ({route, navigation}) => {
         });
         navigation.navigate('ItemList', {
           thumbMessage: 'Thanks for thumbs upping this item!',
+          updated: true,
         });
         break;
       case 'take':
-        await setDoc(doc(db, 'items', item.id), {...item, is_taken: true});
+        await setDoc(doc(db, 'items', item.id), {
+          ...item,
+          is_taken: true,
+          taken_time: Timestamp.fromDate(new Date()),
+        });
         navigation.navigate('ItemList', {
           takeMessage:
             'Thanks for taking this item! If there are other items still available, please make a new post.',
+          updated: true,
         });
         break;
       case 'damage':
@@ -65,6 +72,7 @@ const ItemDetail = ({route, navigation}) => {
         navigation.navigate('ItemList', {
           damageMessage:
             'Thanks for marking this item as damaged! If there are other, undamaged items still available, please make a new post.',
+          updated: true,
         });
         break;
       default:
