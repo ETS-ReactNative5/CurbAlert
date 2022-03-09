@@ -1,14 +1,14 @@
-import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
+  Image,
   TouchableOpacity,
   Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 // import {useSelector, useDispatch} from 'react-redux';
 // import {addItem} from './../redux/actions';
@@ -17,6 +17,7 @@ import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {v4 as uuid} from 'uuid';
 import RNLocation from 'react-native-location';
 import ImagePicker from 'react-native-image-crop-picker';
+import {windowWidth, windowHeight} from '../utils/Dimensions';
 
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
@@ -38,13 +39,20 @@ const AddItem = ({navigation}) => {
     latitude: 45.519958,
     longitude: -122.677899,
   });
-  const [imageSource, setImageSource] = useState(null);
+  const [imageState, setImage] = useState(
+    "require('./../assets/placeholder_image.png')",
+  );
+
   const [titleInput, setTitle] = useState('');
   const [descriptionInput, setDescription] = useState('');
-  const [distance, setDistance] = useState('');
+  const [distance, setDistance] = useState(0);
   const onChangeTitle = titleValue => setTitle(titleValue);
   const onChangeDescription = descriptionValue =>
     setDescription(descriptionValue);
+
+  useEffect(() => {
+    console.log(imageState);
+  });
 
   function takePicture() {
     ImagePicker.openCamera({
@@ -52,7 +60,7 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image);
+      setImage(`require("${image.path}")`);
     });
   }
 
@@ -62,7 +70,7 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image);
+      setImage(`require('${image.path}')`);
     });
   }
 
@@ -112,7 +120,7 @@ const AddItem = ({navigation}) => {
       is_damaged: false,
       thumbs_up: 0,
       flagged: false,
-      image_path: "require('../assets/IMG_0534.jpeg')",
+      image_path: imageState,
     });
     navigation.navigate('ItemList');
   };
@@ -141,13 +149,29 @@ const AddItem = ({navigation}) => {
       <TouchableOpacity
         onPress={takePicture}
         style={{margin: 20, borderRadius: 5}}>
-        <Text style={{padding: 10, fontSize: 18}}>Take a picture </Text>
+        <Text style={{padding: 1, fontSize: 18}}>Take a picture </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={openGallery}
         style={{margin: 20, borderRadius: 5}}>
-        <Text style={{padding: 10, fontSize: 18}}>Pick an image</Text>
+        <Text style={{padding: 1, fontSize: 18}}>Pick an image</Text>
       </TouchableOpacity>
+      <View>
+        <Image
+          // THIS ISN'T WORKING BUT IT DOESN'T MAKE SENSE WHY!!
+          source={imageState}
+          // source={require('./../assets/placeholder_image.png')}
+          // source={{
+          // uri: imageState,
+          // uri: 'https://data.whicdn.com/images/51328563/original.png',
+          // }}
+          style={{
+            alignItems: 'center',
+            marginLeft: (windowWidth - 300) / 2,
+            marginRight: (windowWidth - 300) / 2,
+          }}
+        />
+      </View>
     </View>
   );
 };

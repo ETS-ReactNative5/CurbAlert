@@ -320,6 +320,7 @@ Copyright (c) _2022_ _Christopher Neal_
 
 - **12:36PM - 1:37PM** Troubleshoot issue with ItemList passing params
 - **1:37PM - 2:28PM** BUGFIX:
+
   - ItemList updates from Firestore with useEffect hook
   - Map updates to current location with useEffect hook
 
@@ -328,3 +329,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **3:17PM - 3:35PM** Pull map items from Firestore
 - **3:35PM - 4:51PM** WIP: configure React Native Image Crop Picker
 - **6:27PM - 6:55PM** Configure React Native Image Crop Picker
+- **6:55PM - 7:16PM** WIP: Integrate Image Picker with AddItem component
+- **9:06PM - 10:11PM** WIP: Integrate Image Picker
+  - correct path exports to Firestore
+  - but the images won't load.
