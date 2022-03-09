@@ -353,3 +353,5 @@ Copyright (c) _2022_ _Christopher Neal_
     - [GeoDataSource](https://geodatasource.com/developers/javascript)
   - Tidy code, delete old comments
 - **9:23AM - 9:48AM** Implement getDistance function in ItemDetail
+- **9:94AM - 10:00AM** Adjust icon placement styling
+- **10:00AM - 10:19AM** Add update button to map

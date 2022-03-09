@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import RNLocation from 'react-native-location';
 import {mapStyle} from './../utils/mapStyle';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // import {items} from './../model/data';
 
 RNLocation.configure({
@@ -19,8 +20,8 @@ RNLocation.configure({
 function Map({navigation, route}) {
   const {itemList} = route.params;
   const [currentLocation, setCurrentLocation] = useState({
-    latitude: 46.519958,
-    longitude: -123.677899,
+    // latitude: 46.519958,
+    // longitude: -123.677899,
   });
 
   const getLocation = async () => {
@@ -103,6 +104,15 @@ function Map({navigation, route}) {
           })}
         </View>
       </MapView>
+      <TouchableOpacity>
+        <Icon
+          style={{position: 'absolute', bottom: 30, right: 30}}
+          name="refresh"
+          size={40}
+          color="#254952"
+          onPress={() => getLocation()}
+        />
+      </TouchableOpacity>
     </View>
   );
 }
