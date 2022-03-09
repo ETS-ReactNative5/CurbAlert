@@ -15,9 +15,10 @@ import PropTypes from 'prop-types';
 import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {v4 as uuid} from 'uuid';
-import RNLocation from 'react-native-location';
+// import RNLocation from 'react-native-location';
 import ImagePicker from 'react-native-image-crop-picker';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
+import {getLocation} from '../utils/getLocation';
 
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
@@ -31,9 +32,9 @@ const AddItem = ({navigation}) => {
   //   dispatch(setDescription(descriptionValue));
   // const onPressAddItem = item => dispatch(addItem(item));
 
-  RNLocation.configure({
-    distanceFilter: 0,
-  });
+  // RNLocation.configure({
+  //   distanceFilter: 0,
+  // });
 
   // const [currentLocation, setCurrentLocation] = useState({
   //   latitude: 46.519958,
@@ -41,7 +42,7 @@ const AddItem = ({navigation}) => {
   // });
   const [imageState, setImage] = useState(
     // "require('./../assets/placeholder_image.png')",
-    { uri: 'https://reactjs.org/logo-og.png' },
+    {uri: 'https://reactjs.org/logo-og.png'},
   );
 
   const [titleInput, setTitle] = useState('');
@@ -75,38 +76,38 @@ const AddItem = ({navigation}) => {
     });
   }
 
-  const getLocation = async () => {
-    let permission = await RNLocation.checkPermission({
-      ios: 'whenInUse', // or 'always'
-      android: {
-        detail: 'fine', // or 'coarse'
-      },
-    });
+  // const getLocation = async () => {
+  //   let permission = await RNLocation.checkPermission({
+  //     ios: 'whenInUse', // or 'always'
+  //     android: {
+  //       detail: 'fine', // or 'coarse'
+  //     },
+  //   });
 
-    if (!permission) {
-      permission = await RNLocation.requestPermission({
-        ios: 'whenInUse',
-        android: {
-          detail: 'fine',
-          rationale: {
-            title: 'We need to access your location',
-            message: 'We use your location to show where you are on the map',
-            buttonPositive: 'OK',
-            buttonNegative: 'Cancel',
-          },
-        },
-      });
-      // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
-      const date = new Date();
-      console.log('location updated: ' + date);
-      return await RNLocation.getLatestLocation({timeout: 100000});
-    } else {
-      // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
-      const date = new Date();
-      console.log('location updated: ' + date);
-      return await RNLocation.getLatestLocation({timeout: 100000});
-    }
-  };
+  //   if (!permission) {
+  //     permission = await RNLocation.requestPermission({
+  //       ios: 'whenInUse',
+  //       android: {
+  //         detail: 'fine',
+  //         rationale: {
+  //           title: 'We need to access your location',
+  //           message: 'We use your location to show where you are on the map',
+  //           buttonPositive: 'OK',
+  //           buttonNegative: 'Cancel',
+  //         },
+  //       },
+  //     });
+  //     // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+  //     const date = new Date();
+  //     console.log('location updated: ' + date);
+  //     return await RNLocation.getLatestLocation({timeout: 100000});
+  //   } else {
+  //     // setCurrentLocation(await RNLocation.getLatestLocation({timeout: 100000}));
+  //     const date = new Date();
+  //     console.log('location updated: ' + date);
+  //     return await RNLocation.getLatestLocation({timeout: 100000});
+  //   }
+  // };
 
   const onPressAddItem = async () => {
     const location = await getLocation(); // location is not updating in time. Need to make sure this runs first
