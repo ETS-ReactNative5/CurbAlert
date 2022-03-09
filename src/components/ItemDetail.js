@@ -34,32 +34,39 @@ const ItemDetail = ({route, navigation}) => {
   };
 
   const iconPress = async button => {
-    // console.log('button = ' + button);
-    // console.log('listItem.id = ' + item.id);
-    // console.log(db);
-    // console.log()
-    // console.log()
-    // console.log()
     switch (button) {
       case 'flag':
-        // console.log({...item, flagged: true});
         await setDoc(doc(db, 'items', item.id), {
           ...item,
           flagged: item.flagged + 1,
         });
         navigation.navigate('ItemList', {
-          message: 'Thank you. The item has been flagged for removal',
+          flagMessage: 'Thank you. The item has been flagged for removal',
         });
         break;
-      // case thumb:
-      // await setDoc(doc(db, 'items', item.id), {thumbs_up: item.thumbs_up+1});
-      //   break;
-      // case take:
-      // await setDoc(doc(db, 'items', item.id), {is_taken: true});
-      //   break;
-      // case damage:
-      // await setDoc(doc(db, 'items', item.id), {is_damaged: true});
-      //   break;
+      case 'thumb':
+        await setDoc(doc(db, 'items', item.id), {
+          ...item,
+          thumbs_up: item.thumbs_up + 1,
+        });
+        navigation.navigate('ItemList', {
+          thumbMessage: 'Thanks for thumbs upping this item!',
+        });
+        break;
+      case 'take':
+        await setDoc(doc(db, 'items', item.id), {...item, is_taken: true});
+        navigation.navigate('ItemList', {
+          takeMessage:
+            'Thanks for taking this item! If there are other items still available, please make a new post.',
+        });
+        break;
+      case 'damage':
+        await setDoc(doc(db, 'items', item.id), {...item, is_damaged: true});
+        navigation.navigate('ItemList', {
+          damageMessage:
+            'Thanks for marking this item as damaged! If there are other, undamaged items still available, please make a new post.',
+        });
+        break;
       default:
         break;
     }
@@ -112,19 +119,19 @@ const ItemDetail = ({route, navigation}) => {
           name="thumbs-up"
           size={40}
           color="#254952"
-          // onPress={() => thumbUpItem(item.id)}
+          onPress={() => iconPress('thumb')}
         />
         <Icon
           name="thumbs-down"
           size={40}
           color="#254952"
-          // onPress={() => damageItem(item.id)}
+          onPress={() => iconPress('damage')}
         />
         <Icon
           name="check"
           size={40}
           color="#254952"
-          // onPress={() => takeItem(item.id)}
+          onPress={() => iconPress('take')}
         />
         <Icon
           name="flag"
