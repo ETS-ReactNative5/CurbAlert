@@ -125,7 +125,7 @@ const AddItem = ({navigation}) => {
       is_taken: false,
       is_damaged: false,
       thumbs_up: 0,
-      flagged: false,
+      flagged: 0,
       image_path: imageState,
     });
     navigation.navigate('ItemList');

@@ -10,6 +10,8 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
+import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
+import {db} from './../firebase/firebase-config';
 
 const ItemDetail = ({route, navigation}) => {
   const {item} = route.params;
@@ -28,6 +30,38 @@ const ItemDetail = ({route, navigation}) => {
       return `${Math.floor(secondsSince / 3600)} hours ago`;
     } else {
       return `${Math.floor(secondsSince / 3600)} days ago`;
+    }
+  };
+
+  const iconPress = async button => {
+    // console.log('button = ' + button);
+    // console.log('listItem.id = ' + item.id);
+    // console.log(db);
+    // console.log()
+    // console.log()
+    // console.log()
+    switch (button) {
+      case 'flag':
+        // console.log({...item, flagged: true});
+        await setDoc(doc(db, 'items', item.id), {
+          ...item,
+          flagged: item.flagged + 1,
+        });
+        navigation.navigate('ItemList', {
+          message: 'Thank you. The item has been flagged for removal',
+        });
+        break;
+      // case thumb:
+      // await setDoc(doc(db, 'items', item.id), {thumbs_up: item.thumbs_up+1});
+      //   break;
+      // case take:
+      // await setDoc(doc(db, 'items', item.id), {is_taken: true});
+      //   break;
+      // case damage:
+      // await setDoc(doc(db, 'items', item.id), {is_damaged: true});
+      //   break;
+      default:
+        break;
     }
   };
 
@@ -96,7 +130,7 @@ const ItemDetail = ({route, navigation}) => {
           name="flag"
           size={40}
           color="#254952"
-          // onPress={() => flagItem(item.id)}
+          onPress={() => iconPress('flag')}
         />
       </TouchableOpacity>
     </View>

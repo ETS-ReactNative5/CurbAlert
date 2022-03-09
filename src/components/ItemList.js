@@ -18,7 +18,13 @@ import {windowWidth, windowHeight} from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {getLocation} from '../utils/getLocation';
 
-function ItemList({navigation}) {
+function ItemList({navigation, route}) {
+  // find better way to display message
+  let message = '';
+  if (route.params) {
+    message = route.params.message;
+  }
+
   const [itemList, setItemList] = useState({});
   const [update, setUpdate] = useState(false);
 
@@ -63,7 +69,7 @@ function ItemList({navigation}) {
         console.log(newItemList);
         setItemList(newItemList);
         const date = new Date();
-        console.log(date);
+        console.log('location updated: ' + date);
       }
     };
     getData();
@@ -81,6 +87,9 @@ function ItemList({navigation}) {
         padding: 3,
         backgroundColor: '#d2e6ef',
       }}>
+      {/* <View>
+        <Text>{message}</Text>
+      </View> */}
       <View style={{height: windowHeight - 200}}>
         <FlatList
           data={itemList}
