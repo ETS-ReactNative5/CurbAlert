@@ -13,12 +13,30 @@ import {windowWidth} from '../utils/Dimensions';
 
 const ItemDetail = ({route, navigation}) => {
   const {item} = route.params;
+
+  const getTimeSince = time => {
+    const secondsSince = new Date().getTime() / 1000 - time.seconds;
+    if (secondsSince < 60) {
+      return `${Math.floor(secondsSince)} seconds ago`;
+    } else if (secondsSince / 60 < 60) {
+      return `${Math.floor(secondsSince / 60)} minutes ago`;
+    } else if (secondsSince / 3600 < 7) {
+      return `${Math.floor(secondsSince / 3600)} hours ${Math.floor(
+        secondsSince % 60,
+      )} minutes ago`;
+    } else if (secondsSince / 3600 < 24) {
+      return `${Math.floor(secondsSince / 3600)} hours ago`;
+    } else {
+      return `${Math.floor(secondsSince / 3600)} days ago`;
+    }
+  };
+
   return (
     <View style={styles.listItem}>
       <View>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={{fontSize: 18}}>{item.distance} miles away</Text>
-        <Text>{item.timestamp}</Text>
+        <Text>{getTimeSince(item.timestamp)}</Text>
         <Text style={{fontSize: 16}}>{item.description}</Text>
         <Text>{item.is_taken ? 'Item is taken' : 'Item is available'}</Text>
         <Text>

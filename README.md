@@ -346,3 +346,4 @@ Copyright (c) _2022_ _Christopher Neal_
 - **7:14AM - 7:39AM**
   - Improve styling on ItemList
   - Tinker with getting images to load
+- **7:43AM - 8:24AM** Fix timestamp display, write function to display as words
