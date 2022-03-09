@@ -3,7 +3,7 @@ import {
   Text,
   View,
   TextInput,
-  Image,
+  ImageBackground,
   TouchableOpacity,
   Button,
 } from 'react-native';
@@ -40,7 +40,8 @@ const AddItem = ({navigation}) => {
   //   longitude: -123.677899,
   // });
   const [imageState, setImage] = useState(
-    "require('./../assets/placeholder_image.png')",
+    // "require('./../assets/placeholder_image.png')",
+    { uri: 'https://reactjs.org/logo-og.png' },
   );
 
   const [titleInput, setTitle] = useState('');
@@ -127,41 +128,33 @@ const AddItem = ({navigation}) => {
     navigation.navigate('ItemList');
   };
   return (
-    <View>
-      <TextInput
-        placeholder="Item Title"
-        style={styles.input}
-        onChangeText={onChangeTitle}
-        maxLength={40}
-        autoCapitalize="words"
-      />
-      <TextInput
-        placeholder="Description"
-        style={styles.input}
-        onChangeText={onChangeDescription}
-        maxLength={140}
-        autoCapitalize="sentences"
-      />
-      <TouchableOpacity style={styles.btn} onPress={() => onPressAddItem()}>
-        <Text style={styles.btnText}>
-          <Icon name="plus" size={20} />
-          Add Item
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={takePicture}
-        style={{margin: 20, borderRadius: 5}}>
-        <Text style={{padding: 1, fontSize: 18}}>Take a picture </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={openGallery}
-        style={{margin: 20, borderRadius: 5}}>
-        <Text style={{padding: 1, fontSize: 18}}>Pick an image</Text>
-      </TouchableOpacity>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
       <View>
-        <Image
+        <TextInput
+          placeholder="Item Title"
+          style={styles.input}
+          onChangeText={onChangeTitle}
+          maxLength={40}
+          autoCapitalize="words"
+        />
+        <TextInput
+          placeholder="Description"
+          style={styles.input}
+          onChangeText={onChangeDescription}
+          maxLength={140}
+          autoCapitalize="sentences"
+        />
+      </View>
+      <View>
+        <ImageBackground
           // THIS ISN'T WORKING BUT IT DOESN'T MAKE SENSE WHY!!
           source={imageState}
+          // source={{uri: 'https://reactjs.org/logo-og.png'}}
           // source={require('./../assets/placeholder_image.png')}
           // source={{
           // uri: imageState,
@@ -174,6 +167,25 @@ const AddItem = ({navigation}) => {
           }}
         />
       </View>
+      <TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: 30,
+            backroundColor: '#529aff',
+          }}>
+          <Icon name="camera" size={40} color="#254952" onPress={takePicture} />
+          <Icon
+            name="plus"
+            size={40}
+            color="#254952"
+            onPress={() => onPressAddItem()}
+          />
+          <Icon name="photo" size={40} color="#254952" onPress={openGallery} />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

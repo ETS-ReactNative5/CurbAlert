@@ -1,63 +1,83 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
-import {windowWidth, windowHeight} from '../utils/Dimensions';
+import {windowWidth} from '../utils/Dimensions';
 
 const ItemDetail = ({route, navigation}) => {
   const {item} = route.params;
   return (
-    <TouchableOpacity style={styles.listItem}>
-      <View style={styles.listItemView}>
-        <Text style={styles.listItemText}>
-          <Text style={styles.title}>{item.text}</Text>
-        </Text>
-        <Text style={styles.listItemText}>{item.distance} miles away</Text>
-      </View>
-      <View style={styles.description}>
+    <View style={styles.listItem}>
+      <View>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={{fontSize: 18}}>{item.distance} miles away</Text>
         <Text>{item.timestamp}</Text>
-        <Text>{item.description}</Text>
-        {/* <Text>{item.is_taken}</Text>
-        <Text>{item.is_damaged}</Text> */}
-        <Text>This item has recieved {item.thumbs_up} thumbs ups.</Text>
+        <Text style={{fontSize: 16}}>{item.description}</Text>
+        <Text>{item.is_taken ? 'Item is taken' : 'Item is available'}</Text>
+        <Text>
+          {item.is_damaged
+            ? 'Item is damaged'
+            : 'Item has not been marked as damaged'}
+        </Text>
+        <Text>
+          {item.thumbs_up > 0
+            ? `This item has recieved ${item.thumbs_up} thumbs ups.`
+            : ''}
+        </Text>
       </View>
       <View>
         <Image
-          source={item.image_path}
+          // source={item.image_path}
+          source={require('./../assets/placeholder_image.png')}
           style={{
-            width: windowWidth - 20,
-            height: windowHeight - 320,
+            width: 360,
+            height: 476,
+            // marginLeft: (windowWidth - 350) / 2,
+            // marginRight: (windowWidth - 350) / 2,
             alignItems: 'center',
           }}
         />
       </View>
-      <View style={styles.listItemView}>
+      <TouchableOpacity
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          margin: 30,
+        }}>
         <Icon
           name="thumbs-up"
           size={40}
-          color="green"
-          // onPress={() => deleteItem(item.id)}
+          color="#254952"
+          // onPress={() => thumbUpItem(item.id)}
         />
         <Icon
           name="thumbs-down"
           size={40}
-          color="orange"
-          // onPress={() => deleteItem(item.id)}
+          color="#254952"
+          // onPress={() => damageItem(item.id)}
         />
         <Icon
           name="check"
           size={40}
-          color="blue"
-          // onPress={() => deleteItem(item.id)}
+          color="#254952"
+          // onPress={() => takeItem(item.id)}
         />
         <Icon
           name="flag"
           size={40}
-          color="firebrick"
-          // onPress={() => deleteItem(item.id)}
+          color="#254952"
+          // onPress={() => flagItem(item.id)}
         />
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -71,9 +91,12 @@ export default ItemDetail;
 const styles = StyleSheet.create({
   listItem: {
     padding: 15,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#d2e6ef',
     borderBottomWidth: 1,
     borderColor: '#eee',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   listItemView: {
     flexDirection: 'row',
