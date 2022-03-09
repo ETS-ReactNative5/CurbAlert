@@ -328,8 +328,21 @@ Copyright (c) _2022_ _Christopher Neal_
 - **2:53PM - 3:17PM** Add getLocation function to AddItem
 - **3:17PM - 3:35PM** Pull map items from Firestore
 - **3:35PM - 4:51PM** WIP: configure React Native Image Crop Picker
+  - [GitHub: ivpusic/react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
+  - [YouTube: Pradip Debnath - React Native Image Picker Tutorial | Pick from Camera, Gallery | Crop Photo](https://www.youtube.com/watch?v=3_ldEVWlL18)
 - **6:27PM - 6:55PM** Configure React Native Image Crop Picker
 - **6:55PM - 7:16PM** WIP: Integrate Image Picker with AddItem component
 - **9:06PM - 10:11PM** WIP: Integrate Image Picker
   - correct path exports to Firestore
   - but the images won't load.
+  - Sometimes gives this error: Warning: Failed prop type: Invalid prop `source` supplied to `Image`, expected one of type [number].
+- **10:11PM - 12:36PM**
+  - Fixed useEffect endless loop bug.
+    - Still need to get ItemList to update when adding an item from AddItem.
+    - Fixed location update when adding an item.
+    - [LogRocket - The last guide to the useEffect Hook you’ll ever need](https://blog.logrocket.com/guide-to-react-useeffect-hook/)
+    - [LogRocket - Data fetching with React Native](https://blog.logrocket.com/data-fetching-react-native/)
+  - Add icons in place of buttons and style
+- **7:14AM - 7:39AM**
+  - Improve styling on ItemList
+  - Tinker with getting images to load
