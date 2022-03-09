@@ -134,6 +134,8 @@ const AddItem = ({navigation}) => {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
+        padding: 3,
+        backgroundColor: '#d2e6ef',
       }}>
       <View>
         <TextInput
@@ -174,7 +176,9 @@ const AddItem = ({navigation}) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            margin: 30,
+            marginBottom: 35,
+            marginLeft: 50,
+            marginRight: 50,
             backroundColor: '#529aff',
           }}>
           <Icon name="camera" size={40} color="#254952" onPress={takePicture} />

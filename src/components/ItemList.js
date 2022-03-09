@@ -78,8 +78,10 @@ function ItemList({navigation}) {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
+        padding: 3,
+        backgroundColor: '#d2e6ef',
       }}>
-      <View style={{height: windowHeight - 180}}>
+      <View style={{height: windowHeight - 200}}>
         <FlatList
           data={itemList}
           renderItem={({item}) => (
@@ -145,7 +147,9 @@ function ItemList({navigation}) {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            margin: 30,
+            marginBottom: 40,
+            marginLeft: 50,
+            marginRight: 50,
             backroundColor: '#529aff',
           }}>
           <Icon

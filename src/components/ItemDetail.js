@@ -35,7 +35,11 @@ const ItemDetail = ({route, navigation}) => {
     <View style={styles.listItem}>
       <View>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={{fontSize: 18}}>{item.distance} miles away</Text>
+        <Text style={{fontSize: 18}}>
+          {item.distance < 1001
+            ? `${item.distance} feet away`
+            : `${(item.distance / 5280).toFixed(1)} miles away`}
+        </Text>
         <Text>{getTimeSince(item.timestamp)}</Text>
         <Text style={{fontSize: 16}}>{item.description}</Text>
         <Text>{item.is_taken ? 'Item is taken' : 'Item is available'}</Text>
