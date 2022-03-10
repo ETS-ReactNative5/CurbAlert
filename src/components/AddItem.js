@@ -41,7 +41,9 @@ const AddItem = ({navigation}) => {
   // latitude: 45.519958,
   // longitude: -122.677899,
   // });
-  const [imageState, setImage] = useState('');
+  const [imageState, setImage] = useState(
+    'https://www.psifoundation.org/wp-content/uploads/2018/03/placeholder-300x400.png',
+  );
   // "require('./../assets/placeholder_image.png')",
   // {uri: 'https://reactjs.org/logo-og.png'},
   // );
