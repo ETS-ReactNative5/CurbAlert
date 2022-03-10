@@ -29,7 +29,6 @@ const ItemDetail = ({route, navigation}) => {
         navigation.navigate('ItemList', {
           message: 'Thank you. The item has been flagged for removal.',
           messageTimeOut: new Date().getTime(),
-          // updated: true,
         });
         break;
       case 'thumb':
@@ -48,7 +47,7 @@ const ItemDetail = ({route, navigation}) => {
         navigation.navigate('ItemList', {
           message:
             'Thanks for taking this item! If there are other items still available, please make a new post for the next person.',
-          // updated: true,
+          messageTimeOut: new Date().getTime(),
         });
         break;
       case 'damage':
@@ -56,7 +55,7 @@ const ItemDetail = ({route, navigation}) => {
         navigation.navigate('ItemList', {
           message:
             'Thanks for marking this item as damaged or missing! If there are other, undamaged items still available, please make a new post.',
-          // updated: true,
+          messageTimeOut: new Date().getTime(),
         });
         break;
       default:

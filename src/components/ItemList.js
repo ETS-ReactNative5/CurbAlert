@@ -25,22 +25,15 @@ function ItemList({navigation, route}) {
   const [isLoading, setIsLoading] = useState(false);
   const {params} = route;
 
-  // when adding an item or marking it, updated: true is sent as a param
-  // to indicate that the
-  // const {params} = route;
-  // if (params) {
-  //   if (params.updated) {
-  //     setUpdate(() => prevState => !prevState);
-  //   }
-  // }
-
   const messageDisplay = () => {
     if (params) {
       const now = new Date().getTime();
       if (params.message && now - params.messageTimeOut < 10000) {
         return (
           <View style={styles.item}>
-            <Text>{params.message}</Text>
+            <Text style={{fontWeight: 'bold', fontSize: 18}}>
+              {params.message}
+            </Text>
           </View>
         );
       }
