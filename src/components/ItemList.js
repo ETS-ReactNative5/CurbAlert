@@ -17,28 +17,36 @@ import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {getLocation} from '../utils/getLocation';
+import {useFocusEffect} from '@react-navigation/native';
 
 function ItemList({navigation, route}) {
+  const [itemList, setItemList] = useState({});
+  const [update, setUpdate] = useState(false);
   const {params} = route;
+
+  // when adding an item or marking it, updated: true is sent as a param
+  // to indicate that the
+  // const {params} = route;
+  // if (params) {
+  //   if (params.updated) {
+  //     setUpdate(() => prevState => !prevState);
+  //   }
+  // }
+
   const messageDisplay = () => {
     if (params) {
-      if (params.flagMessage)
-        // setShowMessage(true);
-        // if (params.flagMessage && showMessage) {
-        // setTimeout(function () {
-        // setShowMessage(false);
-        // }, 5000);
-        return <Text>{params.flagMessage}</Text>;
-      // }
+      if (params.flagMessage) {
+        return (
+          <View style={styles.item}>
+            <Text>{params.flagMessage}</Text>
+          </View>
+        );
+      }
     }
   };
 
-  const [itemList, setItemList] = useState({});
-  // const [showMessage, setShowMessage] = useState(false);
-  const [update, setUpdate] = useState(false);
-
   // FROM https://geodatasource.com/developers/javascript
-  function getDistance(lat1, lon1, lat2, lon2) {
+  const getDistance = (lat1, lon1, lat2, lon2) => {
     if (lat1 === lat2 && lon1 === lon2) {
       return 0;
     } else {
@@ -57,43 +65,37 @@ function ItemList({navigation, route}) {
       const distInFeet = dist * 60 * 1.1515 * 1.609344 * 3280.84;
       return Math.floor(distInFeet);
     }
-  }
+  };
+
+  const getData = async () => {
+    const location = await getLocation();
+    const itemsCollection = collection(db, 'items');
+    const itemSnapshot = await getDocs(itemsCollection);
+    const newItemList = itemSnapshot.docs.map(d => d.data());
+    newItemList.map(item => {
+      item.distance = getDistance(
+        location.latitude,
+        location.longitude,
+        item.coordinate.latitude,
+        item.coordinate.longitude,
+      );
+    });
+    setItemList(newItemList);
+    const date = new Date();
+    console.log('location updated: ' + date);
+  };
 
   useEffect(() => {
-    let didCancel = false;
-    const getData = async () => {
-      const location = await getLocation();
-      if (!didCancel) {
-        const itemsCollection = collection(db, 'items');
-        const itemSnapshot = await getDocs(itemsCollection);
-        const newItemList = itemSnapshot.docs.map(d => d.data());
-        newItemList.map(item => {
-          item.distance = getDistance(
-            location.latitude,
-            location.longitude,
-            item.coordinate.latitude,
-            item.coordinate.longitude,
-          );
-        });
-        console.log(newItemList);
-        setItemList(newItemList);
-        const date = new Date();
-        console.log('location updated: ' + date);
-      }
-    };
     getData();
-    return () => {
-      didCancel = true;
-    };
-  }, [update]);
+  }, [update]); // not sure what this issue is but it works
+
+  useFocusEffect(() => {
+    () => getData();
+    console.log('FOCUSED');
+  });
 
   const itemDisplayBlock = item => {
-    if (item.flagged > 0) {
-      if (params) {
-        return <View style={styles.item}>{messageDisplay()}</View>;
-      }
-      // } else if () {
-    } else {
+    if (item.flagged < 1) {
       return (
         <TouchableOpacity
           onPress={() => navigation.navigate('ItemDetail', {item})}
@@ -125,6 +127,7 @@ function ItemList({navigation, route}) {
 
   return (
     <View style={styles.pageDisplay}>
+      {messageDisplay()}
       <View style={{height: windowHeight - 200}}>
         <FlatList
           data={itemList}
@@ -205,3 +208,27 @@ const styles = StyleSheet.create({
   },
   icon: {color: '#254952', fontSize: 40, textAlign: 'center'},
 });
+
+// old useEffect that I changed to call getData from useFocusEffect
+// useEffect(() => {
+//   let didCancel = false;
+//   const getData = async () => {
+//     const location = await getLocation();
+//     if (!didCancel) {
+//       const itemsCollection = collection(db, 'items');
+//       const itemSnapshot = await getDocs(itemsCollection);
+//       const newItemList = itemSnapshot.docs.map(d => d.data());
+//       newItemList.map(item => {
+//         item.distance = getDistance(
+//           location.latitude,
+//           location.longitude,
+//           item.coordinate.latitude,
+//           item.coordinate.longitude,
+//         );
+//       });
+//       console.log(newItemList);
+//       setItemList(newItemList);
+//       const date = new Date();
+//       console.log('location updated: ' + date);
+//     }
+//   };

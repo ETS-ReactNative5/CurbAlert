@@ -23,7 +23,6 @@ import {getLocation} from '../utils/getLocation';
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
   // const state = useSelector(s => s.itemReducer);
-  // console.log(state);
   // const {title, description} = state;
   // const dispatch = useDispatch();
 
@@ -51,10 +50,6 @@ const AddItem = ({navigation}) => {
   const onChangeTitle = titleValue => setTitle(titleValue);
   const onChangeDescription = descriptionValue =>
     setDescription(descriptionValue);
-
-  useEffect(() => {
-    console.log(imageState);
-  }, [imageState]);
 
   function takePicture() {
     ImagePicker.openCamera({
@@ -128,7 +123,7 @@ const AddItem = ({navigation}) => {
       flagged: 0,
       image_path: imageState,
     });
-    navigation.navigate('ItemList');
+    navigation.navigate('ItemList', {updated: true});
   };
   return (
     <View

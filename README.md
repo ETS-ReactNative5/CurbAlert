@@ -357,4 +357,6 @@ Copyright (c) _2022_ _Christopher Neal_
 - **10:00AM - 10:19AM** Add update button to map
 - **10:19AM - 11:37AM** WIP: Add functionality to ItemDetail flag button
 - **11:57AM - 1:16PM** Flagged items now hidden from ItemList, replaced with message.
-- **1:16PM - PM** Add functionality to ItemDetail take, damage, and thumb buttons
+- **1:16PM - 1:55PM** WIP: Add functionality to ItemDetail take, damage, and thumb buttons
+- **3:03PM - 4:21PM** Try passing an "updated" param to ItemList to tell it to update, but it's not working so I'm looking at useFocusEffect:
+  - [React Navigation Docs: useFocusEffect](https://reactnavigation.org/docs/use-focus-effect/)
