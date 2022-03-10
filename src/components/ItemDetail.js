@@ -64,14 +64,63 @@ const ItemDetail = ({route, navigation}) => {
     }
   };
 
+  const closeEnough = () => {
+    if (item.distance < 500) {
+      return (
+        <>
+          <Icon
+            name="thumbs-up"
+            size={40}
+            color="#254952"
+            onPress={() => iconPress('thumb')}
+          />
+          <Icon
+            name="thumbs-down"
+            size={40}
+            color="#254952"
+            onPress={() => iconPress('damage')}
+          />
+          <Icon
+            name="check"
+            size={40}
+            color="#254952"
+            onPress={() => iconPress('take')}
+          />
+          <Icon
+            name="flag"
+            size={40}
+            color="#254952"
+            onPress={() => iconPress('flag')}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Icon name="thumbs-up" size={40} color="#67A6CB" />
+          <Icon name="thumbs-down" size={40} color="#67A6CB" />
+          <Icon name="check" size={40} color="#67A6CB" />
+          <Icon
+            name="flag"
+            size={40}
+            color="#254952"
+            onPress={() => iconPress('flag')}
+          />
+        </>
+      );
+    }
+  };
+
   return (
     <View style={styles.listItem}>
       <View>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={{fontSize: 18}}>
-          {item.distance < 1001
+          {item.distance < 501
             ? `${item.distance} feet away`
-            : `${(item.distance / 5280).toFixed(1)} miles away`}
+            : `${(item.distance / 5280).toFixed(
+                1,
+              )} miles away.    (Buttons work within 500ft)`}
         </Text>
         <Text>{getTimeSince(item.timestamp)}</Text>
         <Text style={{fontSize: 16}}>{item.description}</Text>
@@ -111,30 +160,7 @@ const ItemDetail = ({route, navigation}) => {
           alignItems: 'center',
           margin: 30,
         }}>
-        <Icon
-          name="thumbs-up"
-          size={40}
-          color="#254952"
-          onPress={() => iconPress('thumb')}
-        />
-        <Icon
-          name="thumbs-down"
-          size={40}
-          color="#254952"
-          onPress={() => iconPress('damage')}
-        />
-        <Icon
-          name="check"
-          size={40}
-          color="#254952"
-          onPress={() => iconPress('take')}
-        />
-        <Icon
-          name="flag"
-          size={40}
-          color="#254952"
-          onPress={() => iconPress('flag')}
-        />
+        {closeEnough()}
       </TouchableOpacity>
     </View>
   );
