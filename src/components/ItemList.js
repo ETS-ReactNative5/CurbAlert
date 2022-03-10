@@ -20,7 +20,7 @@ import {getLocation} from '../utils/getLocation';
 import {useFocusEffect} from '@react-navigation/native';
 
 function ItemList({navigation, route}) {
-  const [itemList, setItemList] = useState({});
+  const [itemList, setItemList] = useState({empty: true});
   const [update, setUpdate] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {params} = route;
@@ -106,7 +106,7 @@ function ItemList({navigation, route}) {
   });
 
   const checkIfLoading = () => {
-    if (isLoading === true) {
+    if (isLoading === true || itemList.empty === true) {
       return (
         <View>
           <Text style={styles.titleText}>Loading...</Text>
@@ -127,8 +127,16 @@ function ItemList({navigation, route}) {
     }
   };
 
+  const getTakenTimeout = time => {
+    return new Date().getTime() / 1000 - time.seconds;
+    // console.log(time);
+    // return 19;
+  };
+
   const itemDisplayBlock = item => {
     if (item.flagged > 0) {
+      return <></>;
+    } else if (item.is_taken && getTakenTimeout(item.taken_time) > 20) {
       return <></>;
     } else if (item.is_taken) {
       return (
@@ -259,13 +267,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginRight: 8,
   },
-  // takenImg: {
-  //   width: 65,
-  //   height: 65,
-  //   borderRadius: 5,
-  //   marginRight: 8,
-  //   opacity: '0',
-  // },
   titleText: {
     color: '#254952',
     fontSize: 18,

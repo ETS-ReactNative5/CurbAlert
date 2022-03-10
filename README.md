@@ -363,3 +363,4 @@ Copyright (c) _2022_ _Christopher Neal_
   - [React Navigation Docs: useFocusEffect](https://reactnavigation.org/docs/use-focus-effect/)
 - **4:21PM - 5:16PM** Experiment with useFocusEffect but had no success.
 - **6:36PM - 7:19PM** Style taken items on ItemList
+- **7:19PM - 7:19PM** Make taken items dissapear after 20 seconds
