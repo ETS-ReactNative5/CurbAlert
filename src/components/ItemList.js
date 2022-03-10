@@ -112,15 +112,13 @@ function ItemList({navigation, route}) {
       );
     } else {
       return (
-        <>
+        <View style={{height: windowHeight - 200}}>
           {messageDisplay()}
-          <View style={{height: windowHeight - 200}}>
-            <FlatList
-              data={itemList}
-              renderItem={({item}) => <>{itemDisplayBlock(item)}</>}
-            />
-          </View>
-        </>
+          <FlatList
+            data={itemList}
+            renderItem={({item}) => <>{itemDisplayBlock(item)}</>}
+          />
+        </View>
       );
     }
   };
@@ -192,30 +190,37 @@ function ItemList({navigation, route}) {
   return (
     <View style={styles.pageDisplay}>
       {checkIfLoading()}
-      <TouchableOpacity>
-        <View style={styles.btnText}>
-          <Icon
-            style={{...styles.icon, position: 'absolute', bottom: 2}}
-            name="map"
-            onPress={() => navigation.navigate('Map', {itemList})}
-          />
-          <Icon
-            style={{
-              ...styles.icon,
-              position: 'absolute',
-              bottom: 2,
-              left: (windowWidth - 140) / 2,
-            }}
-            name="plus"
-            onPress={() => navigation.navigate('AddItem')}
-          />
-          <Icon
-            style={{...styles.icon, position: 'absolute', bottom: 2, right: 0}}
-            name="refresh"
-            onPress={() => setUpdate(prevState => !prevState)}
-          />
-        </View>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity>
+          <View style={styles.btnText}>
+            <Icon
+              style={{...styles.icon, position: 'absolute', bottom: 2}}
+              name="map"
+              onPress={() => navigation.navigate('Map', {itemList})}
+            />
+            <Icon
+              style={{
+                ...styles.icon,
+                position: 'absolute',
+                bottom: 2,
+                left: (windowWidth - 140) / 2,
+              }}
+              name="plus"
+              onPress={() => navigation.navigate('AddItem')}
+            />
+            <Icon
+              style={{
+                ...styles.icon,
+                position: 'absolute',
+                bottom: 2,
+                right: 0,
+              }}
+              name="refresh"
+              onPress={() => setUpdate(prevState => !prevState)}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
