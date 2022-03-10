@@ -17,6 +17,8 @@ import {getTimeSince} from './../utils/getTimeSince';
 const ItemDetail = ({route, navigation}) => {
   const {item} = route.params;
 
+  const [localThumbsUp, setLocalThumbsUp] = React.useState(item.thumbs_up);
+
   const iconPress = async button => {
     switch (button) {
       case 'flag':
@@ -35,10 +37,7 @@ const ItemDetail = ({route, navigation}) => {
           ...item,
           thumbs_up: item.thumbs_up + 1,
         });
-        navigation.navigate('ItemList', {
-          message: 'Thanks for giving this item a thumbs up!',
-          // updated: true,
-        });
+        setLocalThumbsUp(prevState => prevState + 1);
         break;
       case 'take':
         await setDoc(doc(db, 'items', item.id), {
@@ -136,8 +135,8 @@ const ItemDetail = ({route, navigation}) => {
             : 'This item is in good condition'}
         </Text>
         <Text>
-          {item.thumbs_up > 0
-            ? `This item has recieved ${item.thumbs_up} thumbs ups.`
+          {localThumbsUp > 0
+            ? `This item has recieved ${localThumbsUp} thumbs ups.`
             : ''}
         </Text>
       </View>
