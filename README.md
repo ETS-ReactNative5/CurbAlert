@@ -1,10 +1,12 @@
 # **_Curb Alert_**
 
-## **Work In Progress: 2/15/22 through 3/10/22**
-
 ### _Capstone Project for Epicodus Bootcamp_
 
 #### Created By: **Christopher Neal**
+
+![Curb Alert Logo](./src/assets/logo.png)
+
+![Curb Alert Demo Gif](./screenshots/animated-demo.gif)
 
 ## Technologies Used
 
@@ -62,6 +64,10 @@
 - Improve UI to make navigation more intuitive
 - Standardize and improve styling to accomodate different screen sizes
 - Support build on Android
+- Change is_damaged to a count instead of a boolean, have it removed if it gets lots of thumbs downs
+- Have an item featured if it has lots of thumbs ups
+- Customize map markers
+- Save actual photos to database?
 - DRY and organize code
 - Use best practices for hiding API keys
 - Allow user authentication/authorization
