@@ -164,14 +164,8 @@ const AddItem = ({navigation}) => {
             maxLength={140}
             autoCapitalize="sentences"
           />
-          <CheckBox
-          left
-          title="Item can't be taken (for things like fruit trees and tiny libraries)"
-          checked={cannotTakeBox}
-          onPress={() => setCannotTakeBox(!cannotTakeBox)}
-        />
         </View>
-        {/* <View
+        <View
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -198,13 +192,13 @@ const AddItem = ({navigation}) => {
             }
             checked={cannotTakeBox}
             onPress={() => setCannotTakeBox(!cannotTakeBox)}
-          />*/}
+          />
           <Text style={{fontSize: 18, width: windowWidth - 90, marginTop: 20}}>
             {cannotTakeBox
               ? "Item can't be taken (for things like fruit trees and tiny libraries)"
               : 'Item can be taken (for most things)'}
           </Text>
-        {/* </View>  */}
+        </View>
       </View>
       <View>
         <Image
@@ -246,11 +240,6 @@ const AddItem = ({navigation}) => {
       </TouchableOpacity>
     </View>
   );
-};
-
-AddItem.propTypes = {
-  addItem: PropTypes.func,
-  calculateDistance: PropTypes.func,
 };
 
 export default AddItem;
