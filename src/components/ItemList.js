@@ -191,17 +191,22 @@ function ItemList({navigation, route}) {
       <TouchableOpacity>
         <View style={styles.btnText}>
           <Icon
-            style={styles.icon}
+            style={{...styles.icon, position: 'absolute', bottom: 2}}
             name="map"
             onPress={() => navigation.navigate('Map', {itemList})}
           />
           <Icon
-            style={styles.icon}
+            style={{
+              ...styles.icon,
+              position: 'absolute',
+              bottom: 2,
+              left: (windowWidth - 140) / 2,
+            }}
             name="plus"
             onPress={() => navigation.navigate('AddItem')}
           />
           <Icon
-            style={styles.icon}
+            style={{...styles.icon, position: 'absolute', bottom: 2, right: 0}}
             name="refresh"
             onPress={() => setUpdate(prevState => !prevState)}
           />
@@ -271,7 +276,11 @@ const styles = StyleSheet.create({
     marginRight: 50,
     backroundColor: '#529aff',
   },
-  icon: {color: '#254952', fontSize: 40, textAlign: 'center'},
+  icon: {
+    color: '#254952',
+    fontSize: 40,
+    textAlign: 'center',
+  },
 });
 
 // old useEffect that I changed to call getData from useFocusEffect
