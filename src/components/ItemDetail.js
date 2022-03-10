@@ -26,6 +26,7 @@ const ItemDetail = ({route, navigation}) => {
         });
         navigation.navigate('ItemList', {
           message: 'Thank you. The item has been flagged for removal.',
+          messageTimeOut: new Date().getTime(),
           // updated: true,
         });
         break;

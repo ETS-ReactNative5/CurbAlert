@@ -36,10 +36,11 @@ function ItemList({navigation, route}) {
 
   const messageDisplay = () => {
     if (params) {
-      if (params.flagMessage) {
+      const now = new Date().getTime();
+      if (params.message && now - params.messageTimeOut < 10000) {
         return (
           <View style={styles.item}>
-            <Text>{params.flagMessage}</Text>
+            <Text>{params.message}</Text>
           </View>
         );
       }
