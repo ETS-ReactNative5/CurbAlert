@@ -12,26 +12,10 @@ import PropTypes from 'prop-types';
 import {windowWidth} from '../utils/Dimensions';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {db} from './../firebase/firebase-config';
+import {getTimeSince} from './../utils/getTimeSince';
 
 const ItemDetail = ({route, navigation}) => {
   const {item} = route.params;
-
-  const getTimeSince = time => {
-    const secondsSince = new Date().getTime() / 1000 - time.seconds;
-    if (secondsSince < 60) {
-      return `${Math.floor(secondsSince)} seconds ago`;
-    } else if (secondsSince / 60 < 60) {
-      return `${Math.floor(secondsSince / 60)} minutes ago`;
-    } else if (secondsSince / 3600 < 7) {
-      return `${Math.floor(secondsSince / 3600)} hours ${Math.floor(
-        secondsSince % 60,
-      )} minutes ago`;
-    } else if (secondsSince / 3600 < 24) {
-      return `${Math.floor(secondsSince / 3600)} hours ago`;
-    } else {
-      return `${Math.floor(secondsSince / 3600)} days ago`;
-    }
-  };
 
   const iconPress = async button => {
     switch (button) {
@@ -41,8 +25,8 @@ const ItemDetail = ({route, navigation}) => {
           flagged: item.flagged + 1,
         });
         navigation.navigate('ItemList', {
-          flagMessage: 'Thank you. The item has been flagged for removal.',
-          updated: true,
+          message: 'Thank you. The item has been flagged for removal.',
+          // updated: true,
         });
         break;
       case 'thumb':
@@ -51,8 +35,8 @@ const ItemDetail = ({route, navigation}) => {
           thumbs_up: item.thumbs_up + 1,
         });
         navigation.navigate('ItemList', {
-          thumbMessage: 'Thanks for giving this item a thumbs up!',
-          updated: true,
+          message: 'Thanks for giving this item a thumbs up!',
+          // updated: true,
         });
         break;
       case 'take':
@@ -62,17 +46,17 @@ const ItemDetail = ({route, navigation}) => {
           taken_time: Timestamp.fromDate(new Date()),
         });
         navigation.navigate('ItemList', {
-          takeMessage:
+          message:
             'Thanks for taking this item! If there are other items still available, please make a new post for the next person.',
-          updated: true,
+          // updated: true,
         });
         break;
       case 'damage':
         await setDoc(doc(db, 'items', item.id), {...item, is_damaged: true});
         navigation.navigate('ItemList', {
-          damageMessage:
+          message:
             'Thanks for marking this item as damaged or missing! If there are other, undamaged items still available, please make a new post.',
-          updated: true,
+          // updated: true,
         });
         break;
       default:
@@ -91,11 +75,15 @@ const ItemDetail = ({route, navigation}) => {
         </Text>
         <Text>{getTimeSince(item.timestamp)}</Text>
         <Text style={{fontSize: 16}}>{item.description}</Text>
-        <Text>{item.is_taken ? 'Item is taken' : 'Item is available'}</Text>
+        <Text>
+          {item.is_taken
+            ? `Item was taken ${getTimeSince(item.taken_time)}`
+            : 'Item is available'}
+        </Text>
         <Text>
           {item.is_damaged
-            ? 'Item is damaged'
-            : 'Item has not been marked as damaged'}
+            ? 'This item may be damaged'
+            : 'This item is in good condition'}
         </Text>
         <Text>
           {item.thumbs_up > 0
