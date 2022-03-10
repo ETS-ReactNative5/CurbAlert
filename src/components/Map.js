@@ -19,9 +19,12 @@ RNLocation.configure({
 
 function Map({navigation, route}) {
   const {itemList} = route.params;
+  const [update, setUpdate] = useState(false);
   const [currentLocation, setCurrentLocation] = useState({
-    // latitude: 46.519958,
-    // longitude: -123.677899,
+    latitude: 0,
+    longitude: 0,
+    // latitude: 45.519958,
+    // longitude: -122.677899,
   });
 
   const getLocation = async () => {
@@ -68,7 +71,7 @@ function Map({navigation, route}) {
     return () => {
       didCancel = true;
     };
-  }, []);
+  }, [update]);
 
   return (
     <View>
@@ -110,7 +113,7 @@ function Map({navigation, route}) {
           name="refresh"
           size={40}
           color="#254952"
-          onPress={() => getLocation()}
+          onPress={() => setUpdate(prevState => !prevState)} //getLocation()}
         />
       </TouchableOpacity>
     </View>

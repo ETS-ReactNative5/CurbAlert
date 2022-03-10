@@ -36,8 +36,10 @@ const AddItem = ({navigation}) => {
   // });
 
   // const [currentLocation, setCurrentLocation] = useState({
-  //   latitude: 46.519958,
-  //   longitude: -123.677899,
+    // latitude: 0,
+    // longitude: 0,
+    // latitude: 45.519958,
+    // longitude: -122.677899,
   // });
   const [imageState, setImage] = useState(
     // "require('./../assets/placeholder_image.png')",
