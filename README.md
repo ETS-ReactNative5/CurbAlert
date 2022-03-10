@@ -46,7 +46,7 @@
 
 ### Basic Setup
 
-- Clone the GitHub repository: https://github.com/christophermneal/curb-alert
+- Clone the GitHub repository: https://github.com/ChristopherMNeal/CurbAlert
 - From the main project directory, run `npm install` in the terminal to load necessary plugins and packages.
 - Run `cd ios` to move into the `ios` directory
 - Run `pod install` install the CocoaPods packages for ios
