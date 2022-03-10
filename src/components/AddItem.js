@@ -42,7 +42,8 @@ const AddItem = ({navigation}) => {
   // longitude: -122.677899,
   // });
   const [imageState, setImage] = useState(
-    'https://www.psifoundation.org/wp-content/uploads/2018/03/placeholder-300x400.png',
+    '',
+    // 'https://www.psifoundation.org/wp-content/uploads/2018/03/placeholder-300x400.png',
   );
   // "require('./../assets/placeholder_image.png')",
   // {uri: 'https://reactjs.org/logo-og.png'},
@@ -111,25 +112,29 @@ const AddItem = ({navigation}) => {
   // };
 
   const onPressAddItem = async () => {
-    const location = await getLocation(); // I think location is updating in time now
-    const id = uuid();
-    await setDoc(doc(db, 'items', id), {
-      id: id,
-      title: titleInput,
-      distance: distance,
-      coordinate: {
-        latitude: location.latitude,
-        longitude: location.longitude,
-      },
-      description: descriptionInput,
-      timestamp: Timestamp.fromDate(new Date()),
-      is_taken: false,
-      is_damaged: false,
-      thumbs_up: 0,
-      flagged: 0,
-      image_path: imageState,
-    });
-    navigation.navigate('ItemList', {updated: true});
+    if (imageState !== '') {
+      const location = await getLocation(); // I think location is updating in time now
+      const id = uuid();
+      await setDoc(doc(db, 'items', id), {
+        id: id,
+        title: titleInput,
+        distance: distance,
+        coordinate: {
+          latitude: location.latitude,
+          longitude: location.longitude,
+        },
+        description: descriptionInput,
+        timestamp: Timestamp.fromDate(new Date()),
+        is_taken: false,
+        is_damaged: false,
+        thumbs_up: 0,
+        flagged: 0,
+        image_path: imageState,
+      });
+      navigation.navigate('ItemList', {updated: true});
+    } else {
+      alert('Please add a photo');
+    }
   };
   return (
     <View
