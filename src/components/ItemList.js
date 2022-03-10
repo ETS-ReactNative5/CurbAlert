@@ -22,6 +22,7 @@ import {useFocusEffect} from '@react-navigation/native';
 function ItemList({navigation, route}) {
   const [itemList, setItemList] = useState({});
   const [update, setUpdate] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const {params} = route;
 
   // when adding an item or marking it, updated: true is sent as a param
@@ -68,6 +69,7 @@ function ItemList({navigation, route}) {
   };
 
   const getData = async () => {
+    setIsLoading(true);
     const location = await getLocation();
     const itemsCollection = collection(db, 'items');
     const itemSnapshot = await getDocs(itemsCollection);
@@ -81,21 +83,81 @@ function ItemList({navigation, route}) {
       );
     });
     setItemList(newItemList);
+    setIsLoading(false);
     const date = new Date();
     console.log('location updated: ' + date);
   };
 
+  // This retrieves data when the page loads the first time and when the reload button is pushed
   useEffect(() => {
     getData();
+    console.log('USE EFFECT');
   }, [update]); // not sure what this issue is but it works
 
+  useEffect(() => {
+    const now = new Date().getTime();
+    console.log('isLoading = ' + isLoading + ' ' + now);
+  }, [isLoading]);
+
+  // This should update the page
   useFocusEffect(() => {
     () => getData();
     console.log('FOCUSED');
   });
 
+  const checkIfLoading = () => {
+    if (isLoading === true) {
+      return (
+        <View>
+          <Text style={styles.titleText}>Loading...</Text>
+        </View>
+      );
+    } else {
+      return (
+        <>
+          {messageDisplay()}
+          <View style={{height: windowHeight - 200}}>
+            <FlatList
+              data={itemList}
+              renderItem={({item}) => <>{itemDisplayBlock(item)}</>}
+            />
+          </View>
+        </>
+      );
+    }
+  };
+
   const itemDisplayBlock = item => {
-    if (item.flagged < 1) {
+    if (item.flagged > 0) {
+      return <></>;
+    } else if (item.is_taken) {
+      return (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ItemDetail', {item})}
+          style={styles.takenItem}>
+          <View style={styles.itemDisplay} opacity={0.6}>
+            <Image
+              // source={item.image_path}
+              source={require('./../assets/placeholder_image.png')}
+              style={styles.img}
+            />
+            <View style={styles.itemWords}>
+              <Text style={styles.titleText}>{item.title}</Text>
+              <Text numberOfLines={1} style={styles.description}>
+                This item has been claimed.
+              </Text>
+            </View>
+          </View>
+          <View>
+            <Text style={styles.distance}>
+              {item.distance < 1001
+                ? `${item.distance} feet away`
+                : `${(item.distance / 5280).toFixed(1)} miles away`}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      );
+    } else {
       return (
         <TouchableOpacity
           onPress={() => navigation.navigate('ItemDetail', {item})}
@@ -127,13 +189,7 @@ function ItemList({navigation, route}) {
 
   return (
     <View style={styles.pageDisplay}>
-      {messageDisplay()}
-      <View style={{height: windowHeight - 200}}>
-        <FlatList
-          data={itemList}
-          renderItem={({item}) => <>{itemDisplayBlock(item)}</>}
-        />
-      </View>
+      {checkIfLoading()}
       <TouchableOpacity>
         <View style={styles.btnText}>
           <Icon
@@ -183,15 +239,33 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     backgroundColor: '#9dc6dd',
   },
-  distance: {marginRight: 5},
+  takenItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: 'solid black 1px',
+    paddingBottom: 7,
+    paddingTop: 7,
+    margin: 1,
+    paddingLeft: 5,
+    backgroundColor: '#B4D3E4',
+  },
+  distance: {width: 80, marginRight: 5},
   description: {color: '#254952', fontSize: 16},
-  itemWords: {width: windowWidth - 180},
+  itemWords: {width: windowWidth - 170},
   img: {
     width: 65,
     height: 65,
     borderRadius: 5,
     marginRight: 8,
   },
+  // takenImg: {
+  //   width: 65,
+  //   height: 65,
+  //   borderRadius: 5,
+  //   marginRight: 8,
+  //   opacity: '0',
+  // },
   titleText: {
     color: '#254952',
     fontSize: 18,

@@ -277,6 +277,7 @@ Copyright (c) _2022_ _Christopher Neal_
 - **Several Hours This Evening**
   - Research and install React Native Maps
   - Add logo, styling, and adjust color pallate
+  - [Google Map API](https://cloud.google.com/console/google/maps-apis/overview)
 
 ### Saturday 03/05
 
@@ -360,3 +361,5 @@ Copyright (c) _2022_ _Christopher Neal_
 - **1:16PM - 1:55PM** WIP: Add functionality to ItemDetail take, damage, and thumb buttons
 - **3:03PM - 4:21PM** Try passing an "updated" param to ItemList to tell it to update, but it's not working so I'm looking at useFocusEffect:
   - [React Navigation Docs: useFocusEffect](https://reactnavigation.org/docs/use-focus-effect/)
+- **4:21PM - 5:16PM** Experiment with useFocusEffect but had no success.
+- **6:36PM - 7:19PM** Style taken items on ItemList
