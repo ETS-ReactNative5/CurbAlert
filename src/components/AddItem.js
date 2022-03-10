@@ -120,7 +120,7 @@ const AddItem = ({navigation}) => {
       await setDoc(doc(db, 'items', id), {
         id: id,
         title: titleInput,
-        distance: distance,
+        distance: distance, // do i need this?
         coordinate: {
           latitude: location.latitude,
           longitude: location.longitude,

@@ -247,3 +247,5 @@
 - **5:02AM - 5:43AM** Add and implement 'cannot_take' property for creating items
 - **5:43AM - 5:55AM** Edit styling
 - **8:49AM - 10:27AM** Update README and documentation, create discord-gallery-text
+- **10:27AM - 11:13AM** Update database for presentation
+- **11:19AM - 11:23AM** Update map icon and image sizes

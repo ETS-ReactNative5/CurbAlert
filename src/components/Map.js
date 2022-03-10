@@ -113,8 +113,8 @@ function Map({navigation, route}) {
       <TouchableOpacity>
         <Icon
           style={{position: 'absolute', bottom: 30, right: 30}}
-          name="refresh"
-          size={40}
+          name="crosshairs"
+          size={50}
           color="#254952"
           onPress={() => setUpdate(prevState => !prevState)} //getLocation()}
         />
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 132,
-    height: 110,
+    height: 176,
     alignSelf: 'center',
     marginBottom: 5,
   },
