@@ -77,7 +77,7 @@ const ItemDetail = ({route, navigation}) => {
           />
         </>
       );
-    } else if (!item.can_take) {
+    } else if (item.cannot_take) {
       return (
         <>
           <Icon

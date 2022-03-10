@@ -19,6 +19,7 @@ import {v4 as uuid} from 'uuid';
 import ImagePicker from 'react-native-image-crop-picker';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
 import {getLocation} from '../utils/getLocation';
+import {CheckBox} from 'react-native-elements';
 
 const AddItem = ({navigation}) => {
   // REDUX STUFF I'M NOT USING
@@ -55,6 +56,7 @@ const AddItem = ({navigation}) => {
   const onChangeTitle = titleValue => setTitle(titleValue);
   const onChangeDescription = descriptionValue =>
     setDescription(descriptionValue);
+  const [cannotTakeBox, setCannotTakeBox] = useState(false);
 
   function takePicture() {
     ImagePicker.openCamera({
@@ -125,7 +127,7 @@ const AddItem = ({navigation}) => {
         },
         description: descriptionInput,
         timestamp: Timestamp.fromDate(new Date()),
-        cannot_take: false,
+        cannot_take: cannotTakeBox,
         is_taken: false,
         is_damaged: false,
         thumbs_up: 0,
@@ -147,20 +149,62 @@ const AddItem = ({navigation}) => {
         backgroundColor: '#d2e6ef',
       }}>
       <View>
-        <TextInput
-          placeholder="Item Title"
-          style={styles.input}
-          onChangeText={onChangeTitle}
-          maxLength={40}
-          autoCapitalize="words"
+        <View>
+          <TextInput
+            placeholder="Item Title"
+            style={styles.input}
+            onChangeText={onChangeTitle}
+            maxLength={40}
+            autoCapitalize="words"
+          />
+          <TextInput
+            placeholder="Description"
+            style={styles.input}
+            onChangeText={onChangeDescription}
+            maxLength={140}
+            autoCapitalize="sentences"
+          />
+          <CheckBox
+          left
+          title="Item can't be taken (for things like fruit trees and tiny libraries)"
+          checked={cannotTakeBox}
+          onPress={() => setCannotTakeBox(!cannotTakeBox)}
         />
-        <TextInput
-          placeholder="Description"
-          style={styles.input}
-          onChangeText={onChangeDescription}
-          maxLength={140}
-          autoCapitalize="sentences"
-        />
+        </View>
+        {/* <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <CheckBox
+            center
+            checkedIcon={
+              <Icon
+                name="remove"
+                type="material"
+                color="#254952"
+                size={30}
+                iconStyle={{marginRight: 10}}
+              />
+            }
+            uncheckedIcon={
+              <Icon
+                name="check"
+                type="material"
+                color="#254952"
+                size={30}
+                iconStyle={{marginRight: 10}}
+              />
+            }
+            checked={cannotTakeBox}
+            onPress={() => setCannotTakeBox(!cannotTakeBox)}
+          />*/}
+          <Text style={{fontSize: 18, width: windowWidth - 90, marginTop: 20}}>
+            {cannotTakeBox
+              ? "Item can't be taken (for things like fruit trees and tiny libraries)"
+              : 'Item can be taken (for most things)'}
+          </Text>
+        {/* </View>  */}
       </View>
       <View>
         <Image
