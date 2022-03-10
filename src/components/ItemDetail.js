@@ -63,37 +63,8 @@ const ItemDetail = ({route, navigation}) => {
     }
   };
 
-  const closeEnough = () => {
-    if (item.distance < 500) {
-      return (
-        <>
-          <Icon
-            name="thumbs-up"
-            size={40}
-            color="#254952"
-            onPress={() => iconPress('thumb')}
-          />
-          <Icon
-            name="thumbs-down"
-            size={40}
-            color="#254952"
-            onPress={() => iconPress('damage')}
-          />
-          <Icon
-            name="check"
-            size={40}
-            color="#254952"
-            onPress={() => iconPress('take')}
-          />
-          <Icon
-            name="flag"
-            size={40}
-            color="#254952"
-            onPress={() => iconPress('flag')}
-          />
-        </>
-      );
-    } else {
+  const allowButtons = () => {
+    if (item.distance > 500) {
       return (
         <>
           <Icon name="thumbs-up" size={40} color="#67A6CB" />
@@ -101,8 +72,53 @@ const ItemDetail = ({route, navigation}) => {
           <Icon name="check" size={40} color="#67A6CB" />
           <Icon
             name="flag"
-            size={40}
-            color="#254952"
+            style={styles.icon}
+            onPress={() => iconPress('flag')}
+          />
+        </>
+      );
+    } else if (!item.can_take) {
+      return (
+        <>
+          <Icon
+            name="thumbs-up"
+            style={styles.icon}
+            onPress={() => iconPress('thumb')}
+          />
+          <Icon
+            name="thumbs-down"
+            style={styles.icon}
+            onPress={() => iconPress('damage')}
+          />
+          <Icon name="check" size={40} color="#67A6CB" />
+          <Icon
+            name="flag"
+            style={styles.icon}
+            onPress={() => iconPress('flag')}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Icon
+            name="thumbs-up"
+            style={styles.icon}
+            onPress={() => iconPress('thumb')}
+          />
+          <Icon
+            name="thumbs-down"
+            style={styles.icon}
+            onPress={() => iconPress('damage')}
+          />
+          <Icon
+            name="check"
+            style={styles.icon}
+            onPress={() => iconPress('take')}
+          />
+          <Icon
+            name="flag"
+            style={styles.icon}
             onPress={() => iconPress('flag')}
           />
         </>
@@ -159,7 +175,7 @@ const ItemDetail = ({route, navigation}) => {
           alignItems: 'center',
           margin: 30,
         }}>
-        {closeEnough()}
+        {allowButtons()}
       </TouchableOpacity>
     </View>
   );
@@ -200,5 +216,9 @@ const styles = StyleSheet.create({
   description: {
     paddingTop: 20,
     paddingBottom: 20,
+  },
+  icon: {
+    fontSize: 40,
+    color: '#254952',
   },
 });

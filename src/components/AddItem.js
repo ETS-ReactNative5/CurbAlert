@@ -125,6 +125,7 @@ const AddItem = ({navigation}) => {
         },
         description: descriptionInput,
         timestamp: Timestamp.fromDate(new Date()),
+        cannot_take: false,
         is_taken: false,
         is_damaged: false,
         thumbs_up: 0,
