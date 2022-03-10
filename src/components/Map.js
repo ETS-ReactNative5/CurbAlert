@@ -98,7 +98,10 @@ function Map({navigation, route}) {
                   <View>
                     <View>
                       <Text style={styles.name}>{item.title}</Text>
-                      <Image style={styles.image} source={item.image_path} />
+                      <Image
+                        style={styles.image}
+                        source={{uri: item.image_path}}
+                      />
                     </View>
                   </View>
                 </Callout>

@@ -93,8 +93,8 @@ const ItemDetail = ({route, navigation}) => {
       </View>
       <View>
         <Image
-          // source={item.image_path}
-          source={require('./../assets/placeholder_image.png')}
+          source={{uri: item.image_path}}
+          // source={require('./../assets/placeholder_image.png')}
           style={{
             width: 360,
             height: 476,

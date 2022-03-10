@@ -26,7 +26,7 @@ const Item = ({item, navigation}) => {
           flex: 1,
         }}>
         <Image
-          source={image_path}
+          source={{uri: item.image_path}}
           style={{width: 65, height: 65, borderRadius: 5, marginRight: 8}}
         />
         <View style={{width: windowWidth - 180}}>

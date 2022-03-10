@@ -144,11 +144,7 @@ function ItemList({navigation, route}) {
           onPress={() => navigation.navigate('ItemDetail', {item})}
           style={styles.takenItem}>
           <View style={styles.itemDisplay} opacity={0.6}>
-            <Image
-              // source={item.image_path}
-              source={require('./../assets/placeholder_image.png')}
-              style={styles.img}
-            />
+            <Image style={styles.img} source={item.image_path} />
             <View style={styles.itemWords}>
               <Text style={styles.titleText}>{item.title}</Text>
               <Text numberOfLines={1} style={styles.description}>
@@ -172,8 +168,8 @@ function ItemList({navigation, route}) {
           style={styles.item}>
           <View style={styles.itemDisplay}>
             <Image
-              // source={item.image_path}
-              source={require('./../assets/placeholder_image.png')}
+              source={{uri: item.image_path}}
+              // source={require('./../assets/placeholder_image.png')}
               style={styles.img}
             />
             <View style={styles.itemWords}>

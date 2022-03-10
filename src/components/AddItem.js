@@ -3,7 +3,7 @@ import {
   Text,
   View,
   TextInput,
-  ImageBackground,
+  Image,
   TouchableOpacity,
   Button,
 } from 'react-native';
@@ -36,15 +36,15 @@ const AddItem = ({navigation}) => {
   // });
 
   // const [currentLocation, setCurrentLocation] = useState({
-    // latitude: 0,
-    // longitude: 0,
-    // latitude: 45.519958,
-    // longitude: -122.677899,
+  // latitude: 0,
+  // longitude: 0,
+  // latitude: 45.519958,
+  // longitude: -122.677899,
   // });
-  const [imageState, setImage] = useState(
-    // "require('./../assets/placeholder_image.png')",
-    {uri: 'https://reactjs.org/logo-og.png'},
-  );
+  const [imageState, setImage] = useState('');
+  // "require('./../assets/placeholder_image.png')",
+  // {uri: 'https://reactjs.org/logo-og.png'},
+  // );
 
   const [titleInput, setTitle] = useState('');
   const [descriptionInput, setDescription] = useState('');
@@ -59,7 +59,8 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      setImage(`require("${image.path}")`);
+      // setImage(`require("${image.path}")`);
+      setImage(image.path);
     });
   }
 
@@ -69,7 +70,8 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      setImage(`require('${image.path}')`);
+      // setImage(`require('${image.path}')`);
+      setImage(image.path);
     });
   }
 
@@ -153,9 +155,9 @@ const AddItem = ({navigation}) => {
         />
       </View>
       <View>
-        <ImageBackground
+        <Image
           // THIS ISN'T WORKING BUT IT DOESN'T MAKE SENSE WHY!!
-          source={imageState}
+          source={{uri: imageState}}
           // source={{uri: 'https://reactjs.org/logo-og.png'}}
           // source={require('./../assets/placeholder_image.png')}
           // source={{
