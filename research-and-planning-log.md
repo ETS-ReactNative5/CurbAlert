@@ -1,3 +1,65 @@
+# Resources Used:
+
+## React Native:
+
+Traversy Media React Native Crash Course Video - https://www.youtube.com/watch?v=Hf4MJH0jDb4&t=709s
+YouTube: Traversy Media React JS Crash Course - https://www.youtube.com/watch?v=w7ejDZ8SWv8
+React Native Docs - Environment Setup - https://reactnative.dev/docs/environment-setup
+React Native Docs - Text - https://reactnative.dev/docs/text
+React Documentation's guide - https://reactnative.dev/docs/environment-setup
+YouTube: Code Step By Step - React-Native tutorial # Handle Input - https://www.youtube.com/watch?v=pF8ae5j9Q3g&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=18
+YouTube: Code Step By Step - React-Native tutorial # submit simple form - https://www.youtube.com/watch?v=FZDOxrQNMjs&list=PL8p2I9GklV44z6euF3nqS0TlKbaGiFUGO&index=19
+
+## React Hooks:
+
+LogRocket - The last guide to the useEffect Hook you’ll ever need - https://blog.logrocket.com/guide-to-react-useeffect-hook/
+LogRocket - Data fetching with React Native - https://blog.logrocket.com/data-fetching-react-native/
+React Navigation Docs: useFocusEffect - https://reactnavigation.org/docs/use-focus-effect/
+
+## Styling:
+
+React Native Vector Icons Docs - https://github.com/oblador/react-native-vector-icons/blob/master/README.md#installation
+React Native Flexbox documentation - https://reactnative.dev/docs/flexbox
+Stack OverFlow - https://stackoverflow.com/questions/45132731/cannot-scroll-to-bottom-of-scrollview-in-react-native
+
+## React Navigation:
+
+ReactNavigation.org documentation - https://reactnavigation.org/docs/getting-started/
+React Native Navigation Docs - Moving Between Screens - https://reactnavigation.org/docs/navigating
+React Native Navigation Docs - Header Buttons - https://reactnavigation.org/docs/header-buttons
+YouTube: Darwin Tech - Navigation in React Native - https://www.youtube.com/watch?v=9K7JCQbOHVA
+YouTube: Pradip Debnath - Getting Started with React Navigation v5 in React Native | Stack Navigator Tutorial - https://www.youtube.com/watch?v=a9jSyZXYGn8&list=PLQWFhX-gwJbmmqcP-9zMXBaxQbGKfIJY2&index=1
+YouTube: Pradip Debnath - Getting Started with React Navigation 6 | Stack Navigator Tutorial - https://www.youtube.com/watch?v=FWwKjxSgLl8&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=1
+YouTube: Pradip Debnath - Gaming App UI in React Native with React Navigation 6 - https://www.youtube.com/watch?v=I5doVFcG94U&list=PLQWFhX-gwJbmtZY4mcRE-k7hL9DigcGS-&index=2&t=266s
+YouTube: LogRocket - Learning React Native Navigation - https://www.youtube.com/watch?v=3hLQURJM7ws&t=641s
+
+## React Native Geolocation:
+
+LogRocket: React Native Geolocation Tutorial - https://blog.logrocket.com/react-native-geolocation-a-complete-tutorial/
+AboutReact.com - Geolocation - https://aboutreact.com/react-native-geolocation/
+YouTube: Get started with Background Geolocation in React Native - https://www.youtube.com/watch?v=heuEY5NY6cw
+LogRocket: React Native Geolocation Tutorial - https://blog.logrocket.com/react-native-geolocation-a-complete-tutorial/
+GeoDataSource: Function to get distance from coordinates - https://geodatasource.com/developers/javascript
+
+## React Native Maps:
+
+YouTube: React Native Maps Mini Course - https://www.youtube.com/watch?v=qlELLikT3FU
+YouTube: Pradip Dibnath - #2 Sliding Items on MapView with Animation React Native Maps Tutorial - https://www.youtube.com/watch?v=2vILzRmEqGI
+Google Map API - https://cloud.google.com/console/google/maps-apis/overview
+
+## React Native Image Crop Picker:
+
+GitHub: ivpusic/react-native-image-crop-picker - https://github.com/ivpusic/react-native-image-crop-picker
+YouTube: Pradip Debnath - React Native Image Picker Tutorial | Pick from Camera, Gallery | Crop Photo - https://www.youtube.com/watch?v=3_ldEVWlL18
+
+## Firebase:
+
+Firestore Documentation - https://firebase.google.com/docs/firestore
+LearnHowToProgram - Setting up a Firebase Project - https://www.learnhowtoprogram.com/react/react-with-nosql/setting-up-a-firebase-project
+Google Cloud Docs - https://cloud.google.com/docs/authentication/api-keys?visit_id=637821881490377539-2283733015&rd=1
+YouTube: Born to Code - Building a React Native app - #6 Understanding react native states - https://www.youtube.com/watch?v=AvgrS-cCcXQ&list=PLYSxLlUA2IkEUZjlxfk-ecd6kD9vJjs2b&index=7
+YouTube: Born to Code - React Native, Firebase v9, authentication and firestore - https://www.youtube.com/watch?v=20TSEoJkg5k
+
 # Research & Planning Log
 
 ### Tuesday, 02/15
