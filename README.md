@@ -4,9 +4,9 @@
 
 #### Created By: **Christopher Neal**
 
-![Curb Alert Logo](./src/assets/logo.png)
+![Curb Alert Logo](./src/assets/logo400.png)
 
-![Curb Alert Demo Gif](./screenshots/animated-demo-smaller.gif)
+![Curb Alert Demo Gif](./screenshots/animated-demo-smaller.png)
 
 ## Technologies Used
 
