@@ -74,6 +74,7 @@
 - Improve UI to make navigation more intuitive
 - Standardize and improve styling to accomodate different screen sizes
 - Support build on Android
+- When choosing an image from photo gallery, app pulls location from EXIF data instead of current location
 - Change is_damaged to a count instead of a boolean, have it removed if it gets 5 thumbs downs
 - Feature an item if it has 5+ thumbs ups
 - Limit thumbs up to one per person per listing and update the UI to reflect when the user has already thumbs-upped the listing

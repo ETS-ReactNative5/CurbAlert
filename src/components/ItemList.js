@@ -4,20 +4,17 @@ import {
   Text,
   View,
   FlatList,
-  Button,
   SafeAreaView,
   TouchableOpacity,
   Image,
 } from 'react-native';
-import Item from './Item';
-import {items} from './../model/data';
-import {ListItem} from 'react-native-elements/dist/list/ListItem';
 import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {windowWidth, windowHeight} from '../utils/Dimensions';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import {getLocation} from '../utils/getLocation';
 import {useFocusEffect} from '@react-navigation/native';
+import {getDistance} from './../utils/getDistance';
 
 function ItemList({navigation, route}) {
   const [itemList, setItemList] = useState({empty: true});
@@ -37,28 +34,6 @@ function ItemList({navigation, route}) {
           </View>
         );
       }
-    }
-  };
-
-  // FROM https://geodatasource.com/developers/javascript
-  const getDistance = (lat1, lon1, lat2, lon2) => {
-    if (lat1 === lat2 && lon1 === lon2) {
-      return 0;
-    } else {
-      var radlat1 = (Math.PI * lat1) / 180;
-      var radlat2 = (Math.PI * lat2) / 180;
-      var theta = lon1 - lon2;
-      var radtheta = (Math.PI * theta) / 180;
-      var dist =
-        Math.sin(radlat1) * Math.sin(radlat2) +
-        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-      if (dist > 1) {
-        dist = 1;
-      }
-      dist = Math.acos(dist);
-      dist = (dist * 180) / Math.PI;
-      const distInFeet = dist * 60 * 1.1515 * 1.609344 * 3280.84;
-      return Math.floor(distInFeet);
     }
   };
 
@@ -85,19 +60,20 @@ function ItemList({navigation, route}) {
   // This retrieves data when the page loads the first time and when the reload button is pushed
   useEffect(() => {
     getData();
-    console.log('USE EFFECT');
-  }, [update]); // not sure what this issue is but it works
+    console.log('USE EFFECT reload');
+  }, [update]);
 
+  // This should update the page when navigating to it
+  useFocusEffect(() => {
+    () => getData();
+    console.log('FOCUSED reload');
+  });
+
+  // This bookends when the page is loading for development purposes
   useEffect(() => {
     const now = new Date().getTime();
     console.log('isLoading = ' + isLoading + ' ' + now);
   }, [isLoading]);
-
-  // This should update the page
-  useFocusEffect(() => {
-    () => getData();
-    console.log('FOCUSED');
-  });
 
   const checkIfLoading = () => {
     if (isLoading === true || itemList.empty === true) {
@@ -125,8 +101,6 @@ function ItemList({navigation, route}) {
 
   const getTakenTimeout = time => {
     return new Date().getTime() / 1000 - time.seconds;
-    // console.log(time);
-    // return 19;
   };
 
   const itemDisplayBlock = item => {
@@ -140,7 +114,7 @@ function ItemList({navigation, route}) {
           onPress={() => navigation.navigate('ItemDetail', {item})}
           style={styles.takenItem}>
           <View style={styles.itemDisplay} opacity={0.6}>
-            <Image style={styles.img} source={item.image_path} />
+            <Image source={{uri: item.image_path}} style={styles.img} />
             <View style={styles.itemWords}>
               <Text style={styles.titleText}>{item.title}</Text>
               <Text numberOfLines={1} style={styles.description}>
@@ -150,7 +124,7 @@ function ItemList({navigation, route}) {
           </View>
           <View>
             <Text style={styles.distance}>
-              {item.distance < 1001
+              {item.distance < 501
                 ? `${item.distance} feet away`
                 : `${(item.distance / 5280).toFixed(1)} miles away`}
             </Text>
@@ -163,11 +137,7 @@ function ItemList({navigation, route}) {
           onPress={() => navigation.navigate('ItemDetail', {item})}
           style={styles.item}>
           <View style={styles.itemDisplay}>
-            <Image
-              source={{uri: item.image_path}}
-              // source={require('./../assets/placeholder_image.png')}
-              style={styles.img}
-            />
+            <Image source={{uri: item.image_path}} style={styles.img} />
             <View style={styles.itemWords}>
               <Text style={styles.titleText}>{item.title}</Text>
               <Text numberOfLines={1} style={styles.description}>
@@ -177,7 +147,7 @@ function ItemList({navigation, route}) {
           </View>
           <View>
             <Text style={styles.distance}>
-              {item.distance < 1001
+              {item.distance < 501
                 ? `${item.distance} feet away`
                 : `${(item.distance / 5280).toFixed(1)} miles away`}
             </Text>

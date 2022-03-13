@@ -29,13 +29,13 @@ import {Store} from './../redux/store';
 import {db} from './../firebase/firebase-config';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {LogBox} from 'react-native';
-// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    // uncomment to use Redux:
     // <Provider store={Store}>
     <NavigationContainer>
       <Stack.Navigator
@@ -67,23 +67,23 @@ const App = () => {
           name="AddItem"
           component={AddItem}
           options={{
-            headerRight: () => (
-              <Icon
-                name="bars"
-                size={20}
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="#d2e6ef"
-              />
-            ),
-            // title: 'Add an item!',
-            // headerStyle: {
-            //   backgroundColor: '#f4511e',
-            // },
-            // headerTintColor: '#fff',
-            // headerTitleStyle: {
-            //   fontWeight: 'bold',
-            // },
+            // headerRight: () => (
+            //   <Icon
+            //     name="bars"
+            //     size={20}
+            //     onPress={() => alert('This is a button!')}
+            //     title="Info"
+            //     color="#d2e6ef"
+            //   />
+            // ),
+            title: 'Add an item!',
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
           }}
         />
         <Stack.Screen

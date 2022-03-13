@@ -11,7 +11,6 @@ import {
 import RNLocation from 'react-native-location';
 import {mapStyle} from './../utils/mapStyle';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-// import {items} from './../model/data';
 
 RNLocation.configure({
   distanceFilter: 10,
@@ -23,15 +22,13 @@ function Map({navigation, route}) {
   const [currentLocation, setCurrentLocation] = useState({
     latitude: 0,
     longitude: 0,
-    // latitude: 45.519958,
-    // longitude: -122.677899,
   });
 
   const getLocation = async () => {
     let permission = await RNLocation.checkPermission({
-      ios: 'whenInUse', // or 'always'
+      ios: 'whenInUse', // or 'always' ?
       android: {
-        detail: 'fine', // or 'coarse'
+        detail: 'fine',
       },
     });
 
@@ -57,10 +54,6 @@ function Map({navigation, route}) {
       console.log('location updated: ' + date);
     }
   };
-
-  // I'm sure this is a little hacky.
-  // and it seems to exponentially make more calls.
-  // setInterval(getLocation, 10000);
 
   // This should make the call once
   useEffect(() => {

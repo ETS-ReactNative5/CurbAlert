@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import PropTypes from 'prop-types';
-import {windowWidth} from '../utils/Dimensions';
 import {collection, getDocs, doc, setDoc, Timestamp} from 'firebase/firestore';
 import {db} from './../firebase/firebase-config';
 import {getTimeSince} from './../utils/getTimeSince';
@@ -158,7 +157,6 @@ const ItemDetail = ({route, navigation}) => {
       <View>
         <Image
           source={{uri: item.image_path}}
-          // source={require('./../assets/placeholder_image.png')}
           style={{
             width: 360,
             height: 476,
