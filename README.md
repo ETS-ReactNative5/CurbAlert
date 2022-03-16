@@ -6,7 +6,7 @@
 
 ![Curb Alert Logo](./src/assets/logo400.png)
 
-![Curb Alert Demo Gif](./screenshots/animated-demo-350.gif)
+![Curb Alert Demo Gif](./screenshots/animated-demo-350.png)
 
 ## Technologies Used
 
