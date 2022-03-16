@@ -68,7 +68,7 @@
 #### React Navigation
 
 > React Navigation is much different than using functions to determine which component will display. I didn't initally appreciate how different it is, so I jumped into using it without fully understanding and ended up getting very confused. Fortunatly the React Native documentation is fantastic.  
-> My biggest hurdle was understanding that you can pass a parameter from one screen to another, but functions can't be passed through React Navigation (...that is, unless I totally misunderstood what's going on there). More on that below.
+> My biggest hurdle was understanding that you can pass a parameter from one screen to another, but functions can't be passed through React Navigation. More on that below.
 
 #### State in Functional Components
 
