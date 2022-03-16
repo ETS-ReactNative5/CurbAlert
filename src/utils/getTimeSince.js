@@ -11,6 +11,6 @@ export const getTimeSince = time => {
   } else if (secondsSince / 3600 < 24) {
     return `${Math.floor(secondsSince / 3600)} hours ago`;
   } else {
-    return `${Math.floor(secondsSince / 3600)} days ago`;
+    return `${Math.floor(secondsSince / 86400)} days ago`;
   }
 };
