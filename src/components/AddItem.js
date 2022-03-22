@@ -4,6 +4,7 @@ import {
   View,
   TextInput,
   Image,
+  Platform,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
@@ -45,7 +46,9 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      setImage(image.path);
+      const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
+      setImage(imageUri);
+      // setImage(image.path);
     });
   }
 
@@ -55,7 +58,9 @@ const AddItem = ({navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      setImage(image.path);
+      const imageUri = Platform.OS === 'ios' ? image.sourceURL : image.path;
+      setImage(imageUri);
+      // setImage(image.path);
     });
   }
 
@@ -147,14 +152,16 @@ const AddItem = ({navigation}) => {
         </View>
       </View>
       <View>
-        <Image
-          source={{uri: imageState}}
-          style={{
-            alignItems: 'center',
-            marginLeft: (windowWidth - 300) / 2,
-            marginRight: (windowWidth - 300) / 2,
-          }}
-        />
+        {imageState !== null ? (
+          <Image
+            source={{uri: imageState}}
+            style={{
+              alignItems: 'center',
+              marginLeft: (windowWidth - 300) / 2,
+              marginRight: (windowWidth - 300) / 2,
+            }}
+          />
+        ) : null}
       </View>
       <TouchableOpacity>
         <View
