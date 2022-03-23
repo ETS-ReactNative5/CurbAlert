@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCl7o_F4xArPllS1WEzkOdh2Ga_sgG2Aj0',
+  apiKey: 'REACT_APP_FIREBASE_API_KEY',
   authDomain: 'curbalert-343207.firebaseapp.com',
   projectId: 'curbalert-343207',
   storageBucket: 'curbalert-343207.appspot.com',
