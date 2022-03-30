@@ -6,7 +6,8 @@
 
 ![Curb Alert Logo](./src/assets/logo400.png)
 
-![Curb Alert Demo Gif](./screenshots/animated-demo-350.png)
+<!-- ![Curb Alert Demo Gif](./screenshots/animated-demo-350.png) -->
+<img src="./screenshots/animated-demo-350.png" width=280 alt="Curb Alert Demo">
 
 ## Technologies Used
 
@@ -25,8 +26,8 @@
 
 ## Description
 
-> _This project was created as an independent Capstone project for Epicodus bootcamp. It shows proficiency in React Native._  
-> _Curb Alert: Connecting Trash with Folks to whom it's Treasure. A user can upload an image of discarded furniture for others to see. A user can find discarded furniture near their location._
+> _This project was created as an independent capstone project for Epicodus bootcamp. It shows proficiency in React Native._  
+> _Curb Alert is a mobile application using React Native, Google Maps API, and Firestore to connect trash with folks to whom it's treasure. Users can post the image and location of an item left on the sidewalk, browse nearby posts, and claim posted items._
 
 ## Project Component Diagram
 
@@ -34,8 +35,6 @@
 
 ## Setup/Installation Requirements
 
-- _React version 3.2.0_
-- _React version 17.0.2_
 - _React-Native version 0.67.2_
 - _Xcode_
 - _Watchman_
